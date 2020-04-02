@@ -8,15 +8,14 @@
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="420dp"
-        android:layout_height="679dp"
+        android:layout_width="621dp"
+        android:layout_height="678dp"
         android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/loginpage" />
 
     <EditText
@@ -29,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.555" />
 
     <EditText
         android:id="@+id/username"
@@ -37,7 +36,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="588dp"
+        android:layout_marginTop="584dp"
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
@@ -51,9 +50,9 @@
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.568" />
+        app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
