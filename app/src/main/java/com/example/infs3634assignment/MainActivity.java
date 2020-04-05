@@ -16,14 +16,5 @@ public class MainActivity extends AppCompatActivity {
         //Steven Checking in
         //cathy made a change
 
-        Button bLogin = findViewById(R.id.bLogin);
-        bLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 }
