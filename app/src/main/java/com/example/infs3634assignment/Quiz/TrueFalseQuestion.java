@@ -6,23 +6,11 @@ import java.util.List;
 
 public class TrueFalseQuestion extends Question implements Serializable {
 
-    private boolean answer;
 
-    public TrueFalseQuestion(String organ, String question) {
-        super(organ, question);
-    }
 
-    public TrueFalseQuestion(String organ, String question, boolean answer) {
-        super(organ, question);
-        this.answer = answer;
-    }
+    public TrueFalseQuestion(String organ, String question, int answer) {
+        super(organ, question, answer);
 
-    public boolean isAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(boolean answer) {
-        this.answer = answer;
     }
 
     public static List<TrueFalseQuestion> getBrainQuestions(){
@@ -31,14 +19,14 @@ public class TrueFalseQuestion extends Question implements Serializable {
 
         //Question 1
         String q1Question = "Is the brain located within the head?";
-        boolean q1Answer = true;
+        int q1Answer = 1;
 
         List<TrueFalseQuestion> list = new ArrayList<>();
 
         list.add(new TrueFalseQuestion(organ, q1Question, q1Answer));
         list.add(new TrueFalseQuestion(organ, q1Question, q1Answer));
-        list.add(new TrueFalseQuestion(organ, q1Question, q1Answer));
-        list.add(new TrueFalseQuestion(organ, q1Question, q1Answer));
+        //list.add(new TrueFalseQuestion(organ, q1Question, q1Answer));
+        //list.add(new TrueFalseQuestion(organ, q1Question, q1Answer));
 
         return list;
     }

@@ -5,10 +5,15 @@ import java.io.Serializable;
 public class Question implements Serializable {
     String organ;
     String question;
+    int answer;
 
-    public Question(String organ, String question) {
+    public Question(){
+    }
+
+    public Question(String organ, String question, int answer) {
         this.organ = organ;
         this.question = question;
+        this.answer = answer;
     }
 
     public String getOrgan() {
@@ -25,5 +30,13 @@ public class Question implements Serializable {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public int getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(int answer) {
+        this.answer = answer;
     }
 }
