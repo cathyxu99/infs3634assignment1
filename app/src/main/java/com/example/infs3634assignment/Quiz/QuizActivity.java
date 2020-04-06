@@ -5,10 +5,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.example.infs3634assignment.R;
 
@@ -22,6 +25,15 @@ import java.util.TreeMap;
 
 public class QuizActivity extends AppCompatActivity {
 
+    int answerSelected = 0;
+    boolean answered = false;
+    boolean completed = false;
+    boolean lockButtons = false;
+    int questionToAnswer = 0;
+
+
+    final List<Question> questionList = getQuestionCollection("brain");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +43,11 @@ public class QuizActivity extends AppCompatActivity {
         final Button beginButton = findViewById(R.id.beginButton);
         final ScrollView scrollView = findViewById(R.id.questionView);
 
-        getQuestionCollection("brain");
-
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 scrollView.removeAllViews();
-                MultipleChoiceFragment fragment = new MultipleChoiceFragment();
-                FragmentManager myManager = getSupportFragmentManager();
-                FragmentTransaction myTransaction = myManager.beginTransaction();
-                myTransaction.replace(R.id.questionView, fragment);
-                myTransaction.commit();
+                loadNextQuestion();
                 submitButton.setVisibility(View.VISIBLE);
             }
         });
@@ -49,11 +55,39 @@ public class QuizActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MultipleChoiceFragment fragment = new MultipleChoiceFragment();
-                FragmentManager myManager = getSupportFragmentManager();
-                FragmentTransaction myTransaction = myManager.beginTransaction();
-                myTransaction.replace(R.id.questionView, fragment);
-                myTransaction.commit();
+
+                MultipleChoiceQuestion question;
+                if(!answered && answerSelected==0){
+                    Toast.makeText(QuizActivity.this, "Please select an answer!", Toast.LENGTH_SHORT).show();
+                }
+                else if(answered){
+                    completed = loadNextQuestion();
+                    clearButtonColour();
+                    answered = false;
+                    lockButtons = false;
+                    submitButton.setText("Submit");
+                    if(completed){
+                       Intent intent = new Intent(v.getContext(), QuizActivity.class);
+                       startActivity(intent);
+                        answerSelected = 0;
+                        answered = false;
+                        completed = false;
+                        questionToAnswer = 0;
+                    }
+                }else {
+                    question = (MultipleChoiceQuestion) questionList.get(questionToAnswer-1);
+
+                    if (question.getAnswer() == answerSelected) {
+                        answerFeedback(answerSelected);
+                        answered = true;
+                    } else if (question.getAnswer() != answerSelected) {
+                        wrongAnswerFeedback(answerSelected);
+                        answered = true;
+                    }
+                    answerSelected=0;
+                    lockButtons = true;
+                    submitButton.setText("Next");
+                }
             }
         });
 
@@ -65,10 +99,101 @@ public class QuizActivity extends AppCompatActivity {
         switch (organ){
             case "brain":
                 list.addAll(MultipleChoiceQuestion.getBrainQuestions());
-                list.addAll(TrueFalseQuestion.getBrainQuestions());
+                //list.addAll(TrueFalseQuestion.getBrainQuestions());
+                break;
         }
 
         Collections.shuffle(list);
         return list;
+    }
+
+    public void wrongAnswerFeedback(int button){
+
+        final Button option1 = findViewById(R.id.mcqOption1);
+        final Button option2 = findViewById(R.id.mcqOption2);
+        final Button option3 = findViewById(R.id.mcqOption3);
+        final Button option4 = findViewById(R.id.mcqOption4);
+
+        switch(button){
+            case 1:
+                option1.setBackgroundColor(Color.RED);
+                break;
+            case 2:
+                option2.setBackgroundColor(Color.RED);
+                break;
+            case 3:
+                option3.setBackgroundColor(Color.RED);
+                break;
+            case 4:
+                option4.setBackgroundColor(Color.RED);
+                break;
+        }
+
+    }
+
+    public void answerFeedback(int button){
+
+        final Button option1 = findViewById(R.id.mcqOption1);
+        final Button option2 = findViewById(R.id.mcqOption2);
+        final Button option3 = findViewById(R.id.mcqOption3);
+        final Button option4 = findViewById(R.id.mcqOption4);
+
+        switch(button){
+            case 1:
+                option1.setBackgroundColor(Color.GREEN);
+                break;
+            case 2:
+                option2.setBackgroundColor(Color.GREEN);
+                break;
+            case 3:
+                option3.setBackgroundColor(Color.GREEN);
+                break;
+            case 4:
+                option4.setBackgroundColor(Color.GREEN);
+                break;
+        }
+
+    }
+
+    public void clearButtonColour(){
+
+        final Button option1 = findViewById(R.id.mcqOption1);
+        final Button option2 = findViewById(R.id.mcqOption2);
+        final Button option3 = findViewById(R.id.mcqOption3);
+        final Button option4 = findViewById(R.id.mcqOption4);
+
+        option1.setBackgroundColor(Color.LTGRAY);
+        option2.setBackgroundColor(Color.LTGRAY);
+        option3.setBackgroundColor(Color.LTGRAY);
+        option4.setBackgroundColor(Color.LTGRAY);
+    }
+
+    public boolean loadNextQuestion(){
+        boolean complete = false;
+
+        if(questionList.size()<=questionToAnswer){
+            complete = true;
+        }else {
+
+            MultipleChoiceFragment fragment = new MultipleChoiceFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("question", questionList.get(questionToAnswer));
+            fragment.setArguments(bundle);
+
+            FragmentManager myManager = getSupportFragmentManager();
+            FragmentTransaction myTransaction = myManager.beginTransaction();
+            myTransaction.replace(R.id.questionView, fragment);
+            myTransaction.commit();
+
+            questionToAnswer++;
+        }
+        return complete;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

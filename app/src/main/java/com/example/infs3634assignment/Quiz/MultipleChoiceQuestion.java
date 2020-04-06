@@ -97,9 +97,9 @@ public class MultipleChoiceQuestion extends Question implements Serializable {
 
         list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
         list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
-        list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
-        list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
-        list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
+        //list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
+        //list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
+        //list.add(new MultipleChoiceQuestion(organ, question, q1Option1, q1Option2, q1Option3, q1Option4, q1Answer));
 
         return list;
     }
