@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="@string/hello_blank_fragment" />
+            android:text="loading..." />
     </ScrollView>
 
     <LinearLayout
