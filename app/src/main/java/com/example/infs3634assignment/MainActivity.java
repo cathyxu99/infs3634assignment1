@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.infs3634assignment.Quiz.QuizActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,13 +18,12 @@ public class MainActivity extends AppCompatActivity {
         //Steven Checking in
         //cathy made a change
 
-        Button bLogin = findViewById(R.id.bLogin);
-        bLogin.setOnClickListener(new View.OnClickListener() {
+        Button quizButton = findViewById(R.id.beginQuizButton);
+        quizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent intent = new Intent(MainActivity.this, QuizActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
