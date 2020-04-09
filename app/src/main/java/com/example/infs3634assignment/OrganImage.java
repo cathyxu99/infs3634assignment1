@@ -2,7 +2,7 @@ package com.example.infs3634assignment;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Image {
+public class OrganImage {
 
     @SerializedName("ns")
     @Expose
@@ -10,8 +10,6 @@ public class Image {
     @SerializedName("title")
     @Expose
     private String title;
-
-    private String url;
 
     public Integer getNs() {
         return ns;
@@ -27,13 +25,5 @@ public class Image {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 }

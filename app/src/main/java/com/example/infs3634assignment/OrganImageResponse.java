@@ -4,18 +4,18 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class OrganImage {
+public class OrganImageResponse {
 
     @SerializedName("images")
     @Expose
-    private List<Image> images = null;
+    private List<OrganImage> organImages = null;
 
-    public List<Image> getImages() {
-        return images;
+    public List<OrganImage> getOrganImages() {
+        return organImages;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setOrganImages(List<OrganImage> organImages) {
+        this.organImages = organImages;
     }
 
 }
