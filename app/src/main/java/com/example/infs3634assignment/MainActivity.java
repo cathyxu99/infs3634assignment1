@@ -1,20 +1,17 @@
 package com.example.infs3634assignment;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.infs3634assignment.ProgressPage.ProgressFragment;
 import com.example.infs3634assignment.Quiz.QuizActivity;
-import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 public String imagesResponse;
@@ -39,5 +36,11 @@ public String imagesResponse;
                 startActivity(intent);
             }
         });
+
+        //just need to figure out how to launch the progress fragment
+        //on click of button but pushing in case i fk smth up HAHA ->cathy
+
+
     }
+
 }
