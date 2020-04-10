@@ -7,14 +7,17 @@
     android:orientation="vertical"
     tools:context=".LearnFragment">
 
-    <HorizontalScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="150" />
+        android:layout_marginTop="10dp"
+        android:layout_weight="125" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_weight="100">
 
         <TextView
@@ -29,10 +32,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="175"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/readMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
