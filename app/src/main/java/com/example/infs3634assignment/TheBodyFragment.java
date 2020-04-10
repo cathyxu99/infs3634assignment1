@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 public class TheBodyFragment extends Fragment {
-    private ImageButton brainButton;
+    private ImageButton brainButton,heartButton,lungButton,spleenButton,liverButton,stomachButton,kidneyButton,intestineButton,bladderButton;
     public TheBodyFragment() {
         // Required empty public constructor
     }
@@ -40,6 +40,69 @@ public class TheBodyFragment extends Fragment {
                 launchLearnFragment("Brain");
             }
          });
+
+
+        heartButton = view.findViewById(R.id.heartButton);
+        heartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Heart");
+            }
+        });
+
+        lungButton = view.findViewById(R.id.lungButton);
+        lungButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Lung");
+            }
+        });
+
+        spleenButton = view.findViewById(R.id.spleenButton);
+        spleenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Spleen");
+            }
+        });
+
+        stomachButton = view.findViewById(R.id.stomachButton);
+        stomachButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Stomach");
+            }
+        });
+
+        liverButton = view.findViewById(R.id.liverButton);
+        liverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Liver");
+            }
+        });
+        kidneyButton = view.findViewById(R.id.kidneyButton);
+        kidneyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Kidney");
+            }
+        });
+        intestineButton = view.findViewById(R.id.intestineButton);
+        intestineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Gastrointestinal_tract");//
+            }
+        });
+
+        bladderButton = view.findViewById(R.id.bladderButton);
+        bladderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLearnFragment("Urinary_bladder");
+            }
+        });
 //
         return view;
     }

@@ -50,74 +50,74 @@ public class LearnFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        final View view = inflater.inflate(R.layout.fragment_learn, container, false);
+       final String organ = getArguments().getString("organName");
 
-        final RequestQueue requestQueueImages = Volley.newRequestQueue(getContext());
-        final String wikiImages = "https://en.wikipedia.org/w/api.php?action=query&titles=brain&prop=images&format=json";
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                String string = (response.substring(response.indexOf("\"images"),response.length()-3));
-                imagesResponse = "{" + string;
-                organImageResponse = new Gson().fromJson(imagesResponse, OrganImageResponse.class);
+       final RequestQueue requestQueueImages = Volley.newRequestQueue(getContext());
+       final String wikiImages = "https://en.wikipedia.org/w/api.php?action=query&titles="+organ+"&prop=images&format=json";
+       Response.Listener<String> responseListener = new Response.Listener<String>() {
+          @Override
+          public void onResponse(String response) {
+              String string = (response.substring(response.indexOf("\"images"),response.length()-3));
+              imagesResponse = "{" + string;
+              organImageResponse = new Gson().fromJson(imagesResponse, OrganImageResponse.class);
 
-                for(Iterator<OrganImage> itr = organImageResponse.getOrganImages().iterator(); itr.hasNext();){
-                    OrganImage organImage = itr.next();
-                    if(organImage.getTitle().contains(".svg")){
-                        itr.remove();
-                    }
-                }
-                getImageURLS(view);
-                requestQueueImages.stop();
-            }
-        };
+              for(Iterator<OrganImage> itr = organImageResponse.getOrganImages().iterator(); itr.hasNext();){
+                   OrganImage organImage = itr.next();
+                   if(organImage.getTitle().contains(".svg")){
+                       itr.remove();
+                   }
+               }
+               getImageURLS(view);
+               requestQueueImages.stop();
+           }
+       };
 
-        Response.ErrorListener errorListener = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse (VolleyError error) {
-                System.out.println(error.toString());
-            }
-        };
-        StringRequest stringRequestImages = new StringRequest(Request.Method.GET, wikiImages, responseListener, errorListener);
-        requestQueueImages.add(stringRequestImages);
-        learnText = view.findViewById(R.id.test);
+       Response.ErrorListener errorListener = new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse (VolleyError error) {
+               System.out.println(error.toString());
+           }
+       };
+       StringRequest stringRequestImages = new StringRequest(Request.Method.GET, wikiImages, responseListener, errorListener);
+       requestQueueImages.add(stringRequestImages);
+       learnText = view.findViewById(R.id.test);
 
-        final String organ = getArguments().getString("organName");
 
-        final RequestQueue requestQueueLearn = Volley.newRequestQueue(getContext());
-        final String wikiUrl = "https://wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" +organ + "&format=json";
-        //grabs string and cleans it removing bracketed text and any newline characters
-        Response.Listener<String> responseListenerLearn = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                String string = (response.substring(response.lastIndexOf("extract")+10,response.length()-5));
-                string = string.replace("\\n", "\n\n");
-                string = string.replaceAll("\\(.*?\\)", "");
-                learnText.setText(string);
+       final RequestQueue requestQueueLearn = Volley.newRequestQueue(getContext());
+       final String wikiUrl = "https://wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" +organ + "&format=json";
+       //grabs string and cleans it removing bracketed text and any newline characters
+       Response.Listener<String> responseListenerLearn = new Response.Listener<String>() {
+           @Override
+           public void onResponse(String response) {
+               String string = (response.substring(response.lastIndexOf("\"extract\"")+11,response.length()-5));
+               string = string.replace("\\n", "\n\n");
+               string = string.replaceAll("\\(.*?\\)", "");
+               learnText.setText(string);
 //
-                requestQueueLearn.stop();
-            }
-        };
+               requestQueueLearn.stop();
+           }
+       };
 
-        Response.ErrorListener errorListenerLearn = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse (VolleyError error) {
-                System.out.println(error.toString());
-            }
-        };
-        StringRequest stringRequestLearn = new StringRequest(Request.Method.GET, wikiUrl, responseListenerLearn, errorListenerLearn);
-        requestQueueLearn.add(stringRequestLearn);
+       Response.ErrorListener errorListenerLearn = new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse (VolleyError error) {
+               System.out.println(error.toString());
+           }
+       };
+       StringRequest stringRequestLearn = new StringRequest(Request.Method.GET, wikiUrl, responseListenerLearn, errorListenerLearn);
+       requestQueueLearn.add(stringRequestLearn);
 
-        readMore = view.findViewById(R.id.readMore);
-        readMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uriUrl = Uri.parse("https://en.wikipedia.org/wiki/" + organ);
-                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-                startActivity(launchBrowser);
-            }
-        });
+       readMore = view.findViewById(R.id.readMore);
+       readMore.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Uri uriUrl = Uri.parse("https://en.wikipedia.org/wiki/" + organ);
+               Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+               startActivity(launchBrowser);
+           }
+       });
 
-        return view;
+       return view;
     }
 
     public void createImages(View view){
@@ -130,7 +130,6 @@ public class LearnFragment extends Fragment {
     }
 
     public void getImageURLS(final View view){
-
         for(final OrganImage organImage:organImageResponse.getOrganImages()) {
             final RequestQueue requestQueueImagesURL = Volley.newRequestQueue(getContext());
 
