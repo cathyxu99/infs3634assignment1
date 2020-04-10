@@ -10,12 +10,12 @@
         android:id="@+id/falseButton"
         android:layout_width="332dp"
         android:layout_height="100dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:text="False"
-        app:layout_constraintEnd_toEndOf="@+id/mcqOption1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/mcqOption1"
-        app:layout_constraintTop_toBottomOf="@+id/mcqOption1" />
+        app:layout_constraintEnd_toEndOf="@+id/trueButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/trueButton"
+        app:layout_constraintTop_toBottomOf="@+id/trueButton" />
 
     <TextView
         android:id="@+id/mcqQuestion"
@@ -24,7 +24,7 @@
         android:layout_marginTop="48dp"
         android:text="Question should be displayed."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,10 +32,9 @@
         android:id="@+id/trueButton"
         android:layout_width="332dp"
         android:layout_height="100dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="112dp"
         android:text="True"
         app:layout_constraintEnd_toEndOf="@+id/mcqQuestion"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/mcqQuestion"
         app:layout_constraintTop_toBottomOf="@+id/mcqQuestion" />
 
