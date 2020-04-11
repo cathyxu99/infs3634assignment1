@@ -58,7 +58,10 @@ public class TrueFalseFragment extends Fragment {
             public void onClick(View v) {
                 if(!quizActivity.lockButtons) {
                     clearColour(view);
-                    trueButton.setBackgroundColor(Color.BLUE);
+                    trueButton.setBackgroundResource(R.drawable.solid_line_button_blue);
+                    trueButton.setTextColor(Color.parseColor("#FFFFFF"));
+                    falseButton.setTextColor(Color.parseColor("#76b4bd"));
+                    falseButton.setBackgroundResource(R.drawable.solid_line_button);
                     quizActivity.answerSelected = 1;
                 }
             }
@@ -69,7 +72,10 @@ public class TrueFalseFragment extends Fragment {
             public void onClick(View v) {
                 if(!quizActivity.lockButtons) {
                     clearColour(view);
-                    falseButton.setBackgroundColor(Color.BLUE);
+                    falseButton.setBackgroundResource(R.drawable.solid_line_button_blue);
+                    falseButton.setTextColor(Color.parseColor("#FFFFFF"));
+                    trueButton.setTextColor(Color.parseColor("#76b4bd"));
+                    trueButton.setBackgroundResource(R.drawable.solid_line_button);
                     quizActivity.answerSelected = 2;
                 }
             }

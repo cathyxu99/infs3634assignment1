@@ -65,7 +65,15 @@ public class MultipleChoiceFragment extends Fragment {
             public void onClick(View v) {
                 if(!quizActivity.lockButtons) {
                     clearColour(view);
-                    option1.setBackgroundColor(Color.BLUE);
+                    option1.setBackgroundResource(R.drawable.solid_line_button_blue);
+                    option1.setTextColor(Color.parseColor("#FFFFFF"));
+                    option3.setTextColor(Color.parseColor("#76b4bd"));
+                    option2.setTextColor(Color.parseColor("#76b4bd"));
+                    option4.setTextColor(Color.parseColor("#76b4bd"));
+                    option2.setBackgroundResource(R.drawable.solid_line_button);
+                    option3.setBackgroundResource(R.drawable.solid_line_button);
+                    option4.setBackgroundResource(R.drawable.solid_line_button);
+
                     quizActivity.answerSelected = 1;
                 }
             }
@@ -76,7 +84,14 @@ public class MultipleChoiceFragment extends Fragment {
             public void onClick(View v) {
                 if(!quizActivity.lockButtons) {
                     clearColour(view);
-                    option2.setBackgroundColor(Color.BLUE);
+                    option2.setBackgroundResource(R.drawable.solid_line_button_blue);
+                    option2.setTextColor(Color.parseColor("#FFFFFF"));
+                    option3.setTextColor(Color.parseColor("#76b4bd"));
+                    option1.setTextColor(Color.parseColor("#76b4bd"));
+                    option4.setTextColor(Color.parseColor("#76b4bd"));
+                    option1.setBackgroundResource(R.drawable.solid_line_button);
+                    option3.setBackgroundResource(R.drawable.solid_line_button);
+                    option4.setBackgroundResource(R.drawable.solid_line_button);
                     quizActivity.answerSelected = 2;
                 }
             }
@@ -87,7 +102,14 @@ public class MultipleChoiceFragment extends Fragment {
             public void onClick(View v) {
                 if(!quizActivity.lockButtons) {
                     clearColour(view);
-                    option3.setBackgroundColor(Color.BLUE);
+                    option3.setBackgroundResource(R.drawable.solid_line_button_blue);
+                    option3.setTextColor(Color.parseColor("#FFFFFF"));
+                    option1.setTextColor(Color.parseColor("#76b4bd"));
+                    option2.setTextColor(Color.parseColor("#76b4bd"));
+                    option4.setTextColor(Color.parseColor("#76b4bd"));
+                    option4.setBackgroundResource(R.drawable.solid_line_button);
+                    option2.setBackgroundResource(R.drawable.solid_line_button);
+                    option1.setBackgroundResource(R.drawable.solid_line_button);
                     quizActivity.answerSelected = 3;
                 }
             }
@@ -98,7 +120,14 @@ public class MultipleChoiceFragment extends Fragment {
             public void onClick(View v) {
                 if(!quizActivity.lockButtons) {
                     clearColour(view);
-                    option4.setBackgroundColor(Color.BLUE);
+                    option4.setBackgroundResource(R.drawable.solid_line_button_blue);
+                    option4.setTextColor(Color.parseColor("#FFFFFF"));
+                    option3.setTextColor(Color.parseColor("#76b4bd"));
+                    option2.setTextColor(Color.parseColor("#76b4bd"));
+                    option1.setTextColor(Color.parseColor("#76b4bd"));
+                    option3.setBackgroundResource(R.drawable.solid_line_button);
+                    option2.setBackgroundResource(R.drawable.solid_line_button);
+                    option1.setBackgroundResource(R.drawable.solid_line_button);
                     quizActivity.answerSelected = 4;
                 }
             }
