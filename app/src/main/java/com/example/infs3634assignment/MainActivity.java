@@ -37,8 +37,14 @@ public String imagesResponse;
             }
         });
 
-        //just need to figure out how to launch the progress fragment
-        //on click of button but pushing in case i fk smth up HAHA ->cathy
+        Button tempLoginBtn = findViewById(R.id.bLogin);
+        tempLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, blankHomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

@@ -43,7 +43,6 @@
         android:fontFamily="@font/roboto"
         android:text="Login"
         android:textColor="#FFFFFF"
-        android:stateListAnimator="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
@@ -72,28 +71,12 @@
         android:layout_height="46dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="168dp"
         android:background="@drawable/normal_button_corners"
         android:fontFamily="@font/roboto"
         android:stateListAnimator="@null"
         android:text="The Body"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressButton" />
-
-    <Button
-        android:id="@+id/progressButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="76dp"
-        android:background="@drawable/normal_button_corners"
-        android:fontFamily="@font/roboto"
-        android:text="View Progress"
-        android:stateListAnimator="@null"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

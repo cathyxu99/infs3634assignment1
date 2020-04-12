@@ -28,6 +28,7 @@ public class blankHomeActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavBar = findViewById(R.id.bottom_nav_bar);
         bottomNavBar.setOnNavigationItemSelectedListener(navigationListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new TheBodyFragment()).commit();
     }
 
     //onclicklistener to open the different fragments when each button in the nav bar is clicked
