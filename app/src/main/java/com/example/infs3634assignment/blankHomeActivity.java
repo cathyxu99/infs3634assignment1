@@ -31,6 +31,7 @@ public class blankHomeActivity extends AppCompatActivity {
     }
 
     //onclicklistener to open the different fragments when each button in the nav bar is clicked
+    //reference: https://www.youtube.com/watch?v=tPV8xA7m-iw
     public BottomNavigationView.OnNavigationItemSelectedListener navigationListener =
             new BottomNavigationView.OnNavigationItemSelectedListener(){
         @Override
