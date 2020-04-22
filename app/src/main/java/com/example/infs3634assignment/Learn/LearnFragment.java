@@ -1,4 +1,4 @@
-package com.example.infs3634assignment;
+package com.example.infs3634assignment.Learn;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,11 +20,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.infs3634assignment.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.ListIterator;
 
 public class LearnFragment extends Fragment {
     public TextView learnText;
@@ -48,7 +48,7 @@ public class LearnFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
        final View view = inflater.inflate(R.layout.fragment_learn, container, false);
        final String organ = getArguments().getString("organName");
 
@@ -57,12 +57,13 @@ public class LearnFragment extends Fragment {
        Response.Listener<String> responseListener = new Response.Listener<String>() {
           @Override
           public void onResponse(String response) {
-              String string = (response.substring(response.indexOf("\"images"),response.length()-3));
-              imagesResponse = "{" + string;
+              String str = (response.substring(response.indexOf("\"images"),response.length()-3));
+              imagesResponse = "{" + str;
               organImageResponse = new Gson().fromJson(imagesResponse, OrganImageResponse.class);
 
               for(Iterator<OrganImage> itr = organImageResponse.getOrganImages().iterator(); itr.hasNext();){
                    OrganImage organImage = itr.next();
+                   //removes .svg files as common page images such as help button are saved as .svg
                    if(organImage.getTitle().contains(".svg")){
                        itr.remove();
                    }
@@ -89,10 +90,10 @@ public class LearnFragment extends Fragment {
        Response.Listener<String> responseListenerLearn = new Response.Listener<String>() {
            @Override
            public void onResponse(String response) {
-               String string = (response.substring(response.lastIndexOf("\"extract\"")+11,response.length()-5));
-               string = string.replace("\\n", "\n\n");
-               string = string.replaceAll("\\(.*?\\)", "");
-               learnText.setText(string);
+               String str = (response.substring(response.lastIndexOf("\"extract\"")+11,response.length()-5));
+               str = str.replace("\\n", "\n\n");
+               str = str.replaceAll("\\(.*?\\)", "");
+               learnText.setText(str);
 //
                requestQueueLearn.stop();
            }
@@ -137,8 +138,8 @@ public class LearnFragment extends Fragment {
             final Response.Listener<String> responseListenerURL = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    String string = (response.substring(response.indexOf("\"url\"")+7, response.indexOf("\"descriptionurl\"")-2));
-                    mImageURLs.add(string);
+                    String str = (response.substring(response.indexOf("\"url\"")+7, response.indexOf("\"descriptionurl\"")-2));
+                    mImageURLs.add(str);
                     String title = organImage.getTitle();
                     organImage.setTitle(title.substring(title.indexOf("File:")+5,title.length()-4));
                     mImageNames.add(organImage.getTitle());

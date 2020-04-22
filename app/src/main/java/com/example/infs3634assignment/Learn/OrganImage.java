@@ -1,4 +1,4 @@
-package com.example.infs3634assignment;
+package com.example.infs3634assignment.Learn;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

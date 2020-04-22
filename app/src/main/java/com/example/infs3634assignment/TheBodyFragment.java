@@ -1,11 +1,7 @@
 package com.example.infs3634assignment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,12 +9,20 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+
+import com.example.infs3634assignment.Learn.LearnFragment;
 
 public class TheBodyFragment extends Fragment {
-    private ImageButton brainButton,heartButton,lungButton,spleenButton,liverButton,stomachButton,kidneyButton,intestineButton,bladderButton;
+    private ImageButton brainButton
+            ,heartButton
+            ,lungButton
+            ,spleenButton
+            ,liverButton
+            ,stomachButton
+            ,kidneyButton
+            ,intestineButton
+            ,pancreasButton;
     public TheBodyFragment() {
         // Required empty public constructor
     }
@@ -96,11 +100,11 @@ public class TheBodyFragment extends Fragment {
             }
         });
 
-        bladderButton = view.findViewById(R.id.bladderButton);
-        bladderButton.setOnClickListener(new View.OnClickListener() {
+        pancreasButton = view.findViewById(R.id.pancreaseButton);
+        pancreasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchLearnFragment("Urinary_bladder");
+                launchLearnFragment("Pancreas");
             }
         });
 //

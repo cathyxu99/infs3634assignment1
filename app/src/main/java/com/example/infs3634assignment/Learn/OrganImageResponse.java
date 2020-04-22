@@ -1,4 +1,4 @@
-package com.example.infs3634assignment;
+package com.example.infs3634assignment.Learn;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

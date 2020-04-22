@@ -8,12 +8,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.infs3634assignment.ProgressPage.ProgressFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class blankHomeActivity extends AppCompatActivity {
-
+    public TextView loggedUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,9 @@ public class blankHomeActivity extends AppCompatActivity {
         BottomNavigationView bottomNavBar = findViewById(R.id.bottom_nav_bar);
         bottomNavBar.setOnNavigationItemSelectedListener(navigationListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new TheBodyFragment()).commit();
+
+        loggedUser = findViewById(R.id.loggedUser);
+        loggedUser.setText("Hello " + getIntent().getStringExtra("Username"));
     }
 
     //onclicklistener to open the different fragments when each button in the nav bar is clicked
