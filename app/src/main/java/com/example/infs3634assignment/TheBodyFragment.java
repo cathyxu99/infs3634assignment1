@@ -1,11 +1,7 @@
 package com.example.infs3634assignment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,12 +9,20 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+
+import com.example.infs3634assignment.Learn.LearnFragment;
 
 public class TheBodyFragment extends Fragment {
-    private ImageButton brainButton,heartButton,lungButton,spleenButton,liverButton,stomachButton,kidneyButton,intestineButton,bladderButton;
+    private ImageButton brainButton
+            ,heartButton
+            ,lungButton
+            ,spleenButton
+            ,liverButton
+            ,stomachButton
+            ,kidneyButton
+            ,intestineButton
+            ,pancreasButton;
     public TheBodyFragment() {
         // Required empty public constructor
     }
@@ -38,6 +42,7 @@ public class TheBodyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchLearnFragment("Brain");
+                ((blankHomeActivity) getActivity()).setTitleText("The Brain");
             }
          });
 
@@ -47,6 +52,7 @@ public class TheBodyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchLearnFragment("Heart");
+                ((blankHomeActivity) getActivity()).setTitleText("The Heart");
             }
         });
 
@@ -55,6 +61,7 @@ public class TheBodyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchLearnFragment("Lung");
+                ((blankHomeActivity) getActivity()).setTitleText("The Lungs");
             }
         });
 
@@ -63,6 +70,7 @@ public class TheBodyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchLearnFragment("Spleen");
+                ((blankHomeActivity) getActivity()).setTitleText("The Spleen");
             }
         });
 
@@ -71,6 +79,7 @@ public class TheBodyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchLearnFragment("Stomach");
+                ((blankHomeActivity) getActivity()).setTitleText("The Stomach");
             }
         });
 
@@ -79,6 +88,7 @@ public class TheBodyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchLearnFragment("Liver");
+                ((blankHomeActivity) getActivity()).setTitleText("The Liver");
             }
         });
         kidneyButton = view.findViewById(R.id.kidneyButton);
@@ -86,21 +96,24 @@ public class TheBodyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchLearnFragment("Kidney");
+                ((blankHomeActivity) getActivity()).setTitleText("The Kidneys");
             }
         });
         intestineButton = view.findViewById(R.id.intestineButton);
         intestineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchLearnFragment("Gastrointestinal_tract");//
+                launchLearnFragment("Gastrointestinal_tract");
+                ((blankHomeActivity) getActivity()).setTitleText("The Intestines");//
             }
         });
 
-        bladderButton = view.findViewById(R.id.bladderButton);
-        bladderButton.setOnClickListener(new View.OnClickListener() {
+        pancreasButton = view.findViewById(R.id.pancreaseButton);
+        pancreasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchLearnFragment("Urinary_bladder");
+                launchLearnFragment("Pancreas");
+                ((blankHomeActivity) getActivity()).setTitleText("The Pancreas");
             }
         });
 //

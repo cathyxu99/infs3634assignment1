@@ -1,5 +1,6 @@
-package com.example.infs3634assignment;
+package com.example.infs3634assignment.Learn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,11 +24,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.infs3634assignment.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.ListIterator;
 
 public class LearnFragment extends Fragment {
     public TextView learnText;
@@ -34,6 +38,8 @@ public class LearnFragment extends Fragment {
     private ArrayList<String> mImageNames = new ArrayList<>();
     private String imagesResponse;
     private OrganImageResponse organImageResponse;
+    private ProgressBar progressBar;
+    private LinearLayout extras;
 
     public LearnFragment() {
         // Required empty public constructor
@@ -48,21 +54,25 @@ public class LearnFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
        final View view = inflater.inflate(R.layout.fragment_learn, container, false);
        final String organ = getArguments().getString("organName");
+
+       extras = view.findViewById(R.id.extras);
+       extras.setVisibility(View.GONE);
 
        final RequestQueue requestQueueImages = Volley.newRequestQueue(getContext());
        final String wikiImages = "https://en.wikipedia.org/w/api.php?action=query&titles="+organ+"&prop=images&format=json";
        Response.Listener<String> responseListener = new Response.Listener<String>() {
           @Override
           public void onResponse(String response) {
-              String string = (response.substring(response.indexOf("\"images"),response.length()-3));
-              imagesResponse = "{" + string;
+              String str = (response.substring(response.indexOf("\"images"),response.length()-3));
+              imagesResponse = "{" + str;
               organImageResponse = new Gson().fromJson(imagesResponse, OrganImageResponse.class);
 
               for(Iterator<OrganImage> itr = organImageResponse.getOrganImages().iterator(); itr.hasNext();){
                    OrganImage organImage = itr.next();
+                   //removes .svg files as common page images such as help button are saved as .svg
                    if(organImage.getTitle().contains(".svg")){
                        itr.remove();
                    }
@@ -82,6 +92,8 @@ public class LearnFragment extends Fragment {
        requestQueueImages.add(stringRequestImages);
        learnText = view.findViewById(R.id.test);
 
+       progressBar = view.findViewById(R.id.progressBar);
+       progressBar.setVisibility(View.VISIBLE);
 
        final RequestQueue requestQueueLearn = Volley.newRequestQueue(getContext());
        final String wikiUrl = "https://wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" +organ + "&format=json";
@@ -89,12 +101,13 @@ public class LearnFragment extends Fragment {
        Response.Listener<String> responseListenerLearn = new Response.Listener<String>() {
            @Override
            public void onResponse(String response) {
-               String string = (response.substring(response.lastIndexOf("\"extract\"")+11,response.length()-5));
-               string = string.replace("\\n", "\n\n");
-               string = string.replaceAll("\\(.*?\\)", "");
-               learnText.setText(string);
-//
+               String str = (response.substring(response.lastIndexOf("\"extract\"")+11,response.length()-5));
+               str = str.replace("\\n", "\n\n");
+               str = str.replaceAll("\\(.*?\\)", "");
+               learnText.setText(str);
                requestQueueLearn.stop();
+               progressBar.setVisibility(View.GONE);
+               extras.setVisibility(View.VISIBLE);
            }
        };
 
@@ -102,6 +115,10 @@ public class LearnFragment extends Fragment {
            @Override
            public void onErrorResponse (VolleyError error) {
                System.out.println(error.toString());
+               progressBar.setVisibility(View.GONE);
+               extras.setVisibility(View.VISIBLE);
+               Toast.makeText(getActivity(), "Request failed, try to load organ again.", Toast.LENGTH_SHORT).show();
+
            }
        };
        StringRequest stringRequestLearn = new StringRequest(Request.Method.GET, wikiUrl, responseListenerLearn, errorListenerLearn);
@@ -120,15 +137,6 @@ public class LearnFragment extends Fragment {
        return view;
     }
 
-    public void createImages(View view){
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(layoutManager);
-       imageAdapter adapter = new imageAdapter(getContext(),mImageURLs,mImageNames);
-       recyclerView.setAdapter(adapter);
-
-    }
-
     public void getImageURLS(final View view){
         for(final OrganImage organImage:organImageResponse.getOrganImages()) {
             final RequestQueue requestQueueImagesURL = Volley.newRequestQueue(getContext());
@@ -137,13 +145,12 @@ public class LearnFragment extends Fragment {
             final Response.Listener<String> responseListenerURL = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    String string = (response.substring(response.indexOf("\"url\"")+7, response.indexOf("\"descriptionurl\"")-2));
-                    mImageURLs.add(string);
+                    String str = (response.substring(response.indexOf("\"url\"")+7, response.indexOf("\"descriptionurl\"")-2));
+                    mImageURLs.add(str);
                     String title = organImage.getTitle();
                     organImage.setTitle(title.substring(title.indexOf("File:")+5,title.length()-4));
                     mImageNames.add(organImage.getTitle());
                     requestQueueImagesURL.stop();
-
                     createImages(view);
                 }
             };
@@ -151,6 +158,7 @@ public class LearnFragment extends Fragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     System.out.println(error.toString());
+                    Toast.makeText(getActivity(), "Request failed, try to load organ again.", Toast.LENGTH_SHORT).show();
                 }
             };
 
@@ -158,5 +166,14 @@ public class LearnFragment extends Fragment {
             StringRequest stringRequestImagesURL = new StringRequest(Request.Method.GET, wikiImagesURL, responseListenerURL, errorListenerURL);
             requestQueueImagesURL.add(stringRequestImagesURL);
         }
+    }
+
+    public void createImages(View view){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(layoutManager);
+        imageAdapter adapter = new imageAdapter(getContext(),mImageURLs,mImageNames);
+        recyclerView.setAdapter(adapter);
+
     }
 }

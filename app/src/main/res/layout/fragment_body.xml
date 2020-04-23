@@ -148,13 +148,13 @@
                     app:srcCompat="@drawable/intestine" />
 
                 <ImageButton
-                    android:id="@+id/bladderButton"
+                    android:id="@+id/pancreaseButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="centerInside"
-                    app:srcCompat="@drawable/bladder" />
+                    app:srcCompat="@drawable/pancreas" />
             </LinearLayout>
 
         </LinearLayout>
