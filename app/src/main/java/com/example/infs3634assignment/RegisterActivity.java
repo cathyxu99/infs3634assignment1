@@ -19,7 +19,7 @@ import com.example.infs3634assignment.UserEntity.UserDb;
 
 public class RegisterActivity extends AppCompatActivity {
     public TextView newUsername,newPassword,confirmNewPassword;
-    public ImageView newDP,dP1,dP2,dP3,dP4;
+    public ImageView newDP,dP1,dP2,dP3;
     public String usernameInput,passwordInput,confirmedPasswordInput;
     public UserDb userDb;
     public int confirmedDP;
@@ -67,13 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                 newDP.setImageResource(R.drawable.heart);
                 confirmedDP = R.drawable.heart;            }
         });
-        dP4 = findViewById(R.id.DP4);
-        dP4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newDP.setImageResource(R.drawable.brain);
-                confirmedDP = R.drawable.brain;            }
-        });
+
         register = findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
