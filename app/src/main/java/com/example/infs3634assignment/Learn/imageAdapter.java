@@ -38,14 +38,13 @@ public class imageAdapter extends RecyclerView.Adapter<imageAdapter.ViewHolder> 
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Glide.with(mContext).asBitmap().load(mImageURLs.get(position)).into(holder.organImage);
-        holder.imageName.setText(mImageNames.get(position));
 
         holder.organImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Toast.makeText(mContext, "Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "That is " + mImageNames.get(position), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -62,7 +61,6 @@ public class imageAdapter extends RecyclerView.Adapter<imageAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             organImage = itemView.findViewById(R.id.organImage);
-            imageName = itemView.findViewById(R.id.imageName);
         }
     }
 

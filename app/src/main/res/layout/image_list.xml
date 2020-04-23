@@ -24,20 +24,6 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@mipmap/ic_launcher_round" />
 
-            <TextView
-                android:id="@+id/imageName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/organImage"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:justificationMode="inter_word"
-                android:singleLine="true"
-                android:text="TextView"
-                android:textSize="14dp"
-                app:autoSizeMaxTextSize="14dp"
-                app:autoSizeMinTextSize="14dp" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
