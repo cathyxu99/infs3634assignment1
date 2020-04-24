@@ -49,8 +49,8 @@ public class blankHomeActivity extends AppCompatActivity {
         userDp = findViewById(R.id.userDp);
         loggedInUser = getIntent().getStringExtra("Username");
 
-        LoggedIn loggedIn = new LoggedIn(userDb);
-        loggedIn.execute();
+      //  LoggedIn loggedIn = new LoggedIn(userDb);
+        //loggedIn.execute();
     }
 
     //onclicklistener to open the different fragments when each button in the nav bar is clicked
