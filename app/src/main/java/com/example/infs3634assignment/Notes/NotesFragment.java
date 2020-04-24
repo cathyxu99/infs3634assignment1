@@ -27,11 +27,15 @@ import java.util.List;
 public class NotesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
+    blankHomeActivity homeActivity;
+
+
+    String userName;
     private RecyclerView noteList;
     private NoteAdapter nAdapter;
     private List<Note> notes = new ArrayList<>();
     private NoteDatabase noteDatabase;
-    final blankHomeActivity homeActivity = (blankHomeActivity) getActivity();
+
 
 
 
@@ -41,6 +45,10 @@ public class NotesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        homeActivity = (blankHomeActivity) getActivity();
+
+        userName = homeActivity.loggedInUser;
 
         noteDatabase = Room.databaseBuilder(getActivity().getApplicationContext(), NoteDatabase.class, "myDB").build();
 
@@ -92,7 +100,12 @@ public class NotesFragment extends Fragment {
         @Override
         protected List<Note> doInBackground(Void... voids) {
 
-            List<Note> notes = noteDatabase.noteDao().getNotes();
+            if(userName==null){
+                userName = "testUser";
+                System.out.println("Check username 1" + userName);
+            }
+
+            List<Note> notes = noteDatabase.noteDao().getUserNotes(userName);
             return notes;
         }
 

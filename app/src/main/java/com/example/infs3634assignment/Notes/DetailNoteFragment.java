@@ -24,12 +24,14 @@ import java.util.List;
 
 public class DetailNoteFragment extends Fragment {
 
+    blankHomeActivity homeActivity;
+
     int noteId = 0;
-    String userName = null;
+    String userName;
     String noteSubject = null;
     String noteText = null;
     private NoteDatabase noteDatabase;
-    final blankHomeActivity homeActivity = (blankHomeActivity) getActivity();
+
 
     public DetailNoteFragment() {
 
@@ -38,6 +40,10 @@ public class DetailNoteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        homeActivity = (blankHomeActivity) getActivity();
+
+        userName = homeActivity.loggedInUser;
 
         noteDatabase = Room.databaseBuilder(getActivity().getApplicationContext(), NoteDatabase.class, "myDB").build();
 
@@ -107,13 +113,13 @@ public class SaveNoteTask extends AsyncTask<Void,Integer, Integer>{
         noteToAdd = new Note(userName,noteSubject,noteText);
 
         noteDatabase.noteDao().insertNotes(noteToAdd);
+        return 0;
     }
 
     if(noteId!=0){
 
-        noteToAdd = new Note(userName, noteSubject, noteText);
-
-
+        noteDatabase.noteDao().updateNote(noteId, noteSubject, noteText);
+        return 1;
     }
 
         return null;
@@ -121,7 +127,11 @@ public class SaveNoteTask extends AsyncTask<Void,Integer, Integer>{
 
     @Override
     protected void onPostExecute(Integer integer) {
-        Toast.makeText(getActivity(), "Note has been added!", Toast.LENGTH_SHORT).show();
+        if(integer == 0){
+            Toast.makeText(getActivity(), "Note has been added!", Toast.LENGTH_SHORT).show();
+        }else if(integer == 1){
+            Toast.makeText(getActivity(), "Note has been saved!", Toast.LENGTH_SHORT).show();
+        }
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         Fragment fragment = new NotesFragment();

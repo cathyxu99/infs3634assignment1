@@ -24,7 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class blankHomeActivity extends AppCompatActivity {
     public ImageView userDp,achievements;
     public TextView title;
-    public String loggedInUser;
+    public String loggedInUser = null;
     public UserDb userDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
