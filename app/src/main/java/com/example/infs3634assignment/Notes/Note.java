@@ -8,25 +8,25 @@ import androidx.room.PrimaryKey;
 
 import com.example.infs3634assignment.UserEntity.User;
 
+import java.io.Serializable;
+
 @Entity
-public class Note {
+public class Note implements Serializable {
 
     @ForeignKey(entity = User.class,
             parentColumns = "userName",
             childColumns = "userName", onDelete = ForeignKey.CASCADE)
     @NonNull
     private String userName;
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     private int noteId;
     @NonNull
     private String subject;
-    @NonNull
     private String note;
 
-    public Note(String userName, int noteId, String subject, String note) {
+    public Note(@NonNull String userName, @NonNull String subject, String note) {
         this.userName = userName;
-        this.noteId = noteId;
         this.subject = subject;
         this.note = note;
     }
