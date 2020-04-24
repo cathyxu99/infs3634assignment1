@@ -61,8 +61,6 @@ public class blankHomeActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new ProfileFragment()).commit();
             }
         });
-
-
     }
 
 

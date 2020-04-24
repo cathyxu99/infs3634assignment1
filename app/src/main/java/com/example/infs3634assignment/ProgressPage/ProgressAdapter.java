@@ -1,16 +1,24 @@
 package com.example.infs3634assignment.ProgressPage;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infs3634assignment.R;
 
 import java.util.ArrayList;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 public class ProgressAdapter extends RecyclerView.Adapter<ProgressAdapter.ProgressViewHolder> {
@@ -39,16 +47,20 @@ public class ProgressAdapter extends RecyclerView.Adapter<ProgressAdapter.Progre
             mListener = listener;
             v.setOnClickListener(this);
             level = v.findViewById(R.id.level);
+            Log.d(TAG, "progress View Holder: success");
+
 
         }
 
         @Override
         public void onClick(View view) {
             mListener.onClick(view, getAdapterPosition());
-            Log.d(TAG, "restaurantViewHolder: inOnClick");
+            Log.d(TAG, "progress View Holder: inOnClick");
+            System.out.println(getAdapterPosition());
         }
     }
 
+    //initialises the viewholder to display the contents
     @Override
     public ProgressAdapter.ProgressViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.progress_list_row,parent,false);

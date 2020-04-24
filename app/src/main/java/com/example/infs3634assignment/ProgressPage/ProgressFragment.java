@@ -1,9 +1,12 @@
 package com.example.infs3634assignment.ProgressPage;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +19,7 @@ import com.example.infs3634assignment.R;
 public class ProgressFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String ARG_ITEM_ID = "item 1";
+    public static final String EXTRA_MESSAGE = "test";
 
     private String mParam1;
     private String mParam2;
@@ -52,6 +56,13 @@ public class ProgressFragment extends Fragment {
         RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvList);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ProgressAdapter.RecyclerViewClickListener mListener = new ProgressAdapter.RecyclerViewClickListener() {
+            //when the item in the list is clicked, detail activity opens
+            @Override
+            public void onClick(View view, int position) {
+                launchDetailActivity(position);
+            }
+        };
         RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getProgressData());
         mRecyclerView.setAdapter(mAdapter);
         return rootView;
@@ -63,5 +74,17 @@ public class ProgressFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void launchDetailActivity(int position){
+        System.out.println("launch detail activity method open");
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager
+                .beginTransaction();
+        Fragment fragment = new DetailFragmentProgress();
+        fragmentTransaction.replace(R.id.mainFragContainer, new DetailFragmentProgress());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
     }
 }
