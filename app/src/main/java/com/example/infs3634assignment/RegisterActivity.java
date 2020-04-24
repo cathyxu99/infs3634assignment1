@@ -116,10 +116,10 @@ public class RegisterActivity extends AppCompatActivity {
              if (userDb.userDao().searchUser(usernameInput)!=null) {
                 cancel(true);
             } else {
-                User user = new User(usernameInput,confirmedPasswordInput,0,confirmedDP);
+                User user = new User(usernameInput,confirmedPasswordInput,confirmedDP);
                 userDb.userDao().insertNewUser(user);
                  Intent intent = new Intent(RegisterActivity.this, blankHomeActivity.class);
-                 intent.putExtra("Username",user.getUserName().toString());
+                 intent.putExtra("Username",user.getUsername().toString());
                  startActivity(intent);
             }
             return userDb;

@@ -36,16 +36,15 @@ public class TheBodyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_body, container, false);
-
+        ((blankHomeActivity) getActivity()).setTitleText("The Body");
         brainButton = view.findViewById(R.id.brainButton);
         brainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchLearnFragment("Brain");
+                launchLearnFragment("human_brain");
                 ((blankHomeActivity) getActivity()).setTitleText("The Brain");
             }
          });
-
 
         heartButton = view.findViewById(R.id.heartButton);
         heartButton.setOnClickListener(new View.OnClickListener() {

@@ -11,51 +11,53 @@ import java.util.Date;
 public class User{
     @PrimaryKey
     @NonNull
-    private String userName;
+    private String username;
     @NonNull
     private String password;
-    private int progress,displayPictureId;
+    private int displayPictureId;
+    private String  brainTrophy
+        , lungsTrophy
+        , heartTrophy
+        , liverTrophy
+        , spleenTrophy
+        , kidneyTrophy
+        , stomachTrophy
+        , intestineTrophy
+        , pancreasTrophy;
     @TypeConverters(Converters.class)
-    private java.util.Date brainCDate, brainStreak, brainFastestTime
-            ,lungsCDate, lungsStreak , lungsFastestTime
-            ,heartCDate, heartStreak, heartFastestTime
-            ,liverCDate, liverStreak, liverFastestTime
-            ,spleenCDate, spleenStreak, spleenFastestTime
-            ,kidneyCDate, kidneyStreak, kidneyFastestTime
-            ,stomachCDate, stomachStreak, stomachFastestTime
-            ,intestineCDate, intestineStreak, intestineFastestTime
-            ,pancreasCDate, pancreasStreak, pancreasFastestTime;
+    private java.util.Date brainCDate , brainFastestTime
+            ,lungsCDate, lungsFastestTime
+            ,heartCDate, heartFastestTime
+            ,liverCDate, liverFastestTime
+            ,spleenCDate, spleenFastestTime
+            ,kidneyCDate,  kidneyFastestTime
+            ,stomachCDate, stomachFastestTime
+            ,intestineCDate, intestineFastestTime
+            ,pancreasCDate, pancreasFastestTime;
 
-    public User(@NonNull String userName, String password,int progress, int displayPictureId) {
-        this.userName = userName;
+
+    public User(String username, String password, int displayPictureId){
+        this.username = username;
         this.password = password;
-        this.progress = progress;
         this.displayPictureId = displayPictureId;
     }
 
     @NonNull
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(@NonNull String userName) {
-        this.userName = userName;
+    public void setUsername(@NonNull String username) {
+        this.username = username;
     }
 
+    @NonNull
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@NonNull String password) {
         this.password = password;
-    }
-
-    public int getProgress() {
-        return progress;
-    }
-
-    public void setProgress(int progress) {
-        this.progress = progress;
     }
 
     public int getDisplayPictureId() {
@@ -63,7 +65,79 @@ public class User{
     }
 
     public void setDisplayPictureId(int displayPictureId) {
-        displayPictureId = displayPictureId;
+        this.displayPictureId = displayPictureId;
+    }
+
+    public String getBrainTrophy() {
+        return brainTrophy;
+    }
+
+    public void setBrainTrophy(String brainTrophy) {
+        this.brainTrophy = brainTrophy;
+    }
+
+    public String getLungsTrophy() {
+        return lungsTrophy;
+    }
+
+    public void setLungsTrophy(String lungsTrophy) {
+        this.lungsTrophy = lungsTrophy;
+    }
+
+    public String getHeartTrophy() {
+        return heartTrophy;
+    }
+
+    public void setHeartTrophy(String heartTrophy) {
+        this.heartTrophy = heartTrophy;
+    }
+
+    public String getLiverTrophy() {
+        return liverTrophy;
+    }
+
+    public void setLiverTrophy(String liverTrophy) {
+        this.liverTrophy = liverTrophy;
+    }
+
+    public String getSpleenTrophy() {
+        return spleenTrophy;
+    }
+
+    public void setSpleenTrophy(String spleenTrophy) {
+        this.spleenTrophy = spleenTrophy;
+    }
+
+    public String getKidneyTrophy() {
+        return kidneyTrophy;
+    }
+
+    public void setKidneyTrophy(String kidneyTrophy) {
+        this.kidneyTrophy = kidneyTrophy;
+    }
+
+    public String getStomachTrophy() {
+        return stomachTrophy;
+    }
+
+    public void setStomachTrophy(String stomachTrophy) {
+        this.stomachTrophy = stomachTrophy;
+    }
+
+    public String getIntestineTrophy() {
+        return intestineTrophy;
+    }
+
+    public void setIntestineTrophy(String intestineTrophy) {
+        this.intestineTrophy = intestineTrophy;
+    }
+
+    public String getPancreasTrophy() {
+        return pancreasTrophy;
+    }
+
+    public void setPancreasTrophy(String pancreasTrophy) {
+        this.pancreasTrophy = pancreasTrophy;
     }
 
     public Date getBrainCDate() {
@@ -72,14 +146,6 @@ public class User{
 
     public void setBrainCDate(Date brainCDate) {
         this.brainCDate = brainCDate;
-    }
-
-    public Date getBrainStreak() {
-        return brainStreak;
-    }
-
-    public void setBrainStreak(Date brainStreak) {
-        this.brainStreak = brainStreak;
     }
 
     public Date getBrainFastestTime() {
@@ -98,14 +164,6 @@ public class User{
         this.lungsCDate = lungsCDate;
     }
 
-    public Date getLungsStreak() {
-        return lungsStreak;
-    }
-
-    public void setLungsStreak(Date lungsStreak) {
-        this.lungsStreak = lungsStreak;
-    }
-
     public Date getLungsFastestTime() {
         return lungsFastestTime;
     }
@@ -120,14 +178,6 @@ public class User{
 
     public void setHeartCDate(Date heartCDate) {
         this.heartCDate = heartCDate;
-    }
-
-    public Date getHeartStreak() {
-        return heartStreak;
-    }
-
-    public void setHeartStreak(Date heartStreak) {
-        this.heartStreak = heartStreak;
     }
 
     public Date getHeartFastestTime() {
@@ -146,14 +196,6 @@ public class User{
         this.liverCDate = liverCDate;
     }
 
-    public Date getLiverStreak() {
-        return liverStreak;
-    }
-
-    public void setLiverStreak(Date liverStreak) {
-        this.liverStreak = liverStreak;
-    }
-
     public Date getLiverFastestTime() {
         return liverFastestTime;
     }
@@ -168,14 +210,6 @@ public class User{
 
     public void setSpleenCDate(Date spleenCDate) {
         this.spleenCDate = spleenCDate;
-    }
-
-    public Date getSpleenStreak() {
-        return spleenStreak;
-    }
-
-    public void setSpleenStreak(Date spleenStreak) {
-        this.spleenStreak = spleenStreak;
     }
 
     public Date getSpleenFastestTime() {
@@ -194,14 +228,6 @@ public class User{
         this.kidneyCDate = kidneyCDate;
     }
 
-    public Date getKidneyStreak() {
-        return kidneyStreak;
-    }
-
-    public void setKidneyStreak(Date kidneyStreak) {
-        this.kidneyStreak = kidneyStreak;
-    }
-
     public Date getKidneyFastestTime() {
         return kidneyFastestTime;
     }
@@ -216,14 +242,6 @@ public class User{
 
     public void setStomachCDate(Date stomachCDate) {
         this.stomachCDate = stomachCDate;
-    }
-
-    public Date getStomachStreak() {
-        return stomachStreak;
-    }
-
-    public void setStomachStreak(Date stomachStreak) {
-        this.stomachStreak = stomachStreak;
     }
 
     public Date getStomachFastestTime() {
@@ -242,14 +260,6 @@ public class User{
         this.intestineCDate = intestineCDate;
     }
 
-    public Date getIntestineStreak() {
-        return intestineStreak;
-    }
-
-    public void setIntestineStreak(Date intestineStreak) {
-        this.intestineStreak = intestineStreak;
-    }
-
     public Date getIntestineFastestTime() {
         return intestineFastestTime;
     }
@@ -266,14 +276,6 @@ public class User{
         this.pancreasCDate = pancreasCDate;
     }
 
-    public Date getPancreasStreak() {
-        return pancreasStreak;
-    }
-
-    public void setPancreasStreak(Date pancreasStreak) {
-        this.pancreasStreak = pancreasStreak;
-    }
-
     public Date getPancreasFastestTime() {
         return pancreasFastestTime;
     }
@@ -285,9 +287,8 @@ public class User{
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", progress=" + progress +
                 ", DisplayPictureId=" + displayPictureId +
                 '}';
     }

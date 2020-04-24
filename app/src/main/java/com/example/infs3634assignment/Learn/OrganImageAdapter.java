@@ -16,14 +16,14 @@ import com.example.infs3634assignment.R;
 
 import java.util.ArrayList;
 
-public class imageAdapter extends RecyclerView.Adapter<imageAdapter.ViewHolder> {
+public class OrganImageAdapter extends RecyclerView.Adapter<OrganImageAdapter.ViewHolder> {
 
     private ArrayList<String> mImageURLs = new ArrayList<>();
     private ArrayList<String> mImageNames = new ArrayList<>();
     private Context mContext;
 
 
-    public imageAdapter(Context context,ArrayList<String> imageURLs,ArrayList<String> imageNames) {
+    public OrganImageAdapter(Context context, ArrayList<String> imageURLs, ArrayList<String> imageNames) {
         mImageURLs = imageURLs;
         mImageNames = imageNames;
         mContext = context;
@@ -60,7 +60,7 @@ public class imageAdapter extends RecyclerView.Adapter<imageAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            organImage = itemView.findViewById(R.id.organImage);
+            organImage = itemView.findViewById(R.id.dp);
         }
     }
 
