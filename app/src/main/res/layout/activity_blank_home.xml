@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".blankHomeActivity">
+    tools:context=".blankHomeActivity"
+    android:background = "@drawable/bg2">
 
     <Space
         android:layout_width="match_parent"
@@ -37,7 +38,7 @@
         <ImageView
             android:id="@+id/achievements"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/trophy" />
     </LinearLayout>
