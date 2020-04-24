@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -15,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.infs3634assignment.R;
 import com.example.infs3634assignment.blankHomeActivity;
@@ -71,10 +71,27 @@ public class NotesFragment extends Fragment {
         noteList.setAdapter(nAdapter);
         noteList.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
-        //Set button
-        final blankHomeActivity homeActivity = (blankHomeActivity) getActivity();
+        //Add swipe to delete functionality
+        ItemTouchHelper.SimpleCallback removeNoteFromList = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(RecyclerView rV, RecyclerView.ViewHolder vH, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder vH, int swipeDirection) {
+                final int position = vH.getAdapterPosition();
+                new DeleteNoteTask().execute(position);
+            }
+        };
+
+        //Initialize the ItemTouchHelper and attach recycler view
+        ItemTouchHelper touchHelper = new ItemTouchHelper(removeNoteFromList);
+        touchHelper.attachToRecyclerView(noteList);
 
 
+        //Set add new note button
         ImageButton addNewNote = rootView.findViewById(R.id.addNote);
         addNewNote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,4 +135,25 @@ public class NotesFragment extends Fragment {
 
         }
     }
+
+
+    public class DeleteNoteTask extends AsyncTask<Integer,Integer, Integer> {
+
+        @Override
+        protected Integer doInBackground(Integer...integers) {
+
+            Note note = nAdapter.getAndRemoveNote(integers[0]);
+            noteDatabase.noteDao().deleteNote(note.getNoteId());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+
+            nAdapter.notifyDataSetChanged();
+
+        }
+    }
 }
+
+

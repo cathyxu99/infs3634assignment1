@@ -21,4 +21,7 @@ public interface NoteDao {
     @Query("UPDATE note SET subject = :subject, note = :content WHERE noteID = :id")
     void updateNote(int id, String subject, String content);
 
+    @Query("DELETE FROM note WHERE noteId = :id")
+    void deleteNote(int id);
+
 }

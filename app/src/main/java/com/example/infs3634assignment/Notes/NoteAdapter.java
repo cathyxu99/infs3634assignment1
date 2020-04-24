@@ -1,5 +1,6 @@
 package com.example.infs3634assignment.Notes;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.example.infs3634assignment.R;
 
@@ -24,6 +26,9 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ListViewHolder
     private static final String TAG = "NoteAdapter: ";
     private List<Note> mList;
     private LayoutInflater mInflater;
+    private NoteDatabase noteDatabase;
+
+
 
     public NoteAdapter(Context context, List<Note> list) {
         mInflater = LayoutInflater.from(context);
@@ -54,6 +59,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ListViewHolder
     public void setData(List<Note> notes){
         mList.clear();
         this.mList = notes;
+    }
+
+
+    public Note getAndRemoveNote(int position){
+        Note note = mList.get(position);
+        mList.remove(position);
+        return note;
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
