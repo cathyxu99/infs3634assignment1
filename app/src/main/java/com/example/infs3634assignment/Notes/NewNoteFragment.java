@@ -1,7 +1,5 @@
-package com.example.infs3634assignment;
+package com.example.infs3634assignment.Notes;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,30 +8,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-//UNEDITED BLANK NOTES FRAGMENT:
+import com.example.infs3634assignment.R;
 
 
-public class NotesFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
+public class NewNoteFragment extends Fragment {
 
-    public NotesFragment() {
-        // Required empty public constructor
+    public NewNoteFragment() {
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes, container, false);
-    }
+        View rootView = inflater.inflate(R.layout.fragment_new_note, container, false);
 
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        return rootView;
     }
 }

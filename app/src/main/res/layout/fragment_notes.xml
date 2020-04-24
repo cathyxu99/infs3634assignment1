@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotesFragment">
+    tools:context=".Notes.NotesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noteList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="NOTES PAGE" />
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="47dp" />
 
-</FrameLayout>
+    <ImageButton
+        android:id="@+id/addNote"
+        android:layout_width="79dp"
+        android:layout_height="78dp"
+        android:layout_marginBottom="24dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/noteList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

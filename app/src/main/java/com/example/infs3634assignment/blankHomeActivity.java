@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.infs3634assignment.Notes.NotesFragment;
 import com.example.infs3634assignment.ProgressPage.ProgressFragment;
 import com.example.infs3634assignment.UserEntity.User;
 import com.example.infs3634assignment.UserEntity.UserDb;
