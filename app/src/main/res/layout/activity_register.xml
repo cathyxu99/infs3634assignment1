@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="#FFFFFF">
 
     <Space
         android:layout_width="match_parent"
@@ -22,37 +23,48 @@
         android:textSize="20dp" />
 
     <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="442dp"
+        android:layout_height="12dp"
         android:layout_weight="1" />
 
     <EditText
         android:id="@+id/newUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="268dp"
+        android:layout_height="34dp"
         android:layout_gravity="center"
+        android:background="#1A90D8E8"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:gravity="center_horizontal"
         android:hint="Create a username:"
         android:inputType="textPersonName" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="11dp" />
+
     <EditText
         android:id="@+id/newPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="266dp"
+        android:layout_height="34dp"
         android:layout_gravity="center"
+        android:background="#1A90D8E8"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:gravity="center_horizontal"
         android:hint="Create a password:"
         android:inputType="textPassword" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
     <EditText
         android:id="@+id/newPasswordConfirmed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="266dp"
+        android:layout_height="34dp"
         android:layout_gravity="center"
+        android:background="#1A90D8E8"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:gravity="center_horizontal"
@@ -85,7 +97,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="fitCenter"
-        android:src="@drawable/brain" />
+        android:src="@drawable/brain"
+       />
 
     <Space
         android:layout_width="match_parent"
