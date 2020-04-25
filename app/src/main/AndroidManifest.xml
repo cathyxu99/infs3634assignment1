@@ -14,7 +14,7 @@
         <activity android:name=".ProgressPage.ProgressDetail2"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Quiz.QuizActivity" />
-        <activity android:name=".blankHomeActivity" />
+        <activity android:name=".BlankHomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,14 +5,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,20 +18,20 @@ import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.infs3634assignment.Learn.LearnFragment;
 import com.example.infs3634assignment.UserEntity.User;
 import com.example.infs3634assignment.UserEntity.UserDb;
 
 public class ProfileFragment extends Fragment {
     public Button changePassword, updatePassword, updateDp;
     public TextView username, currentPassword, resetPassword, resetPasswordConfirmed;
-    public String usernameString;
+    public String usernameString,loggedInUser;
     public ImageView currentDp,changeDp;
     public Space buttonSpace;
     public int currentDpId;
     public UserDb  userDb;
     public User currentUser;
     public boolean editDp,editPass = true;
+    public DpAdapter dpAdapter;
 
 
     public ProfileFragment(String username) {
@@ -76,6 +72,9 @@ public class ProfileFragment extends Fragment {
                    recyclerView.setVisibility(View.VISIBLE);
                    updateDp.setVisibility(View.VISIBLE);
                    editDp = false;
+
+
+
                } else {
                    recyclerView.setVisibility(View.GONE);
                    updateDp.setVisibility(View.GONE);
@@ -89,17 +88,17 @@ public class ProfileFragment extends Fragment {
            public void onClick(View v) {
                ChangeDp changeDp = new ChangeDp();
                changeDp.execute();
-               Intent intent = new Intent(getActivity(), blankHomeActivity.class);
+               Intent intent = new Intent(getActivity(), BlankHomeActivity.class);
                intent.putExtra("Username",usernameString);
                startActivity(intent);
            }
        });
 
-
-       LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-       recyclerView.setLayoutManager(layoutManager);
-       DpAdapter dpAdapter = new DpAdapter(currentDp, currentDpId);
-       recyclerView.setAdapter(dpAdapter);
+        loggedInUser =  ((BlankHomeActivity) getActivity()).getLoggedInUser();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        dpAdapter = new DpAdapter(currentDp, currentDpId,loggedInUser);
+        recyclerView.setAdapter(dpAdapter);
 
        //changing password code
         currentPassword = view.findViewById(R.id.currentPassword);
@@ -160,8 +159,42 @@ public class ProfileFragment extends Fragment {
         protected void onPostExecute(User user) {
             super.onPostExecute(user);
             currentDp.setImageResource(currentUser.getDisplayPictureId());
-            //currentDpId = getDrawableId(currentDp);
+            if(currentUser.getBrainTrophy()!=null) {
+                dpAdapter.addAvatar(R.drawable.brain);
+            }
 
+            if(currentUser.getLungsTrophy()!=null){
+                dpAdapter.addAvatar(R.drawable.lungs);
+            }
+
+            if(currentUser.getHeartTrophy()!=null) {
+                dpAdapter.addAvatar(R.drawable.heart);
+            }
+
+            if(currentUser.getSpleenTrophy()!=null) {
+                dpAdapter.addAvatar(R.drawable.spleen);
+            }
+
+            if(currentUser.getStomachTrophy()!=null) {
+                dpAdapter.addAvatar(R.drawable.stomach);
+            }
+
+            if(currentUser.getLiverTrophy()!=null) {
+                dpAdapter.addAvatar(R.drawable.liver);
+            }
+
+            if(currentUser.getKidneyTrophy()!=null) {
+                dpAdapter.addAvatar(R.drawable.kidneys);
+            }
+
+            if(currentUser.getIntestineTrophy()!=null) {
+                dpAdapter.addAvatar(R.drawable.intestine);
+
+            }
+            if ((currentUser.getPancreasTrophy()!=null)) {
+                dpAdapter.addAvatar(R.drawable.pancreas);
+
+            }
         }
     }
 
@@ -170,6 +203,7 @@ public class ProfileFragment extends Fragment {
         return (Integer) iv.getTag();
     }
 
+    // Async task to make an update (dp) to query
     public class ChangeDp extends  AsyncTask<Void,Void,User>{
         @Override
         protected User doInBackground(Void... voids) {
@@ -179,6 +213,7 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    // Async task to make an update (password) to query
     public class ChangePass extends  AsyncTask<Void,Void,User>{
         @Override
         protected User doInBackground(Void... voids) {
@@ -199,7 +234,7 @@ public class ProfileFragment extends Fragment {
         @Override
         protected void onPostExecute(User user) {
             super.onPostExecute(user);
-            Intent intent = new Intent(getActivity(), blankHomeActivity.class);
+            Intent intent = new Intent(getActivity(), BlankHomeActivity.class);
             intent.putExtra("Username",usernameString);
             startActivity(intent);
         }

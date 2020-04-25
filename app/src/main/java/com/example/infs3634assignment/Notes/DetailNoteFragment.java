@@ -16,15 +16,13 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.infs3634assignment.R;
-import com.example.infs3634assignment.blankHomeActivity;
+import com.example.infs3634assignment.BlankHomeActivity;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.List;
 
 
 public class DetailNoteFragment extends Fragment {
 
-    blankHomeActivity homeActivity;
+    BlankHomeActivity homeActivity;
 
     int noteId = 0;
     String userName;
@@ -41,7 +39,7 @@ public class DetailNoteFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        homeActivity = (blankHomeActivity) getActivity();
+        homeActivity = (BlankHomeActivity) getActivity();
 
         userName = homeActivity.loggedInUser;
 

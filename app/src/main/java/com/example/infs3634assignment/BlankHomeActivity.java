@@ -24,7 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class blankHomeActivity extends AppCompatActivity {
+public class BlankHomeActivity extends AppCompatActivity {
     public ImageView userDp,achievements;
     public TextView title;
     public String loggedInUser;
@@ -98,8 +98,8 @@ public class blankHomeActivity extends AppCompatActivity {
         title.setText(text);
     }
 
-    public User getCurrentUser(){
-        return currentUser;
+    public String getLoggedInUser(){
+        return loggedInUser;
     }
 
     public class LoggedIn extends AsyncTask<Void,Void, UserDb> {

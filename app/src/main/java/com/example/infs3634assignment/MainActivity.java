@@ -17,6 +17,10 @@ import com.example.infs3634assignment.Quiz.QuizActivity;
 import com.example.infs3634assignment.UserEntity.User;
 import com.example.infs3634assignment.UserEntity.UserDb;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     public TextView username,password;
     public String usernameInput,passwordInput;
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         bodyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, blankHomeActivity.class);
+                Intent intent = new Intent(MainActivity.this, BlankHomeActivity.class);
                 intent.putExtra("Username","s");
                 startActivity(intent);
             }
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         tempLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, blankHomeActivity.class);
+                Intent intent = new Intent(MainActivity.this, BlankHomeActivity.class);
                 intent.putExtra("Username","s");
                 startActivity(intent);
             }
@@ -127,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!loginUser.getPassword().toString().equals(passwordInput)) {
                     cancel(true);
                 } else {
-                    Intent intent = new Intent(MainActivity.this, blankHomeActivity.class);
+                    Intent intent = new Intent(MainActivity.this, BlankHomeActivity.class);
                     intent.putExtra("Username",loginUser.getUsername());
                     startActivity(intent);
                 }
@@ -156,7 +160,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected UserDb doInBackground(Void... voids) {
             if(userDb.userDao().getUsers().size() == 0){
-                userDb.userDao().insertNewUser(new User("s","s",R.drawable.bladder));
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    Date date = format.parse("2020-05-25");
+                    /*User sampleUser = new User("s","s", R.drawable.avatarbloodcellsmall
+                    ,"g","g","g","g","g","g","g","g","g"
+                    , date, date, date, date, date, date, date, date, date
+                    ,330000,330000,330000,330000,330000,330000,330000,330000,330000);
+                    */
+
+                     User sampleUser = new User("s","s",R.drawable.avatarbloodcellsmall,"g","g","g");
+                    userDb.userDao().insertNewUser(sampleUser);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             } else {
                 cancel(true);
             }
