@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+                intent.putExtra("organ", "brain");
+                intent.putExtra("username", "s");
                 startActivity(intent);
             }
         });

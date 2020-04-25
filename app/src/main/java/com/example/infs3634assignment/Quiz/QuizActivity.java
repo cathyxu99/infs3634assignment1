@@ -2,7 +2,6 @@ package com.example.infs3634assignment.Quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -19,15 +18,15 @@ import com.example.infs3634assignment.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeMap;
 
 public class QuizActivity extends AppCompatActivity {
 
     final private String TAG = "#QUIZACTIVITY# ";
+
+    //organ to test and user
+    String organToTest = "brain";
+    String userName = "s";
 
     //Values use to check progress of user throughout the quiz
     int answerSelected = 0;
@@ -41,14 +40,22 @@ public class QuizActivity extends AppCompatActivity {
     long startTime = 0;
     long endTime = 0;
     long duration = 0;
-    int[] streaks;
+    //int[] streaks;
 
-    final List<Question> questionList = getQuestionCollection("brain");
+    List<Question> questionList = getQuestionCollection("brain");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        Intent organIntent = getIntent();
+        if(organIntent!=null){
+            organToTest = organIntent.getStringExtra("organ");
+            userName = organIntent.getStringExtra("username");
+        }
+
+        questionList = getQuestionCollection(organToTest);
 
         final Button submitButton = findViewById(R.id.submitButton);
         final Button beginButton = findViewById(R.id.beginButton);
@@ -83,9 +90,9 @@ public class QuizActivity extends AppCompatActivity {
                         endTime = System.currentTimeMillis();
                         duration = endTime - startTime;
                         Log.d(TAG, getTime(duration));
+                        Log.d(TAG, Integer.toString(correctAnswers));
+                        loadResultsPage();
 
-                        Intent intent = new Intent(v.getContext(), QuizActivity.class);
-                        startActivity(intent);
                         answerSelected = 0;
                         answered = false;
                         completed = false;
@@ -253,6 +260,26 @@ public class QuizActivity extends AppCompatActivity {
             questionToAnswer++;
         }
         return complete;
+    }
+
+    public void loadResultsPage(){
+
+        ResultsFragment fragment = new ResultsFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("numberCorrect", correctAnswers);
+        bundle.putLong("duration", duration);
+        bundle.putString("organToTest", organToTest);
+        bundle.putString("userName", userName);
+        fragment.setArguments(bundle);
+
+        FragmentManager myManager = getSupportFragmentManager();
+        FragmentTransaction myTransaction = myManager.beginTransaction();
+        myTransaction.replace(R.id.questionView, fragment);
+        myTransaction.commit();
+
+        Button submit = findViewById(R.id.submitButton);
+        submit.setVisibility(View.INVISIBLE);
     }
 
     public String getTime(long milliTime){
