@@ -76,7 +76,7 @@ public class DetailNoteFragment extends Fragment {
         saveNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //only complete action if subject is included
                 if(noteSubjectView.getText().toString().matches("")){
                     Toast.makeText(rootView.getContext(), "Please fill in Subject!", Toast.LENGTH_SHORT).show();
 
@@ -94,7 +94,7 @@ public class DetailNoteFragment extends Fragment {
 
         return rootView;
     }
-
+//save note as new or edit of existing note
 public class SaveNoteTask extends AsyncTask<Void,Integer, Integer>{
 
         Note noteToAdd;

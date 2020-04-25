@@ -61,7 +61,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ListViewHolder
         this.mList = notes;
     }
 
-
     public Note getAndRemoveNote(int position){
         Note note = mList.get(position);
         mList.remove(position);
