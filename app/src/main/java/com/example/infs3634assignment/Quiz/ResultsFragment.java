@@ -42,7 +42,8 @@ public class ResultsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        userDatabase = Room.databaseBuilder(getActivity().getApplicationContext(), UserDb.class, "myDB").build();
+        userDatabase = Room.databaseBuilder(getContext(), UserDb.class,"UserDB")
+                .build();
 
         Bundle extras = getArguments();
         if(extras!=null){
