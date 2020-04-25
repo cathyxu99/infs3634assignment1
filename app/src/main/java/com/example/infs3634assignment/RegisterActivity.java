@@ -1,6 +1,8 @@
 package com.example.infs3634assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
@@ -19,10 +21,10 @@ import com.example.infs3634assignment.UserEntity.UserDb;
 
 public class RegisterActivity extends AppCompatActivity {
     public TextView newUsername,newPassword,confirmNewPassword;
-    public ImageView newDP,dP1,dP2,dP3;
+    public ImageView newDp,dP1,dP2,dP3;
     public String usernameInput,passwordInput,confirmedPasswordInput;
     public UserDb userDb;
-    public int confirmedDP;
+    public int newDpId;
     public Button register;
 
     @Override
@@ -42,31 +44,15 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        newDP = findViewById(R.id.newDP);
-        confirmedDP = R.drawable.brain;
-        dP1 = findViewById(R.id.DP1);
-        dP1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newDP.setImageResource(R.drawable.bladder);
-                confirmedDP = R.drawable.bladder;
-            }
-        });
-        dP2 = findViewById(R.id.DP2);
-        dP2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newDP.setImageResource(R.drawable.lungs);
-                confirmedDP = R.drawable.lungs;
-            }
-        });
-        dP3 = findViewById(R.id.DP3);
-        dP3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newDP.setImageResource(R.drawable.heart);
-                confirmedDP = R.drawable.heart;            }
-        });
+        newDp = findViewById(R.id.newDP);
+        newDp.setImageResource(R.drawable.avatarbloodcellsmall);
+        newDpId = R.drawable.avatarbloodcellsmall;
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerView = findViewById(R.id.newDpRecycler);
+        recyclerView.setLayoutManager(layoutManager);
+        DpAdapter dpAdapter = new DpAdapter(newDp, newDpId);
+        recyclerView.setAdapter(dpAdapter);
 
         register = findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    //does not let register button be clicked unless fields are complete
     private TextWatcher registerTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -105,6 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     };
 
+    //inserts user into database also checking username validity
     public class RegisterUserTask extends AsyncTask<Void,Void,UserDb> {
         public UserDb userDb;
 
@@ -116,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
              if (userDb.userDao().searchUser(usernameInput)!=null) {
                 cancel(true);
             } else {
-                User user = new User(usernameInput,confirmedPasswordInput,confirmedDP);
+                User user = new User(usernameInput,confirmedPasswordInput,getDrawableId(newDp));
                 userDb.userDao().insertNewUser(user);
                  Intent intent = new Intent(RegisterActivity.this, blankHomeActivity.class);
                  intent.putExtra("Username",user.getUsername().toString());
@@ -130,5 +118,10 @@ public class RegisterActivity extends AppCompatActivity {
             super.onCancelled();
             Toast.makeText(getApplicationContext(), "Username already exists!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //gets tag of imageview which in the case of display pictures was set in the DpAdapter
+    private int getDrawableId(ImageView iv) {
+        return (Integer) iv.getTag();
     }
 }

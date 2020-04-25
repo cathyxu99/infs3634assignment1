@@ -24,4 +24,7 @@ public interface UserDao {
     @Query("UPDATE User SET password = :password WHERE username = :username")
     void changePassword(String password, String username);
 
+    @Query("UPDATE User SET displayPictureId = :displayPictureId WHERE username = :username")
+    void changeDp(int displayPictureId, String username);
+
 }

@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.infs3634assignment.Quiz.QuizActivity;
 import com.example.infs3634assignment.UserEntity.User;
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         InsertSampleData insertSampleData = new InsertSampleData(userDb);
         insertSampleData.execute();
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.profileUsername);
         username.addTextChangedListener(loginTextWatcher);
         password = findViewById(R.id.password);
         password.addTextChangedListener(loginTextWatcher);
@@ -156,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected UserDb doInBackground(Void... voids) {
             if(userDb.userDao().getUsers().size() == 0){
-                userDb.userDao().insertNewUser(new User("s","s",R.drawable.brain));
+                userDb.userDao().insertNewUser(new User("s","s",R.drawable.bladder));
             } else {
                 cancel(true);
             }

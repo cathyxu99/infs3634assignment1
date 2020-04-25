@@ -28,6 +28,7 @@ public class blankHomeActivity extends AppCompatActivity {
     public ImageView userDp,achievements;
     public TextView title;
     public String loggedInUser;
+    public User currentUser;
     public UserDb userDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +53,14 @@ public class blankHomeActivity extends AppCompatActivity {
         userDp = findViewById(R.id.userDp);
         loggedInUser = getIntent().getStringExtra("Username");
 
-        LoggedIn loggedIn = new LoggedIn(userDb);
+        LoggedIn loggedIn = new LoggedIn(userDb,currentUser);
         loggedIn.execute();
 
         userDp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new ProfileFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new ProfileFragment(loggedInUser)).commit();
+                setTitleText("Profile");
             }
         });
     }
@@ -100,8 +102,9 @@ public class blankHomeActivity extends AppCompatActivity {
         public UserDb userDb;
         public User currentUser;
 
-        public LoggedIn(UserDb userDb){
+        public LoggedIn(UserDb userDb, User currentUser){
             this.userDb = userDb;
+            this.currentUser = currentUser;
         }
 
         @Override

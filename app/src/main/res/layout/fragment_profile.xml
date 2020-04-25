@@ -8,10 +8,6 @@
     tools:context=".ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,78 +58,115 @@
         android:id="@+id/dpRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5" />
-
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_weight="1"
-        android:gravity="center|center_horizontal"
-        android:text="Username" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <EditText
-        android:id="@+id/currentPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Enter your current password:"
-        android:inputType="textPassword"
-        android:visibility="visible" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <EditText
-        android:id="@+id/resetPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Create a new password:"
-        android:inputType="textPassword"
-        android:visibility="visible" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <EditText
-        android:id="@+id/resetPasswordConfirmed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Confirm your new password:"
-        android:inputType="textPassword"
-        android:visibility="visible" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="5"
+        android:background="@color/colorPrimaryDark"
+        android:visibility="gone" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/updateDp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change Password" />
+        android:layout_weight="0.5"
+        android:background="@drawable/normal_button"
+        android:text="Update Display Picture"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/profileUsername"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/roboto"
+        android:gravity="center|center_horizontal"
+        android:text="Username"
+        android:textSize="20dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/currentPassword"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:hint="Enter your current password:"
+                android:inputType="textPassword"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/resetPassword"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Create a new password:"
+                android:inputType="textPassword"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/resetPasswordConfirmed"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Confirm your new password:"
+                android:inputType="textPassword"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="0.5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/changePassword"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/normal_button"
+            android:text="Change Password" />
+
+        <Space
+            android:id="@+id/buttonSpace"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/updatePassword"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/normal_button"
+            android:text="Update password"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25" />
 
 </LinearLayout>
