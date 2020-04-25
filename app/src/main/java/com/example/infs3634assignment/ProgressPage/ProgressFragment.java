@@ -20,7 +20,6 @@ public class ProgressFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String ARG_ITEM_ID = "item 1";
     public static final String EXTRA_MESSAGE = "test";
-
     private String mParam1;
     private String mParam2;
     private ProgressAdapter.RecyclerViewClickListener mListener;
@@ -47,6 +46,8 @@ public class ProgressFragment extends Fragment {
         }
 
     }
+    //TEMPORARILY manually putting in points
+    public int point = 8;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,10 +64,51 @@ public class ProgressFragment extends Fragment {
                 launchDetailActivity(position);
             }
         };
-        RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getProgressData());
+        if(point ==0){
+        RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel1());
         mRecyclerView.setAdapter(mAdapter);
-        return rootView;
+            return rootView;
+        }
+        else if (point ==1){
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel2());
+            mRecyclerView.setAdapter(mAdapter);
+            return rootView;
+        }
+        else if (point ==2){
+        RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel3());
+        mRecyclerView.setAdapter(mAdapter);
+        return rootView; }
 
+        else if (point ==3){
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel4());
+            mRecyclerView.setAdapter(mAdapter);
+            return rootView; }
+
+        else if (point ==4){
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel5());
+            mRecyclerView.setAdapter(mAdapter);
+            return rootView; }
+
+        else if (point ==5){
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel6());
+            mRecyclerView.setAdapter(mAdapter);
+            return rootView; }
+
+        else if (point ==6){
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel7());
+            mRecyclerView.setAdapter(mAdapter);
+            return rootView; }
+
+        else if (point ==7){
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel8());
+            mRecyclerView.setAdapter(mAdapter);
+            return rootView; }
+
+        else if (point ==8){
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel9());
+            mRecyclerView.setAdapter(mAdapter);
+            return rootView; }
+        return rootView;
     }
 
 
@@ -77,6 +119,7 @@ public class ProgressFragment extends Fragment {
     }
 
     private void launchDetailActivity(int position){
+        /*
         System.out.println("launch detail activity method open");
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager
@@ -86,5 +129,10 @@ public class ProgressFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
+         */
+        Intent intent = new Intent(getActivity(), ProgressDetail2.class);
+        intent.putExtra(EXTRA_MESSAGE, position);
+        startActivity(intent);
     }
 }
+

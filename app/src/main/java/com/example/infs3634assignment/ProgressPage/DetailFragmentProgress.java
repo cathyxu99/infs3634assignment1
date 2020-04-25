@@ -1,21 +1,16 @@
 package com.example.infs3634assignment.ProgressPage;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.infs3634assignment.R;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class DetailFragmentProgress extends Fragment {
@@ -25,7 +20,7 @@ public class DetailFragmentProgress extends Fragment {
     private String mParam1;
     private String mParam2;
     private ProgressData mProgress;
-
+    private TextView levelText;
 
     public DetailFragmentProgress() {
         // Required empty public constructor
@@ -64,14 +59,16 @@ public class DetailFragmentProgress extends Fragment {
         ArrayList<ProgressData> progressData = new ArrayList<>();
         System.out.println(progressData);
         // Inflate the layout for this fragment
-       // mProgress = ProgressData.getProgressData().get(progressData);
+
+        //mProgress = ProgressData.getProgressData().get(position);
 
         View rootView = inflater.inflate(R.layout.fragment_detail_fragment_progress, container, false);
-     //   TextView text = rootView.findViewById(R.id.levelName);
-       // text.setText(mProgress.getLevel());
+        TextView levelText = rootView.findViewById(R.id.levelName);
+        levelText.setText(mProgress.getLevel());
 
         return rootView;
     }
 
 
 }
+

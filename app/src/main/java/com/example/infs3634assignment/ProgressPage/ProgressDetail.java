@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.infs3634assignment.R;
 
 public class ProgressDetail extends AppCompatActivity {
-private TextView levelName;
+    private TextView levelName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,12 @@ private TextView levelName;
             int position = intent.getIntExtra(ProgressFragment.EXTRA_MESSAGE, 0);
         }
 
-         */
 
+        Intent intent = getIntent();
+        int position = intent.getIntExtra(ProgressFragment.EXTRA_MESSAGE, 0);
+
+
+        */
     }
 }
+
