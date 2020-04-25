@@ -1,6 +1,7 @@
 package com.example.infs3634assignment.ProgressPage;
 
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -50,7 +51,7 @@ public class ProgressFragment extends Fragment {
 
     }
     //TEMPORARILY manually putting in points
-    public int point = 4;
+    public int point = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,7 +68,7 @@ public class ProgressFragment extends Fragment {
                 launchDetailActivity(position);
             }
         };
-
+//unlocking levels according as they finish quizzes
         if(point ==0){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel1());
          mRecyclerView.setAdapter(mAdapter);
