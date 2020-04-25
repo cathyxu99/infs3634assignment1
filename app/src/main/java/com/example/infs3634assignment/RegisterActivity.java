@@ -106,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 User user = new User(usernameInput,confirmedPasswordInput,getDrawableId(newDp));
                 userDb.userDao().insertNewUser(user);
-                 Intent intent = new Intent(RegisterActivity.this, blankHomeActivity.class);
+                 Intent intent = new Intent(RegisterActivity.this, BlankHomeActivity.class);
                  intent.putExtra("Username",user.getUsername().toString());
                  startActivity(intent);
             }

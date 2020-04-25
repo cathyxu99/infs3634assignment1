@@ -13,6 +13,20 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".6" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".7" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
@@ -25,7 +39,31 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/emptybody" />
 
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="Learn about new organs by completing the brain quiz!"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/message2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="Complete Quizes to unlock new avatars."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -82,6 +120,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/lungs" />
 
                 <ImageButton
@@ -91,6 +130,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="fitCenter"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/heart" />
 
             </LinearLayout>
@@ -109,6 +149,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="centerInside"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/liver" />
 
                 <ImageButton
@@ -118,6 +159,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="centerInside"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/spleen" />
             </LinearLayout>
 
@@ -135,6 +177,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="centerInside"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/kidneys" />
 
                 <ImageButton
@@ -144,6 +187,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="centerInside"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/stomach" />
 
             </LinearLayout>
@@ -162,6 +206,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="centerInside"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/intestine" />
 
                 <ImageButton
@@ -171,6 +216,7 @@
                     android:layout_weight="10"
                     android:background="@android:color/transparent"
                     android:scaleType="centerInside"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/pancreas" />
             </LinearLayout>
 

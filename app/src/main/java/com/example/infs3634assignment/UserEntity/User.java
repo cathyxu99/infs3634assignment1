@@ -2,9 +2,12 @@ package com.example.infs3634assignment.UserEntity;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -55,10 +58,52 @@ public class User{
             , pancreasStreak;
 */
 
-    public User(String username, String password, int displayPictureId){
+    public User(String username, String password, int displayPictureId) {
         this.username = username;
         this.password = password;
         this.displayPictureId = displayPictureId;
+    }
+    @Ignore
+    public User(@NonNull String username, @NonNull String password, int displayPictureId, String brainTrophy, String lungsTrophy, String heartTrophy, String liverTrophy, String spleenTrophy, String kidneyTrophy, String stomachTrophy, String intestineTrophy, String pancreasTrophy, Date brainCDate, Date lungsCDate, Date heartCDate, Date liverCDate, Date spleenCDate, Date kidneyCDate, Date stomachCDate, Date intestineCDate, Date pancreasCDate, long brainFastestTime, long lungsFastestTime, long heartFastestTime, long liverFastestTime, long spleenFastestTime, long kidneyFastestTime, long stomachFastestTime, long intestineFastestTime, long pancreasFastestTime) {
+        this.username = username;
+        this.password = password;
+        this.displayPictureId = displayPictureId;
+        this.brainTrophy = brainTrophy;
+        this.lungsTrophy = lungsTrophy;
+        this.heartTrophy = heartTrophy;
+        this.liverTrophy = liverTrophy;
+        this.spleenTrophy = spleenTrophy;
+        this.kidneyTrophy = kidneyTrophy;
+        this.stomachTrophy = stomachTrophy;
+        this.intestineTrophy = intestineTrophy;
+        this.pancreasTrophy = pancreasTrophy;
+        this.brainCDate = brainCDate;
+        this.lungsCDate = lungsCDate;
+        this.heartCDate = heartCDate;
+        this.liverCDate = liverCDate;
+        this.spleenCDate = spleenCDate;
+        this.kidneyCDate = kidneyCDate;
+        this.stomachCDate = stomachCDate;
+        this.intestineCDate = intestineCDate;
+        this.pancreasCDate = pancreasCDate;
+        this.brainFastestTime = brainFastestTime;
+        this.lungsFastestTime = lungsFastestTime;
+        this.heartFastestTime = heartFastestTime;
+        this.liverFastestTime = liverFastestTime;
+        this.spleenFastestTime = spleenFastestTime;
+        this.kidneyFastestTime = kidneyFastestTime;
+        this.stomachFastestTime = stomachFastestTime;
+        this.intestineFastestTime = intestineFastestTime;
+        this.pancreasFastestTime = pancreasFastestTime;
+    }
+    @Ignore
+    public User(@NonNull String username, @NonNull String password, int displayPictureId, String brainTrophy, String lungsTrophy, String heartTrophy) {
+        this.username = username;
+        this.password = password;
+        this.displayPictureId = displayPictureId;
+        this.brainTrophy = brainTrophy;
+        this.lungsTrophy = lungsTrophy;
+        this.heartTrophy = heartTrophy;
     }
 
     @NonNull
