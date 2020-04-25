@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     android:orientation="vertical"
     tools:context=".Learn.LearnFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="140"
+        android:layout_height="0dp"
+        android:layout_weight="3"
 
         >
 
@@ -27,11 +28,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:layout_weight="100">
+        android:layout_weight="5">
 
         <TextView
             android:id="@+id/test"
@@ -41,23 +42,40 @@
             android:text="Please wait, it won't be long..." />
     </ScrollView>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2" />
+
     <LinearLayout
         android:id="@+id/extras"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_weight="175">
+        android:layout_height="0dp"
+        android:layout_weight="0.75">
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/backBody"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/normal_button"
+            android:text="Back to the Body"
+            android:textColor="#FFFFFF" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/readMore"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
+            android:layout_height="match_parent"
             android:layout_weight="3"
             android:background="@drawable/normal_button"
             android:text="Read More"
@@ -67,26 +85,28 @@
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/startQuiz"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
+            android:layout_height="match_parent"
             android:layout_weight="3"
             android:background="@drawable/normal_button"
             android:text="Take the Quiz"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textColor="#FFFFFF" />
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2" />
 
 </LinearLayout>

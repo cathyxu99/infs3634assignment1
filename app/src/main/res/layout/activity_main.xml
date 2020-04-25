@@ -16,12 +16,12 @@
         android:hint="password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/bLogin"
-        app:layout_constraintEnd_toEndOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="@+id/profileUsername"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/profileUsername"
         android:layout_width="254dp"
         android:layout_height="35dp"
         android:layout_marginTop="488dp"

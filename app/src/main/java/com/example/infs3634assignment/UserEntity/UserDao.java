@@ -21,10 +21,10 @@ public interface UserDao {
     @Query("SELECT * FROM User WHERE username = :username")
     User searchUser (String username);
 
-    @Query("UPDATE User SET progress = progress + :addNum WHERE username = :username")
-    void makeProgress (int addNum, String username);
-
     @Query("UPDATE User SET password = :password WHERE username = :username")
     void changePassword(String password, String username);
+
+    @Query("UPDATE User SET displayPictureId = :displayPictureId WHERE username = :username")
+    void changeDp(int displayPictureId, String username);
 
 }

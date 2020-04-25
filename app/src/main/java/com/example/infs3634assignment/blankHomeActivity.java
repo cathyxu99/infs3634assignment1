@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +22,13 @@ import com.example.infs3634assignment.UserEntity.User;
 import com.example.infs3634assignment.UserEntity.UserDb;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class blankHomeActivity extends AppCompatActivity {
     public ImageView userDp,achievements;
     public TextView title;
-    public String loggedInUser = null;
+    public String loggedInUser;
+    public User currentUser;
     public UserDb userDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +50,21 @@ public class blankHomeActivity extends AppCompatActivity {
         bottomNavBar.setOnNavigationItemSelectedListener(navigationListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new TheBodyFragment()).commit();
         setTitleText("The Body");
-
         userDp = findViewById(R.id.userDp);
         loggedInUser = getIntent().getStringExtra("Username");
 
-      //  LoggedIn loggedIn = new LoggedIn(userDb);
-        //loggedIn.execute();
+        LoggedIn loggedIn = new LoggedIn(userDb,currentUser);
+        loggedIn.execute();
+
+        userDp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new ProfileFragment(loggedInUser)).commit();
+                setTitleText("Profile");
+            }
+        });
     }
+
 
     //onclicklistener to open the different fragments when each button in the nav bar is clicked
     //reference: https://www.youtube.com/watch?v=tPV8xA7m-iw
@@ -90,8 +102,9 @@ public class blankHomeActivity extends AppCompatActivity {
         public UserDb userDb;
         public User currentUser;
 
-        public LoggedIn(UserDb userDb){
+        public LoggedIn(UserDb userDb, User currentUser){
             this.userDb = userDb;
+            this.currentUser = currentUser;
         }
 
         @Override
@@ -102,7 +115,6 @@ public class blankHomeActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(UserDb userDb) {
-            super.onPostExecute(userDb);
             userDp.setImageResource(currentUser.getDisplayPictureId());
         }
     }

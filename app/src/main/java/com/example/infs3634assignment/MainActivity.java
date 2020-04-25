@@ -1,7 +1,6 @@
 package com.example.infs3634assignment;
 
 import android.content.Intent;
-import android.content.pm.PackageInstaller;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,12 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.room.Room;
 
-import com.example.infs3634assignment.ProgressPage.ProgressFragment;
 import com.example.infs3634assignment.Quiz.QuizActivity;
 import com.example.infs3634assignment.UserEntity.User;
 import com.example.infs3634assignment.UserEntity.UserDb;
@@ -36,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         userDb = Room.databaseBuilder(getApplicationContext(), UserDb.class,"UserDB")
                 .build();
 
-        username = findViewById(R.id.username);
+        InsertSampleData insertSampleData = new InsertSampleData(userDb);
+        insertSampleData.execute();
+        username = findViewById(R.id.profileUsername);
         username.addTextChangedListener(loginTextWatcher);
         password = findViewById(R.id.password);
         password.addTextChangedListener(loginTextWatcher);
@@ -56,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, blankHomeActivity.class);
+                intent.putExtra("Username","s");
                 startActivity(intent);
             }
         });
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     cancel(true);
                 } else {
                     Intent intent = new Intent(MainActivity.this, blankHomeActivity.class);
-                    intent.putExtra("Username",loginUser.getUserName());
+                    intent.putExtra("Username",loginUser.getUsername());
                     startActivity(intent);
                 }
             } else {
@@ -143,6 +141,24 @@ public class MainActivity extends AppCompatActivity {
         protected void onCancelled() {
             super.onCancelled();
             Toast.makeText(getApplicationContext(), "Incorrect credentials!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public class InsertSampleData extends AsyncTask<Void,Void, UserDb> {
+        public UserDb userDb;
+
+        public InsertSampleData(UserDb userDb){
+            this.userDb = userDb;
+        }
+
+        @Override
+        protected UserDb doInBackground(Void... voids) {
+            if(userDb.userDao().getUsers().size() == 0){
+                userDb.userDao().insertNewUser(new User("s","s",R.drawable.bladder));
+            } else {
+                cancel(true);
+            }
+            return userDb;
         }
     }
 
