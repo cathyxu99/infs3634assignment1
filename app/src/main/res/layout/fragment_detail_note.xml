@@ -26,9 +26,12 @@
             android:background="@null"
             android:ellipsize="end"
             android:focusable="true"
+            android:fontFamily="@font/roboto"
             android:hint="Subject"
             android:maxLength="50"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="30sp"
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
@@ -41,6 +44,7 @@
         android:fadeScrollbars="false"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:fontFamily="@font/roboto"
         android:gravity="start|top"
         android:hint="Start writing your note here..."
         android:inputType="textMultiLine"

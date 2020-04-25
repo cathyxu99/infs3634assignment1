@@ -25,7 +25,6 @@ import java.util.List;
 
 
 public class NotesFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
 
     blankHomeActivity homeActivity;
 
@@ -62,6 +61,7 @@ public class NotesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_notes, container, false);
 
+        //Steps to set up the recycler view with the adapter
         noteList = rootView.findViewById(R.id.noteList);
         System.out.println("Length of notes: " + notes.size());
 
@@ -107,11 +107,7 @@ public class NotesFragment extends Fragment {
         return rootView;
     }
 
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
-
+    //Task to add notes to the List
     public class PopulateNotesTask extends AsyncTask<Void,Integer, List<Note>> {
 
         @Override
@@ -136,7 +132,7 @@ public class NotesFragment extends Fragment {
         }
     }
 
-
+    //Delete the note from the database
     public class DeleteNoteTask extends AsyncTask<Integer,Integer, Integer> {
 
         @Override
