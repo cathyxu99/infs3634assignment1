@@ -9,14 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infs3634assignment.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.BitSet;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
@@ -57,12 +61,26 @@ public class ProgressAdapter extends RecyclerView.Adapter<ProgressAdapter.Progre
             mListener.onClick(view, getAdapterPosition());
             Log.d(TAG, "progress View Holder: inOnClick");
             System.out.println(getAdapterPosition());
+            /*
+            int position = getLayoutPosition();
+            ProgressData progress = mProgress.get(position);
+
+            FragmentManager manager = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            DetailFragmentProgress fragment = new DetailFragmentProgress();
+            Bundle arguments = new Bundle();
+            arguments.putSerializable("progressInfo", (Serializable) progress);
+            fragment.setArguments(arguments);
+            transaction.replace(R.id.mainFragContainer,fragment);
+            transaction.commit();
+
+             */
         }
     }
 
     //initialises the viewholder to display the contents
     @Override
-    public ProgressAdapter.ProgressViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ProgressAdapter.ProgressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.progress_list_row,parent,false);
         return new ProgressViewHolder(v, mListener);
     }
@@ -80,3 +98,6 @@ public class ProgressAdapter extends RecyclerView.Adapter<ProgressAdapter.Progre
         return mProgress.size();
     }
 }
+
+
+

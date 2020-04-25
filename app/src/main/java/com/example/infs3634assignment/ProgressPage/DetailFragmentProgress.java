@@ -3,13 +3,20 @@ package com.example.infs3634assignment.ProgressPage;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.infs3634assignment.Notes.DetailNoteFragment;
 import com.example.infs3634assignment.R;
+import com.example.infs3634assignment.blankHomeActivity;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
@@ -20,8 +27,8 @@ public class DetailFragmentProgress extends Fragment {
     private String mParam1;
     private String mParam2;
     private ProgressData mProgress;
-    private TextView levelText;
-
+    private String levelText;
+    blankHomeActivity homeActivity;
     public DetailFragmentProgress() {
         // Required empty public constructor
     }
@@ -50,6 +57,12 @@ public class DetailFragmentProgress extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Bundle extras = getArguments();
+        if(extras!=null){
+            ProgressData progress = (ProgressData) extras.getSerializable("noteInfo");
+            levelText = progress.getLevel();
+        }
     }
 
     @Override
@@ -60,11 +73,15 @@ public class DetailFragmentProgress extends Fragment {
         System.out.println(progressData);
         // Inflate the layout for this fragment
 
-        //mProgress = ProgressData.getProgressData().get(position);
 
         View rootView = inflater.inflate(R.layout.fragment_detail_fragment_progress, container, false);
-        TextView levelText = rootView.findViewById(R.id.levelName);
+        final TextView levelText = rootView.findViewById(R.id.levelName);
+      //  organImage.set
+      //  mProgress = ProgressData.getProgressData().get(position);
         levelText.setText(mProgress.getLevel());
+
+
+
 
         return rootView;
     }

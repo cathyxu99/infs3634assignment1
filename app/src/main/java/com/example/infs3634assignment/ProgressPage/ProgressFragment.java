@@ -64,6 +64,7 @@ public class ProgressFragment extends Fragment {
                 launchDetailActivity(position);
             }
         };
+
         if(point ==0){
         RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel1());
         mRecyclerView.setAdapter(mAdapter);
@@ -108,6 +109,10 @@ public class ProgressFragment extends Fragment {
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel9());
             mRecyclerView.setAdapter(mAdapter);
             return rootView; }
+
+
+        RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel9());
+        mRecyclerView.setAdapter(mAdapter);
         return rootView;
     }
 
@@ -119,7 +124,7 @@ public class ProgressFragment extends Fragment {
     }
 
     private void launchDetailActivity(int position){
-        /*
+
         System.out.println("launch detail activity method open");
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager
@@ -129,10 +134,12 @@ public class ProgressFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
-         */
+         /*
         Intent intent = new Intent(getActivity(), ProgressDetail2.class);
         intent.putExtra(EXTRA_MESSAGE, position);
         startActivity(intent);
+
+          */
     }
 }
 
