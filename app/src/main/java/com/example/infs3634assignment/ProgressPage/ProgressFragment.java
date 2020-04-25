@@ -47,7 +47,7 @@ public class ProgressFragment extends Fragment {
 
     }
     //TEMPORARILY manually putting in points
-    public int point = 8;
+    public int point = 4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
