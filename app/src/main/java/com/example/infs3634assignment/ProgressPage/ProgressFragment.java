@@ -3,6 +3,7 @@ package com.example.infs3634assignment.ProgressPage;
 import android.content.Intent;
 import android.content.pm.PackageInstaller;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.infs3634assignment.BlankHomeActivity;
 import com.example.infs3634assignment.R;
+import com.example.infs3634assignment.UserEntity.User;
+import com.example.infs3634assignment.UserEntity.UserDb;
 
 import java.util.ArrayList;
 
@@ -153,6 +157,51 @@ public class ProgressFragment extends Fragment {
         startActivity(intent);
 
           */
+    }
+
+    public class GetOrgans extends AsyncTask<Void,Void, UserDb> {
+        public User currentUser;
+        public UserDb userDb;
+        GetOrgans(UserDb userDb, User currentUser){
+            this.userDb = userDb;
+            this.currentUser = currentUser;
+        }
+        @Override
+        protected UserDb doInBackground(Void... voids) {
+            currentUser = userDb.userDao().searchUser("s");
+            return userDb;
+        }
+
+        @Override
+        protected void onPostExecute(UserDb userDb) {
+            super.onPostExecute(userDb);
+            if(currentUser.getBrainTrophy()!=null) {
+            }
+
+            if(currentUser.getLungsTrophy()!=null){
+            }
+
+            if(currentUser.getHeartTrophy()!=null) {
+            }
+
+            if(currentUser.getLiverTrophy()!=null) {
+            }
+
+            if(currentUser.getSpleenTrophy()!=null) {
+            }
+
+            if(currentUser.getKidneyTrophy()!=null) {
+            }
+
+            if(currentUser.getStomachTrophy()!=null) {
+            }
+
+            if(currentUser.getIntestineTrophy()!=null) {
+            }
+
+            if ((currentUser.getPancreasTrophy()!=null)) {
+            }
+        }
     }
 }
 
