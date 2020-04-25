@@ -98,6 +98,10 @@ public class blankHomeActivity extends AppCompatActivity {
         title.setText(text);
     }
 
+    public User getCurrentUser(){
+        return currentUser;
+    }
+
     public class LoggedIn extends AsyncTask<Void,Void, UserDb> {
         public UserDb userDb;
         public User currentUser;

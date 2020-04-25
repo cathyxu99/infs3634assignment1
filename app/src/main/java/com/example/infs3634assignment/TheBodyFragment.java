@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.infs3634assignment.Learn.LearnFragment;
+import com.example.infs3634assignment.UserEntity.User;
 
 public class TheBodyFragment extends Fragment {
     private ImageButton brainButton
@@ -38,6 +39,7 @@ public class TheBodyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_body, container, false);
         ((blankHomeActivity) getActivity()).setTitleText("The Body");
         brainButton = view.findViewById(R.id.brainButton);
+        User currentUser = ((blankHomeActivity) getActivity()).getCurrentUser();
         brainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

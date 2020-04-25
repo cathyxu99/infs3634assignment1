@@ -16,10 +16,13 @@ import android.view.ViewGroup;
 
 import com.example.infs3634assignment.R;
 
+import java.util.ArrayList;
+
 public class ProgressFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String ARG_ITEM_ID = "item 1";
     public static final String EXTRA_MESSAGE = "test";
+    public ArrayList<ProgressData> mProgressData;
     private String mParam1;
     private String mParam2;
     private ProgressAdapter.RecyclerViewClickListener mListener;
@@ -66,48 +69,57 @@ public class ProgressFragment extends Fragment {
         };
 
         if(point ==0){
-        RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel1());
-        mRecyclerView.setAdapter(mAdapter);
+            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel1());
+         mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel1();
             return rootView;
         }
         else if (point ==1){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel2());
             mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel2();
             return rootView;
         }
         else if (point ==2){
         RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel3());
         mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel3();
         return rootView; }
 
         else if (point ==3){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel4());
             mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel4();
             return rootView; }
 
         else if (point ==4){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel5());
             mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel5();
             return rootView; }
 
         else if (point ==5){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel6());
             mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel6();
             return rootView; }
 
         else if (point ==6){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel7());
             mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel7();
             return rootView; }
 
         else if (point ==7){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel8());
             mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel8();
             return rootView; }
 
         else if (point ==8){
             RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel9());
             mRecyclerView.setAdapter(mAdapter);
+            mProgressData = ProgressData.getLevel9();
             return rootView; }
 
 
@@ -129,8 +141,8 @@ public class ProgressFragment extends Fragment {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager
                 .beginTransaction();
-        Fragment fragment = new DetailFragmentProgress();
-        fragmentTransaction.replace(R.id.mainFragContainer, new DetailFragmentProgress());
+        Fragment fragment = new DetailFragmentProgress(position,mProgressData);
+        fragmentTransaction.replace(R.id.mainFragContainer, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
