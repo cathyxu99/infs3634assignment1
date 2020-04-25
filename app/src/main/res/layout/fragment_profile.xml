@@ -12,12 +12,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="4"
         android:orientation="horizontal">
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1" />
 
         <RelativeLayout
@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/changeDp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignBaseline="@id/currentDp"
                 android:layout_alignRight="@id/currentDp"
                 android:layout_alignBottom="@id/currentDp"
@@ -52,21 +52,26 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight=".2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dpRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="3"
         android:background="@color/colorPrimaryDark"
         android:visibility="gone" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight=".2" />
 
     <Button
         android:id="@+id/updateDp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
+        android:layout_height="0dp"
+        android:layout_weight=".75"
         android:background="@drawable/normal_button"
         android:text="Update Display Picture"
         android:visibility="gone" />
@@ -81,10 +86,15 @@
         android:text="Username"
         android:textSize="20dp" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_weight="3.5">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -124,45 +134,41 @@
                 android:hint="Confirm your new password:"
                 android:inputType="textPassword"
                 android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/changePassword"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/normal_button"
+                    android:text="Change Password" />
+
+                <Space
+                    android:id="@+id/buttonSpace"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/updatePassword"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/normal_button"
+                    android:text="Update password"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/changePassword"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/normal_button"
-            android:text="Change Password" />
-
-        <Space
-            android:id="@+id/buttonSpace"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/updatePassword"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/normal_button"
-            android:text="Update password"
-            android:visibility="gone" />
-
-    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
