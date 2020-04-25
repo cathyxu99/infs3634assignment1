@@ -1,74 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:width = "0dp">
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="100dp"
-        android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/profileUsername"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/beginQuizButton"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/normal_button_corners"
+        android:fontFamily="@font/roboto"
+        android:stateListAnimator="@null"
+        android:text="Begin Quiz"
+        android:textColor="#FFFFFF" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="187dp" />
 
     <EditText
         android:id="@+id/profileUsername"
         android:layout_width="254dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
-        android:layout_marginBottom="32dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#1A90D8E8"
         android:ems="10"
         android:hint="username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/beginQuizButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="316dp"
-        android:layout_marginRight="316dp"
-        android:background="@drawable/normal_button_corners"
-        android:fontFamily="@font/roboto"
-        android:text="Begin Quiz"
-        android:stateListAnimator="@null"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
 
-    <Button
-        android:id="@+id/reg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/normal_button"
-        android:text="Register"
-        android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="667dp" />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="254dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#1A90D8E8"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="23dp" />
 
     <Button
         android:id="@+id/testLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="244dp"
-        android:layout_marginLeft="244dp"
+        android:layout_gravity="center_horizontal"
         android:background="@drawable/normal_button"
         android:enabled="false"
         android:text="Login"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="667dp" />
+        android:textColor="#FFFFFF" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="17dp" />
+
+    <Button
+        android:id="@+id/reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/normal_button"
+        android:text="Register"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/regText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="New Here? Sign Up!"
+        android:textColor="#54BFD7" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="84dp" />
+
+</LinearLayout>
