@@ -32,6 +32,7 @@ public class ProfileFragment extends Fragment {
     public User currentUser;
     public boolean editDp,editPass = true;
     public DpAdapter dpAdapter;
+    public Space space1, space2, space3, space4, space5;
 
 
     public ProfileFragment(String username) {
@@ -106,6 +107,10 @@ public class ProfileFragment extends Fragment {
         resetPasswordConfirmed = view.findViewById(R.id.resetPasswordConfirmed);
         updatePassword = view.findViewById(R.id.updatePassword);
         buttonSpace = view.findViewById(R.id.buttonSpace);
+        space1 = view.findViewById(R.id.space1pw);
+        space2 = view.findViewById(R.id.space2pw);
+        space3 = view.findViewById(R.id.space3pw);
+
 
         changePassword = view.findViewById(R.id.changePassword);
         changePassword.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +123,9 @@ public class ProfileFragment extends Fragment {
                     resetPasswordConfirmed.setVisibility(View.VISIBLE);
                     updatePassword.setVisibility(View.VISIBLE);
                     buttonSpace.setVisibility(View.VISIBLE);
+                    space1.setVisibility(View.VISIBLE);
+                    space2.setVisibility(View.VISIBLE);
+                    space3.setVisibility(View.VISIBLE);
                     changePassword.setText("Cancel");
                     editPass = false;
                 } else {
@@ -126,6 +134,9 @@ public class ProfileFragment extends Fragment {
                     resetPasswordConfirmed.setVisibility(View.GONE);
                     updatePassword.setVisibility(View.GONE);
                     buttonSpace.setVisibility(View.GONE);
+                    space1.setVisibility(View.GONE);
+                    space2.setVisibility(View.GONE);
+                    space3.setVisibility(View.GONE);
                     changePassword.setText("Change Password");
                     editPass = true;
                 }

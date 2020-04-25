@@ -5,15 +5,15 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:width="0dp"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:width = "0dp">
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/beginQuizButton"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="29dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/normal_button_corners"
         android:fontFamily="@font/roboto"
@@ -21,9 +21,12 @@
         android:text="Begin Quiz"
         android:textColor="#FFFFFF" />
 
-    <Space
+    <ImageView
+        android:id="@+id/imageView7"
         android:layout_width="match_parent"
-        android:layout_height="187dp" />
+        android:layout_height="319dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/bodyloginpg" />
 
     <EditText
         android:id="@+id/profileUsername"
@@ -67,15 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="17dp" />
 
-    <Button
-        android:id="@+id/reg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/normal_button"
-        android:text="Register"
-        android:textColor="#FFFFFF" />
-
     <TextView
         android:id="@+id/regText"
         android:layout_width="match_parent"
@@ -87,6 +81,6 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="84dp" />
+        android:layout_height="77dp" />
 
 </LinearLayout>

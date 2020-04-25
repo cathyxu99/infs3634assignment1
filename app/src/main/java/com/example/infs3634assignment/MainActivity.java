@@ -22,9 +22,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    public TextView username,password;
+    public TextView username,password,register;
     public String usernameInput,passwordInput;
-    public Button  quizButton, bodyButton, tempLoginBtn,testLogin,register;
+    public Button  quizButton, bodyButton, tempLoginBtn,testLogin;;
     public UserDb userDb;
 
     @Override
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        register = findViewById(R.id.reg);
+        register = findViewById(R.id.regText);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
