@@ -11,14 +11,15 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.25" />
+        android:layout_weight="0.25"
+        android:background="#40FFFFFF"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.75"
         android:orientation="horizontal"
-        android:background="#00FFFFFF">
+        android:background="#40FFFFFF">
 
         <ImageView
             android:id="@+id/userDp"
@@ -32,6 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="The Body"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />

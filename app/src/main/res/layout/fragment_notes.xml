@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Notes.NotesFragment">
+    tools:context=".Notes.NotesFragment"
+    android:background="#40FFFFFF">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/noteList"
