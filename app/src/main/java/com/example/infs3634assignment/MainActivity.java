@@ -54,26 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bodyButton = findViewById(R.id.bodyButton);
-        bodyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BlankHomeActivity.class);
-                intent.putExtra("Username","s");
-                startActivity(intent);
-            }
-        });
-
-        tempLoginBtn = findViewById(R.id.bLogin);
-        tempLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BlankHomeActivity.class);
-                intent.putExtra("Username","s");
-                startActivity(intent);
-            }
-        });
-
         register = findViewById(R.id.reg);
         register.setOnClickListener(new View.OnClickListener() {
             @Override

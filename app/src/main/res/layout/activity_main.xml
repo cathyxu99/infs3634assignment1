@@ -11,11 +11,11 @@
         android:id="@+id/password"
         android:layout_width="250dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="100dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/bLogin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/profileUsername"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -24,31 +24,14 @@
         android:id="@+id/profileUsername"
         android:layout_width="254dp"
         android:layout_height="35dp"
-        android:layout_marginTop="488dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginRight="108dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
-
-    <Button
-        android:id="@+id/bLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/normal_button"
-        android:fontFamily="@font/roboto"
-        android:text="Login"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/beginQuizButton"
@@ -66,34 +49,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bodyButton"
-        android:layout_width="110dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="168dp"
-        android:background="@drawable/normal_button_corners"
-        android:fontFamily="@font/roboto"
-        android:stateListAnimator="@null"
-        android:text="The Body"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/reg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:background="@drawable/normal_button"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="667dp" />
 
     <Button
         android:id="@+id/testLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginLeft="244dp"
+        android:background="@drawable/normal_button"
         android:enabled="false"
-        android:text="Test Login"
-        app:layout_constraintBottom_toTopOf="@+id/bodyButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="667dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
