@@ -83,31 +83,57 @@ public interface UserDao {
     void changePancreasTrophy(String trophy, String username);
 
     @Query("UPDATE user SET brainFastestTime = :time WHERE username = :username")
-    void changeBrainTrophy(long time, String username);
+    void changeBrainTime(long time, String username);
 
     @Query("UPDATE user SET lungsFastestTime = :time WHERE username = :username")
-    void changeLungsTrophy(long time, String username);
+    void changeLungsTime(long time, String username);
 
     @Query("UPDATE user SET heartFastestTime = :time WHERE username = :username")
-    void changeHeartTrophy(long time, String username);
+    void changeHeartTime(long time, String username);
 
     @Query("UPDATE user SET liverFastestTime = :time WHERE username = :username")
-    void changeLiverTrophy(long time, String username);
+    void changeLiverTime(long time, String username);
 
     @Query("UPDATE user SET spleenFastestTime = :time WHERE username = :username")
-    void changeSpleenTrophy(long time, String username);
+    void changeSpleenTime(long time, String username);
 
     @Query("UPDATE user SET kidneyFastestTime = :time WHERE username = :username")
-    void changeKidneyTrophy(long time, String username);
+    void changeKidneyTime(long time, String username);
 
     @Query("UPDATE user SET stomachFastestTime = :time WHERE username = :username")
-    void changeStomachTrophy(long time, String username);
+    void changeStomachTime(long time, String username);
 
     @Query("UPDATE user SET intestineFastestTime = :time WHERE username = :username")
-    void changeIntestineTrophy(long time, String username);
+    void changeIntestineTime(long time, String username);
 
     @Query("UPDATE user SET pancreasFastestTime = :time WHERE username = :username")
-    void changePancreasTrophy(long time, String username);
+    void changePancreasTime(long time, String username);
 
+    @Query("SELECT brainFastestTime FROM user WHERE username = :username")
+    Long getBrainFastestTime(String username);
+
+    @Query("SELECT lungsFastestTime FROM user WHERE username = :username")
+    Long getLungsFastestTime(String username);
+
+    @Query("SELECT heartFastestTime FROM user WHERE username = :username")
+    Long getHeartFastestTime(String username);
+
+    @Query("SELECT liverFastestTime FROM user WHERE username = :username")
+    Long getLiverFastestTime(String username);
+
+    @Query("SELECT spleenFastestTime FROM user WHERE username = :username")
+    Long getSpleenFastestTime(String username);
+
+    @Query("SELECT kidneyFastestTime FROM user WHERE username = :username")
+    Long getKidneyFastestTime(String username);
+
+    @Query("SELECT stomachFastestTime FROM user WHERE username = :username")
+    Long getStomachFastestTime(String username);
+
+    @Query("SELECT intestineFastestTime FROM user WHERE username = :username")
+    Long getIntestineFastestTime(String username);
+
+    @Query("SELECT pancreasFastestTime FROM user WHERE username = :username")
+    Long getPancreasFastestTime(String username);
 
 }
