@@ -47,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         newDp = findViewById(R.id.newDP);
         newDp.setImageResource(R.drawable.avatarbloodcellsmall);
         newDpId = R.drawable.avatarbloodcellsmall;
+        newDp.setTag(newDpId);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         RecyclerView recyclerView = findViewById(R.id.newDpRecycler);
