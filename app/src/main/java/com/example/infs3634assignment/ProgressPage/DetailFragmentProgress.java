@@ -3,20 +3,14 @@ package com.example.infs3634assignment.ProgressPage;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.infs3634assignment.Notes.DetailNoteFragment;
 import com.example.infs3634assignment.R;
-import com.example.infs3634assignment.blankHomeActivity;
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.infs3634assignment.BlankHomeActivity;
 
 import java.util.ArrayList;
 
@@ -26,7 +20,7 @@ public class DetailFragmentProgress extends Fragment {
     private ArrayList<ProgressData> mProgress;
     private String levelText;
 
-    blankHomeActivity homeActivity;
+    BlankHomeActivity homeActivity;
 
     public DetailFragmentProgress() {
         // Required empty public constructor

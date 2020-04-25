@@ -1,6 +1,5 @@
 package com.example.infs3634assignment.Notes;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -18,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.infs3634assignment.R;
-import com.example.infs3634assignment.blankHomeActivity;
+import com.example.infs3634assignment.BlankHomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ import java.util.List;
 
 public class NotesFragment extends Fragment {
 
-    blankHomeActivity homeActivity;
+    BlankHomeActivity homeActivity;
 
 
     String userName;
@@ -45,7 +44,7 @@ public class NotesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        homeActivity = (blankHomeActivity) getActivity();
+        homeActivity = (BlankHomeActivity) getActivity();
 
         userName = homeActivity.loggedInUser;
 

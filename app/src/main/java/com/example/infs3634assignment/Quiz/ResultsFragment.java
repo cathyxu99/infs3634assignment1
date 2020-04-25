@@ -15,11 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.infs3634assignment.MainActivity;
-import com.example.infs3634assignment.Notes.NoteDatabase;
+import com.example.infs3634assignment.BlankHomeActivity;
 import com.example.infs3634assignment.R;
 import com.example.infs3634assignment.UserEntity.UserDb;
-import com.example.infs3634assignment.blankHomeActivity;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -100,7 +98,7 @@ public class ResultsFragment extends Fragment {
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), blankHomeActivity.class);
+                Intent intent = new Intent(getActivity(), BlankHomeActivity.class);
                 intent.putExtra("Username",userName);
                 startActivity(intent);
             }
