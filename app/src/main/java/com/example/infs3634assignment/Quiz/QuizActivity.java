@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -26,12 +27,21 @@ import java.util.TreeMap;
 
 public class QuizActivity extends AppCompatActivity {
 
+    final private String TAG = "#QUIZACTIVITY# ";
+
+    //Values use to check progress of user throughout the quiz
     int answerSelected = 0;
     boolean answered = false;
     boolean completed = false;
     boolean lockButtons = false;
     int questionToAnswer = 0;
 
+    //Stats from the user's quiz attempt
+    int correctAnswers = 0;
+    long startTime = 0;
+    long endTime = 0;
+    long duration = 0;
+    int[] streaks;
 
     final List<Question> questionList = getQuestionCollection("brain");
 
@@ -50,6 +60,7 @@ public class QuizActivity extends AppCompatActivity {
                 scrollView.removeAllViews();
                 loadNextQuestion();
                 submitButton.setVisibility(View.VISIBLE);
+                startTime = System.currentTimeMillis();
             }
         });
 
@@ -68,6 +79,11 @@ public class QuizActivity extends AppCompatActivity {
                     lockButtons = false;
                     submitButton.setText("Submit");
                     if (completed) {
+
+                        endTime = System.currentTimeMillis();
+                        duration = endTime - startTime;
+                        Log.d(TAG, getTime(duration));
+
                         Intent intent = new Intent(v.getContext(), QuizActivity.class);
                         startActivity(intent);
                         answerSelected = 0;
@@ -77,7 +93,7 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 } else {
 
-                        question = questionList.get(questionToAnswer - 1);
+                    question = questionList.get(questionToAnswer - 1);
 
                     if (question.getAnswer() == answerSelected) {
                         answerFeedback(answerSelected);
@@ -111,7 +127,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public void wrongAnswerFeedback(int button) {
 
-        if (questionList.get(questionToAnswer-1) instanceof MultipleChoiceQuestion) {
+        if (questionList.get(questionToAnswer - 1) instanceof MultipleChoiceQuestion) {
             final Button option1 = findViewById(R.id.mcqOption1);
             final Button option2 = findViewById(R.id.mcqOption2);
             final Button option3 = findViewById(R.id.mcqOption3);
@@ -132,7 +148,7 @@ public class QuizActivity extends AppCompatActivity {
                     break;
             }
 
-        } else if (questionList.get(questionToAnswer-1) instanceof TrueFalseQuestion) {
+        } else if (questionList.get(questionToAnswer - 1) instanceof TrueFalseQuestion) {
             Button trueButton = findViewById(R.id.trueButton);
             Button falseButton = findViewById(R.id.falseButton);
             switch (button) {
@@ -146,99 +162,114 @@ public class QuizActivity extends AppCompatActivity {
 
         }
     }
-        public void answerFeedback ( int button) {
 
-            if (questionList.get(questionToAnswer-1) instanceof MultipleChoiceQuestion) {
-                final Button option1 = findViewById(R.id.mcqOption1);
-                final Button option2 = findViewById(R.id.mcqOption2);
-                final Button option3 = findViewById(R.id.mcqOption3);
-                final Button option4 = findViewById(R.id.mcqOption4);
+    public void answerFeedback(int button) {
 
-                switch (button) {
-                    case 1:
-                        option1.setBackgroundColor(Color.GREEN);
-                        break;
-                    case 2:
-                        option2.setBackgroundColor(Color.GREEN);
-                        break;
-                    case 3:
-                        option3.setBackgroundColor(Color.GREEN);
-                        break;
-                    case 4:
-                        option4.setBackgroundColor(Color.GREEN);
-                        break;
-                }
+        if (questionList.get(questionToAnswer - 1) instanceof MultipleChoiceQuestion) {
+            final Button option1 = findViewById(R.id.mcqOption1);
+            final Button option2 = findViewById(R.id.mcqOption2);
+            final Button option3 = findViewById(R.id.mcqOption3);
+            final Button option4 = findViewById(R.id.mcqOption4);
 
-            } else if (questionList.get(questionToAnswer-1) instanceof TrueFalseQuestion) {
-                Button trueButton = findViewById(R.id.trueButton);
-                Button falseButton = findViewById(R.id.falseButton);
-                switch (button) {
-                    case 1:
-                        trueButton.setBackgroundColor(Color.GREEN);
-                        break;
-                    case 2:
-                        falseButton.setBackgroundColor(Color.GREEN);
-                        break;
-                }
+            switch (button) {
+                case 1:
+                    option1.setBackgroundColor(Color.GREEN);
+                    break;
+                case 2:
+                    option2.setBackgroundColor(Color.GREEN);
+                    break;
+                case 3:
+                    option3.setBackgroundColor(Color.GREEN);
+                    break;
+                case 4:
+                    option4.setBackgroundColor(Color.GREEN);
+                    break;
+            }
+
+        } else if (questionList.get(questionToAnswer - 1) instanceof TrueFalseQuestion) {
+            Button trueButton = findViewById(R.id.trueButton);
+            Button falseButton = findViewById(R.id.falseButton);
+            switch (button) {
+                case 1:
+                    trueButton.setBackgroundColor(Color.GREEN);
+                    break;
+                case 2:
+                    falseButton.setBackgroundColor(Color.GREEN);
+                    break;
             }
         }
-            public void clearButtonColour () {
 
-                if (questionList.get(questionToAnswer-1) instanceof MultipleChoiceQuestion) {
-                    final Button option1 = findViewById(R.id.mcqOption1);
-                    final Button option2 = findViewById(R.id.mcqOption2);
-                    final Button option3 = findViewById(R.id.mcqOption3);
-                    final Button option4 = findViewById(R.id.mcqOption4);
+        correctAnswers++;
+    }
 
-                    option1.setBackgroundColor(Color.LTGRAY);
-                    option2.setBackgroundColor(Color.LTGRAY);
-                    option3.setBackgroundColor(Color.LTGRAY);
-                    option4.setBackgroundColor(Color.LTGRAY);
-                } else if (questionList.get(questionToAnswer-1) instanceof TrueFalseQuestion) {
-                    Button trueButton = findViewById(R.id.trueButton);
-                    Button falseButton = findViewById(R.id.falseButton);
+    public void clearButtonColour() {
+
+        if (questionList.get(questionToAnswer - 1) instanceof MultipleChoiceQuestion) {
+            final Button option1 = findViewById(R.id.mcqOption1);
+            final Button option2 = findViewById(R.id.mcqOption2);
+            final Button option3 = findViewById(R.id.mcqOption3);
+            final Button option4 = findViewById(R.id.mcqOption4);
+
+            option1.setBackgroundColor(Color.LTGRAY);
+            option2.setBackgroundColor(Color.LTGRAY);
+            option3.setBackgroundColor(Color.LTGRAY);
+            option4.setBackgroundColor(Color.LTGRAY);
+        } else if (questionList.get(questionToAnswer - 1) instanceof TrueFalseQuestion) {
+            Button trueButton = findViewById(R.id.trueButton);
+            Button falseButton = findViewById(R.id.falseButton);
 
 
-                    trueButton.setBackgroundColor(Color.LTGRAY);
-                    falseButton.setBackgroundColor(Color.LTGRAY);
-                }
+            trueButton.setBackgroundColor(Color.LTGRAY);
+            falseButton.setBackgroundColor(Color.LTGRAY);
+        }
 
 
+    }
+
+    public boolean loadNextQuestion() {
+        boolean complete = false;
+
+        if (questionList.size() <= questionToAnswer) {
+            complete = true;
+        } else {
+
+            Fragment fragment = new Fragment();
+
+            if (questionList.get(questionToAnswer) instanceof MultipleChoiceQuestion) {
+                fragment = new MultipleChoiceFragment();
+            } else if (questionList.get(questionToAnswer) instanceof TrueFalseQuestion) {
+                fragment = new TrueFalseFragment();
             }
 
-            public boolean loadNextQuestion () {
-                boolean complete = false;
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("question", questionList.get(questionToAnswer));
+            fragment.setArguments(bundle);
 
-                if (questionList.size() <= questionToAnswer) {
-                    complete = true;
-                } else {
+            FragmentManager myManager = getSupportFragmentManager();
+            FragmentTransaction myTransaction = myManager.beginTransaction();
+            myTransaction.replace(R.id.questionView, fragment);
+            myTransaction.commit();
 
-                    Fragment fragment = new Fragment();
+            questionToAnswer++;
+        }
+        return complete;
+    }
 
-                    if (questionList.get(questionToAnswer) instanceof MultipleChoiceQuestion) {
-                        fragment = new MultipleChoiceFragment();
-                    } else if (questionList.get(questionToAnswer) instanceof TrueFalseQuestion) {
-                        fragment = new TrueFalseFragment();
-                    }
+    public String getTime(long milliTime){
+        String stringTime = "Error collecting Time";
 
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("question", questionList.get(questionToAnswer));
-                    fragment.setArguments(bundle);
+        String minutes = Long.toString((milliTime/1000)/60);
+        String seconds = Integer.toString((int)((milliTime / 1000)%60));
 
-                    FragmentManager myManager = getSupportFragmentManager();
-                    FragmentTransaction myTransaction = myManager.beginTransaction();
-                    myTransaction.replace(R.id.questionView, fragment);
-                    myTransaction.commit();
+        stringTime = minutes + "m " + seconds + "s";
 
-                    questionToAnswer++;
-                }
-                return complete;
-            }
+        return stringTime;
+    }
 
-            @Override
-            protected void onPause () {
-                super.onPause();
-                finish();
-            }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 }
 

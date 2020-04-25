@@ -25,16 +25,35 @@ public class User{
         , intestineTrophy
         , pancreasTrophy;
     @TypeConverters(Converters.class)
-    private java.util.Date brainCDate , brainFastestTime
-            ,lungsCDate, lungsFastestTime
-            ,heartCDate, heartFastestTime
-            ,liverCDate, liverFastestTime
-            ,spleenCDate, spleenFastestTime
-            ,kidneyCDate,  kidneyFastestTime
-            ,stomachCDate, stomachFastestTime
-            ,intestineCDate, intestineFastestTime
-            ,pancreasCDate, pancreasFastestTime;
+    private java.util.Date brainCDate , lungsCDate
+            ,heartCDate
+            ,liverCDate
+            ,spleenCDate
+            ,kidneyCDate
+            ,stomachCDate
+            ,intestineCDate
+            ,pancreasCDate;
 
+    private long brainFastestTime
+            , lungsFastestTime
+            , heartFastestTime
+            , liverFastestTime
+            , spleenFastestTime
+            ,  kidneyFastestTime
+            , stomachFastestTime
+            , intestineFastestTime
+            , pancreasFastestTime;
+/*
+    private int brainStreak
+            , lungsStreak
+            , heartStreak
+            , liverStreak
+            , spleenStreak
+            ,  kidneyStreak
+            , stomachStreak
+            , intestineStreak
+            , pancreasStreak;
+*/
 
     public User(String username, String password, int displayPictureId){
         this.username = username;
@@ -148,28 +167,12 @@ public class User{
         this.brainCDate = brainCDate;
     }
 
-    public Date getBrainFastestTime() {
-        return brainFastestTime;
-    }
-
-    public void setBrainFastestTime(Date brainFastestTime) {
-        this.brainFastestTime = brainFastestTime;
-    }
-
     public Date getLungsCDate() {
         return lungsCDate;
     }
 
     public void setLungsCDate(Date lungsCDate) {
         this.lungsCDate = lungsCDate;
-    }
-
-    public Date getLungsFastestTime() {
-        return lungsFastestTime;
-    }
-
-    public void setLungsFastestTime(Date lungsFastestTime) {
-        this.lungsFastestTime = lungsFastestTime;
     }
 
     public Date getHeartCDate() {
@@ -180,28 +183,12 @@ public class User{
         this.heartCDate = heartCDate;
     }
 
-    public Date getHeartFastestTime() {
-        return heartFastestTime;
-    }
-
-    public void setHeartFastestTime(Date heartFastestTime) {
-        this.heartFastestTime = heartFastestTime;
-    }
-
     public Date getLiverCDate() {
         return liverCDate;
     }
 
     public void setLiverCDate(Date liverCDate) {
         this.liverCDate = liverCDate;
-    }
-
-    public Date getLiverFastestTime() {
-        return liverFastestTime;
-    }
-
-    public void setLiverFastestTime(Date liverFastestTime) {
-        this.liverFastestTime = liverFastestTime;
     }
 
     public Date getSpleenCDate() {
@@ -212,28 +199,12 @@ public class User{
         this.spleenCDate = spleenCDate;
     }
 
-    public Date getSpleenFastestTime() {
-        return spleenFastestTime;
-    }
-
-    public void setSpleenFastestTime(Date spleenFastestTime) {
-        this.spleenFastestTime = spleenFastestTime;
-    }
-
     public Date getKidneyCDate() {
         return kidneyCDate;
     }
 
     public void setKidneyCDate(Date kidneyCDate) {
         this.kidneyCDate = kidneyCDate;
-    }
-
-    public Date getKidneyFastestTime() {
-        return kidneyFastestTime;
-    }
-
-    public void setKidneyFastestTime(Date kidneyFastestTime) {
-        this.kidneyFastestTime = kidneyFastestTime;
     }
 
     public Date getStomachCDate() {
@@ -244,28 +215,12 @@ public class User{
         this.stomachCDate = stomachCDate;
     }
 
-    public Date getStomachFastestTime() {
-        return stomachFastestTime;
-    }
-
-    public void setStomachFastestTime(Date stomachFastestTime) {
-        this.stomachFastestTime = stomachFastestTime;
-    }
-
     public Date getIntestineCDate() {
         return intestineCDate;
     }
 
     public void setIntestineCDate(Date intestineCDate) {
         this.intestineCDate = intestineCDate;
-    }
-
-    public Date getIntestineFastestTime() {
-        return intestineFastestTime;
-    }
-
-    public void setIntestineFastestTime(Date intestineFastestTime) {
-        this.intestineFastestTime = intestineFastestTime;
     }
 
     public Date getPancreasCDate() {
@@ -276,11 +231,75 @@ public class User{
         this.pancreasCDate = pancreasCDate;
     }
 
-    public Date getPancreasFastestTime() {
+    public long getBrainFastestTime() {
+        return brainFastestTime;
+    }
+
+    public void setBrainFastestTime(long brainFastestTime) {
+        this.brainFastestTime = brainFastestTime;
+    }
+
+    public long getLungsFastestTime() {
+        return lungsFastestTime;
+    }
+
+    public void setLungsFastestTime(long lungsFastestTime) {
+        this.lungsFastestTime = lungsFastestTime;
+    }
+
+    public long getHeartFastestTime() {
+        return heartFastestTime;
+    }
+
+    public void setHeartFastestTime(long heartFastestTime) {
+        this.heartFastestTime = heartFastestTime;
+    }
+
+    public long getLiverFastestTime() {
+        return liverFastestTime;
+    }
+
+    public void setLiverFastestTime(long liverFastestTime) {
+        this.liverFastestTime = liverFastestTime;
+    }
+
+    public long getSpleenFastestTime() {
+        return spleenFastestTime;
+    }
+
+    public void setSpleenFastestTime(long spleenFastestTime) {
+        this.spleenFastestTime = spleenFastestTime;
+    }
+
+    public long getKidneyFastestTime() {
+        return kidneyFastestTime;
+    }
+
+    public void setKidneyFastestTime(long kidneyFastestTime) {
+        this.kidneyFastestTime = kidneyFastestTime;
+    }
+
+    public long getStomachFastestTime() {
+        return stomachFastestTime;
+    }
+
+    public void setStomachFastestTime(long stomachFastestTime) {
+        this.stomachFastestTime = stomachFastestTime;
+    }
+
+    public long getIntestineFastestTime() {
+        return intestineFastestTime;
+    }
+
+    public void setIntestineFastestTime(long intestineFastestTime) {
+        this.intestineFastestTime = intestineFastestTime;
+    }
+
+    public long getPancreasFastestTime() {
         return pancreasFastestTime;
     }
 
-    public void setPancreasFastestTime(Date pancreasFastestTime) {
+    public void setPancreasFastestTime(long pancreasFastestTime) {
         this.pancreasFastestTime = pancreasFastestTime;
     }
 
