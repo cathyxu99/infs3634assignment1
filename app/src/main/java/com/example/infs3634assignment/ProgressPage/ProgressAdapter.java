@@ -61,20 +61,6 @@ public class ProgressAdapter extends RecyclerView.Adapter<ProgressAdapter.Progre
             mListener.onClick(view, getAdapterPosition());
             Log.d(TAG, "progress View Holder: inOnClick");
             System.out.println(getAdapterPosition());
-            /*
-            int position = getLayoutPosition();
-            ProgressData progress = mProgress.get(position);
-
-            FragmentManager manager = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            DetailFragmentProgress fragment = new DetailFragmentProgress();
-            Bundle arguments = new Bundle();
-            arguments.putSerializable("progressInfo", (Serializable) progress);
-            fragment.setArguments(arguments);
-            transaction.replace(R.id.mainFragContainer,fragment);
-            transaction.commit();
-
-             */
         }
     }
 
