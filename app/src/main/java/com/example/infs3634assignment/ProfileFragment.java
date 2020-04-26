@@ -251,39 +251,39 @@ public class ProfileFragment extends Fragment {
         protected void onPostExecute(User user) {
             super.onPostExecute(user);
             currentDp.setImageResource(currentUser.getDisplayPictureId());
-            if(currentUser.getBrainTrophy()!=null) {
+            if(!currentUser.getBrainTrophy().equals("n")) {
                 dpAdapter.addAvatar(R.drawable.brain);
             }
 
-            if(currentUser.getLungsTrophy()!=null){
+            if(!currentUser.getLungsTrophy().equals("n")) {
                 dpAdapter.addAvatar(R.drawable.lungs);
             }
 
-            if(currentUser.getHeartTrophy()!=null) {
+            if(!currentUser.getHeartTrophy().equals("n")) {
                 dpAdapter.addAvatar(R.drawable.heart);
             }
 
-            if(currentUser.getSpleenTrophy()!=null) {
+            if(!currentUser.getSpleenTrophy().equals("n")) {
                 dpAdapter.addAvatar(R.drawable.spleen);
             }
 
-            if(currentUser.getStomachTrophy()!=null) {
+            if(!currentUser.getStomachTrophy().equals("n"))  {
                 dpAdapter.addAvatar(R.drawable.stomach);
             }
 
-            if(currentUser.getLiverTrophy()!=null) {
+            if(!currentUser.getLiverTrophy().equals("n"))  {
                 dpAdapter.addAvatar(R.drawable.liver);
             }
 
-            if(currentUser.getKidneyTrophy()!=null) {
+            if(!currentUser.getKidneyTrophy().equals("n"))  {
                 dpAdapter.addAvatar(R.drawable.kidneys);
             }
 
-            if(currentUser.getIntestineTrophy()!=null) {
+            if(!currentUser.getIntestineTrophy().equals("n"))  {
                 dpAdapter.addAvatar(R.drawable.intestine);
 
             }
-            if ((currentUser.getPancreasTrophy()!=null)) {
+            if (!currentUser.getPancreasTrophy().equals("n"))  {
                 dpAdapter.addAvatar(R.drawable.pancreas);
 
             }

@@ -26,8 +26,8 @@ public class QuizActivity extends AppCompatActivity {
     final private String TAG = "#QUIZACTIVITY# ";
 
     //organ to test and user
-    String organToTest = "brain";
-    String userName = "s";
+    String organToTest;
+    String userName;
 
     //Values use to check progress of user throughout the quiz
     int answerSelected = 0;
@@ -51,10 +51,9 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         Intent organIntent = getIntent();
-        if(organIntent!=null){
-            organToTest = organIntent.getStringExtra("organ");
-            userName = organIntent.getStringExtra("username");
-        }
+        organToTest = organIntent.getStringExtra("organ");
+        userName = organIntent.getStringExtra("username");
+
 
         questionList = getQuestionCollection(organToTest);
 

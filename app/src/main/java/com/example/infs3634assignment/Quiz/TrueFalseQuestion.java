@@ -18,7 +18,7 @@ public class TrueFalseQuestion extends Question implements Serializable {
         String organ = "brain";
 
         //Question 1
-        String q1Question = "The brain located within the head.";
+        String q1Question = "An interruption to the brain's blood flow is called a stroke.";
         int q1Answer = 1;
 
         //Question 2

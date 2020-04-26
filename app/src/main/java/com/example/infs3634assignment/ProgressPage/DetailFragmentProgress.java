@@ -25,6 +25,7 @@ import com.example.infs3634assignment.UserEntity.UserDb;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class DetailFragmentProgress extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -115,7 +116,8 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getBrainCDate()));
                 }
                 if (currentUser.getBrainFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getBrainFastestTime()));
+
+                    time.setText(timeCleaner(currentUser.getBrainFastestTime()));
                 }
                 if (currentUser.getBrainTrophy() != null) {
                     if (currentUser.getBrainTrophy().equals("b")) {
@@ -136,7 +138,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getLungsCDate()));
                 }
                 if (currentUser.getLungsFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getLungsFastestTime()));
+                    time.setText(timeCleaner(currentUser.getLungsFastestTime()));
                 }
                 if (currentUser.getLungsTrophy() != null) {
                     if (currentUser.getLungsTrophy().equals("b")) {
@@ -158,7 +160,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getHeartCDate()));
                 }
                 if (currentUser.getHeartFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getHeartFastestTime()));
+                    time.setText(timeCleaner(currentUser.getHeartFastestTime()));
                 }
                 if (currentUser.getHeartTrophy() != null) {
                     if (currentUser.getHeartTrophy().equals("b")) {
@@ -179,7 +181,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getLiverCDate()));
                 }
                 if (currentUser.getLiverFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getLiverFastestTime()));
+                    time.setText(timeCleaner(currentUser.getLiverFastestTime()));
                 }
                 if (currentUser.getLiverTrophy() != null) {
                     if (currentUser.getLiverTrophy().equals("b")) {
@@ -199,7 +201,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getSpleenCDate()));
                 }
                 if (currentUser.getSpleenFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getSpleenFastestTime()));
+                    time.setText(timeCleaner(currentUser.getSpleenFastestTime()));
                 }
                 if (currentUser.getSpleenTrophy() != null) {
                     if (currentUser.getSpleenTrophy().equals("b")) {
@@ -220,7 +222,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getKidneyCDate()));
                 }
                 if (currentUser.getKidneyFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getKidneyFastestTime()));
+                    time.setText(timeCleaner(currentUser.getKidneyFastestTime()));
                 }
                 if (currentUser.getKidneyTrophy() != null) {
                     if (currentUser.getKidneyTrophy().equals("b")) {
@@ -241,7 +243,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getStomachCDate()));
                 }
                 if (currentUser.getStomachFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getStomachFastestTime()));
+                    time.setText(timeCleaner(currentUser.getStomachFastestTime()));
                 }
                 if (currentUser.getStomachTrophy() != null) {
                     if (currentUser.getStomachTrophy().equals("b")) {
@@ -262,7 +264,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getIntestineCDate()));
                 }
                 if (currentUser.getIntestineFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getIntestineFastestTime()));
+                    time.setText(timeCleaner(currentUser.getIntestineFastestTime()));
                 }
                 if (currentUser.getIntestineTrophy() != null) {
                     if (currentUser.getIntestineTrophy().equals("b")) {
@@ -283,7 +285,7 @@ public class DetailFragmentProgress extends Fragment {
                     cDate.setText(dateFormat.format(currentUser.getPancreasCDate()));
                 }
                 if (currentUser.getPancreasFastestTime() != 0) {
-                    time.setText(Long.toString(currentUser.getPancreasFastestTime()));
+                    time.setText(timeCleaner(currentUser.getPancreasFastestTime()));
                 }
                 if (currentUser.getPancreasTrophy() != null) {
                     if (currentUser.getPancreasTrophy().equals("b")) {
@@ -298,6 +300,13 @@ public class DetailFragmentProgress extends Fragment {
                     }
                 }
             }
+        }
+
+        public String timeCleaner(Long millis){
+            return String.format("%d minute(s) and %d second(s)",
+                    TimeUnit.MILLISECONDS.toMinutes(millis),
+                    TimeUnit.MILLISECONDS.toSeconds(millis) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
         }
     }
 

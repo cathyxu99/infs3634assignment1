@@ -23,8 +23,6 @@ import com.example.infs3634assignment.UserEntity.User;
 import com.example.infs3634assignment.UserEntity.UserDb;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.List;
-
 import static com.example.infs3634assignment.ProgressPage.ProgressFragment.EXTRA_MESSAGE;
 
 public class BlankHomeActivity extends AppCompatActivity {
@@ -33,7 +31,10 @@ public class BlankHomeActivity extends AppCompatActivity {
     public String loggedInUser;
     public User currentUser;
     public UserDb userDb;
+    public boolean achievementClick,profileClick;
     @Override
+    //This activity is the main screen for the application. All functionalities excluding the quiz,
+    // utilize this activity and the main fragment container is swapped depending on what functionality is being used.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blank_home);
@@ -53,17 +54,45 @@ public class BlankHomeActivity extends AppCompatActivity {
         bottomNavBar.setOnNavigationItemSelectedListener(navigationListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new TheBodyFragment()).commit();
         setTitleText("The Body");
+
+        //getting userDetails
         userDp = findViewById(R.id.userDp);
         loggedInUser = getIntent().getStringExtra("Username");
 
         LoggedIn loggedIn = new LoggedIn(userDb,currentUser);
         loggedIn.execute();
 
+        //setting up additional buttons
         userDp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new ProfileFragment(loggedInUser)).commit();
-                setTitleText("Profile");
+                if(!profileClick){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new ProfileFragment(loggedInUser)).commit();
+                    setTitleText("Profile");
+                    achievements.setImageResource(R.drawable.trophy);
+                    profileClick = true;
+                } else {
+                    profileClick = false;
+                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new TheBodyFragment()).commit();
+                }
+            }
+        });
+
+        achievements = findViewById(R.id.achievements);
+        achievements.setImageResource(R.drawable.trophy);
+        achievements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!achievementClick){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new AchievementsFragment()).commit();
+                    setTitleText("Achievements");
+                    achievements.setImageResource(R.drawable.trophyunlocked);
+                    achievementClick = true;
+                } else{
+                    achievementClick = false;
+                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new TheBodyFragment()).commit();
+                    achievements.setImageResource(R.drawable.trophy);
+                }
             }
         });
     }
@@ -97,14 +126,17 @@ public class BlankHomeActivity extends AppCompatActivity {
         }
     };
 
+    //title will change dependong on the screen you're on
     public void setTitleText(String text){
         title.setText(text);
     }
 
+    //this string is passed to other fragments when querying the db.
     public String getLoggedInUser(){
         return loggedInUser;
     }
 
+    //this async task grabs current user to set the display picture in the top right
     public class LoggedIn extends AsyncTask<Void,Void, UserDb> {
         public UserDb userDb;
         public User currentUser;

@@ -25,6 +25,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.infs3634assignment.BlankHomeActivity;
+import com.example.infs3634assignment.MainActivity;
+import com.example.infs3634assignment.Quiz.QuizActivity;
 import com.example.infs3634assignment.R;
 import com.example.infs3634assignment.TheBodyFragment;
 import com.google.gson.Gson;
@@ -34,7 +37,7 @@ import java.util.Iterator;
 
 public class LearnFragment extends Fragment {
     public TextView learnText;
-    public Button readMore, backBody;
+    public Button readMore, backBody, quiz;
 
     private ArrayList<String> mImageURLs = new ArrayList<>();
     private ArrayList<String> mImageNames = new ArrayList<>();
@@ -59,6 +62,7 @@ public class LearnFragment extends Fragment {
 
        final View view = inflater.inflate(R.layout.fragment_learn, container, false);
        final String organ = getArguments().getString("organName");
+       final String quizName = getArguments().getString("quizName");
 
        extras = view.findViewById(R.id.extras);
        extras.setVisibility(View.GONE);
@@ -140,6 +144,16 @@ public class LearnFragment extends Fragment {
                fragment.setArguments(arguments);
                transaction.replace(R.id.mainFragContainer,fragment);
                transaction.commit();
+           }
+       });
+       quiz = view.findViewById(R.id.startQuiz);
+       quiz.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(getActivity(), QuizActivity.class);
+               intent.putExtra("organ", quizName );
+               intent.putExtra("username", ((BlankHomeActivity) getActivity()).getLoggedInUser());
+               startActivity(intent);
            }
        });
        return view;

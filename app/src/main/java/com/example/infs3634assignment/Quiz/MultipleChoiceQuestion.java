@@ -96,7 +96,7 @@ public class MultipleChoiceQuestion extends Question implements Serializable {
         int q2Answer = 3;
 
         //Question 3
-        String q3Question = "How many neurons are in the brain?";
+        String q3Question = "The number of neurons in the brain is closest to?";
         String q3Option1 = "Over 86 million";
         String q3Option2 = "Over 86 billion";
         String q3Option3 = "Over 860 million";

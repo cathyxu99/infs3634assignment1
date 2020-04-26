@@ -62,6 +62,15 @@ public class User{
         this.username = username;
         this.password = password;
         this.displayPictureId = displayPictureId;
+        this.brainTrophy = "n";
+        this.lungsTrophy = "n";
+        this.heartTrophy = "n";
+        this.liverTrophy = "n";
+        this.spleenTrophy = "n";
+        this.kidneyTrophy =  "n";
+        this.stomachTrophy = "n";
+        this.intestineTrophy = "n";
+        this.pancreasTrophy = "n";
     }
     @Ignore
     public User(@NonNull String username, @NonNull String password, int displayPictureId, String brainTrophy, String lungsTrophy, String heartTrophy, String liverTrophy, String spleenTrophy, String kidneyTrophy, String stomachTrophy, String intestineTrophy, String pancreasTrophy, Date brainCDate, Date lungsCDate, Date heartCDate, Date liverCDate, Date spleenCDate, Date kidneyCDate, Date stomachCDate, Date intestineCDate, Date pancreasCDate, long brainFastestTime, long lungsFastestTime, long heartFastestTime, long liverFastestTime, long spleenFastestTime, long kidneyFastestTime, long stomachFastestTime, long intestineFastestTime, long pancreasFastestTime) {

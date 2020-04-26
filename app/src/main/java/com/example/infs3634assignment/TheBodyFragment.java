@@ -69,7 +69,7 @@ public class TheBodyFragment extends Fragment {
         brainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchLearnFragment("human_brain");
+                launchLearnFragment("human_brain","brain");
                 ((BlankHomeActivity) getActivity()).setTitleText("The Brain");
             }
          });
@@ -79,13 +79,14 @@ public class TheBodyFragment extends Fragment {
         return view;
     }
 
-    public void launchLearnFragment(String organName){
+    public void launchLearnFragment(String organName,String quizName){
         //the main activity is made up of a fragment similar to week 5 submission
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         Fragment fragment = new LearnFragment();
         Bundle arguments = new Bundle();
         arguments.putString("organName",organName);
+        arguments.putString("quizName",quizName);
         fragment.setArguments(arguments);
         transaction.replace(R.id.mainFragContainer,fragment);
         transaction.commit();
@@ -107,110 +108,110 @@ public class TheBodyFragment extends Fragment {
         @Override
         protected void onPostExecute(UserDb userDb) {
             super.onPostExecute(userDb);
-            if(currentUser.getBrainTrophy()!=null) {
+            if(!currentUser.getBrainTrophy().equals("n")) {
                 lungButton.setVisibility(View.VISIBLE);
                 progressMessage.setText("Great job braniac, complete the lungs quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Brain");
                 lungButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Lung");
+                        launchLearnFragment("Lung","lungs");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Lungs");
                     }
                 });
             }
 
-            if(currentUser.getLungsTrophy()!=null){
+            if(!currentUser.getLungsTrophy().equals("n")){
                 heartButton.setVisibility(View.VISIBLE);
                 progressMessage.setText("Keep it up, complete the heart quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Lungs");
                 heartButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Heart");
+                        launchLearnFragment("Heart","heart");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Heart");
                     }
                 });
             }
 
-            if(currentUser.getHeartTrophy()!=null) {
+            if(!currentUser.getHeartTrophy().equals("n")) {
                 progressMessage.setText("Excellent, complete the liver quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Heart");
                 liverButton.setVisibility(View.VISIBLE);
                 liverButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Liver");
+                        launchLearnFragment("Liver","liver");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Liver");
                     }
                 });
             }
 
-            if(currentUser.getLiverTrophy()!=null) {
+            if(!currentUser.getLiverTrophy().equals("n")) {
                 progressMessage.setText("Keep it up, complete the spleen quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Liver");
                 spleenButton.setVisibility(View.VISIBLE);
                 spleenButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Spleen");
+                        launchLearnFragment("Spleen","spleen");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Spleen");
                     }
                 });
             }
 
-            if(currentUser.getSpleenTrophy()!=null) {
+            if(!currentUser.getSpleenTrophy().equals("n")) {
                 progressMessage.setText("Great, complete the kidney quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Spleen");
                 kidneyButton.setVisibility(View.VISIBLE);
                 kidneyButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Kidney");
+                        launchLearnFragment("Kidney","kidney");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Kidneys");
                     }
                 });
             }
 
-            if(currentUser.getKidneyTrophy()!=null) {
+            if(!currentUser.getKidneyTrophy().equals("n")) {
                 progressMessage.setText("Nice job, complete the stomach quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Kidneys");
                 stomachButton.setVisibility(View.VISIBLE);
                 stomachButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Stomach");
+                        launchLearnFragment("Stomach","stomach");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Stomach");
                     }
                 });
             }
 
-            if(currentUser.getStomachTrophy()!=null) {
+            if(!currentUser.getStomachTrophy().equals("n")) {
                 progressMessage.setText("Keep it up, complete the intestine quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Stomach");
                 intestineButton.setVisibility(View.VISIBLE);
                 intestineButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Gastrointestinal_tract");
+                        launchLearnFragment("Gastrointestinal_tract","intestines");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Intestines");//
                     }
                 });
             }
 
-            if(currentUser.getIntestineTrophy()!=null) {
+            if(!currentUser.getIntestineTrophy().equals("n")) {
                 progressMessage.setText("Keep it up, complete the pancreas quiz to unlock a new organ");
                 avatarUnlock.setText("You've unlocked a new avatar: The Intestines");
                 pancreasButton.setVisibility(View.VISIBLE);
                 pancreasButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Pancreas");
+                        launchLearnFragment("Pancreas","pancreas");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Pancreas");
                     }
                 });
             }
-            if ((currentUser.getPancreasTrophy()!=null)) {
+            if (!currentUser.getPancreasTrophy().equals("n")) {
                 progressMessage.setText("Congratulations, you've passed all quizes. Try to master your knowledge by unlocking all trophies and achievements");
                 avatarUnlock.setText("You've unlocked a new avatar: The Pancreas");
             }
