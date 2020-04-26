@@ -111,6 +111,11 @@ public class NotesFragment extends Fragment {
 
         @Override
         protected List<Note> doInBackground(Void... voids) {
+            if(noteDatabase.noteDao().getUserNotes("s").size()==0) {
+                for (int a = 0; a < 5; a++) {
+                    noteDatabase.noteDao().insertNotes(new Note("s", "Subject " + a, "Note" + a));
+                }
+            }
 
             if(userName==null){
                 userName = "testUser";
