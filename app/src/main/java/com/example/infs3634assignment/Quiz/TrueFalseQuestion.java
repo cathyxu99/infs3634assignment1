@@ -242,7 +242,7 @@ public class TrueFalseQuestion extends Question implements Serializable {
         int q2Answer = 1;
 
         //Question 3
-        String q3Question = "The pyloric sphincter controls the passage or partially digested food.";
+        String q3Question = "The pyloric sphincter controls the passage of partially digested food.";
         int q3Answer = 1;
 
         //Question 4

@@ -389,7 +389,7 @@ public class MultipleChoiceQuestion extends Question implements Serializable {
         int q3Answer = 2;
 
         //Question 4
-        String q4Question = "Around how much of the blood entering th kidney is filtered?";
+        String q4Question = "Around how much of the blood entering the kidney is filtered?";
         String q4Option1 = "Half";
         String q4Option2 = "One-quarter";
         String q4Option3 = "One-third";
@@ -516,7 +516,7 @@ public class MultipleChoiceQuestion extends Question implements Serializable {
         String q5Option2 = "Endocrine System";
         String q5Option3 = "Renal System";
         String q5Option4 = "Digestive System";
-        int q5Answer = 1;
+        int q5Answer = 4;
 
 
 

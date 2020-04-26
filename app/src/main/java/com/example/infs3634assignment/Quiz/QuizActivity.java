@@ -50,6 +50,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        //get organ and user to test
         Intent organIntent = getIntent();
         organToTest = organIntent.getStringExtra("organ");
         userName = organIntent.getStringExtra("username");
@@ -80,14 +81,17 @@ public class QuizActivity extends AppCompatActivity {
 
                 Question question = new Question();
 
+                //first check if the user answered the question
                 if (!answered && answerSelected == 0) {
                     Toast.makeText(QuizActivity.this, "Please select an answer!", Toast.LENGTH_SHORT).show();
+                    //once feedback provided, user can progress to the next question
                 } else if (answered) {
                     clearButtonColour();
                     completed = loadNextQuestion();
                     answered = false;
                     lockButtons = false;
                     submitButton.setText("Submit");
+                    //if its completed, load the results fragment
                     if (completed) {
 
                         endTime = System.currentTimeMillis();
@@ -101,6 +105,7 @@ public class QuizActivity extends AppCompatActivity {
                         completed = false;
                         questionToAnswer = 0;
                     }
+                 //if its has been answered check if it was right or wrong
                 } else {
 
                     question = questionList.get(questionToAnswer - 1);
@@ -121,6 +126,9 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    /*Methods used to help complete the quiz lifecycle*/
+
+    //Get the questions for the organ getting tested
     public ArrayList<Question> getQuestionCollection(String organ) {
         ArrayList<Question> list = new ArrayList<>();
 
@@ -167,6 +175,7 @@ public class QuizActivity extends AppCompatActivity {
         return list;
     }
 
+    //if wrong, set the colour of the button and record result
     public void wrongAnswerFeedback(int button) {
 
         if (questionList.get(questionToAnswer - 1) instanceof MultipleChoiceQuestion) {
@@ -205,6 +214,7 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    //if right, set the colour of the button and record result
     public void answerFeedback(int button) {
 
         if (questionList.get(questionToAnswer - 1) instanceof MultipleChoiceQuestion) {
@@ -244,6 +254,7 @@ public class QuizActivity extends AppCompatActivity {
         correctAnswers++;
     }
 
+    //clear all colours on buttons
     public void clearButtonColour() {
 
         if (questionList.get(questionToAnswer - 1) instanceof MultipleChoiceQuestion) {
@@ -268,6 +279,7 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    //load the next fragment for the question
     public boolean loadNextQuestion() {
         boolean complete = false;
 
@@ -297,6 +309,7 @@ public class QuizActivity extends AppCompatActivity {
         return complete;
     }
 
+    //Load the results on completion
     public void loadResultsPage(){
 
         ResultsFragment fragment = new ResultsFragment();
@@ -317,6 +330,7 @@ public class QuizActivity extends AppCompatActivity {
         submit.setVisibility(View.INVISIBLE);
     }
 
+    //convert long time to a user friendly string
     public String getTime(long milliTime){
         String stringTime = "Error collecting Time";
 
@@ -328,6 +342,7 @@ public class QuizActivity extends AppCompatActivity {
         return stringTime;
     }
 
+    //stop if the user exits the activity
     @Override
     protected void onPause() {
         super.onPause();

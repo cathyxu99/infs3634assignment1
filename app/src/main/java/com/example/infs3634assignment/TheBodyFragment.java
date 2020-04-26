@@ -193,7 +193,7 @@ public class TheBodyFragment extends Fragment {
                 intestineButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        launchLearnFragment("Gastrointestinal_tract","intestines");
+                        launchLearnFragment("Gastrointestinal_tract","intestine");
                         ((BlankHomeActivity) getActivity()).setTitleText("The Intestines");//
                     }
                 });
