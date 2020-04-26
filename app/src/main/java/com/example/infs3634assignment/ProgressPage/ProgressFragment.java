@@ -89,49 +89,49 @@ public class ProgressFragment extends Fragment {
                 mProgressData = ProgressData.getLevel1();
             }
 
-            if(!currentUser.getLungsTrophy().equals("n")){
+            if(!currentUser.getBrainTrophy().equals("n")){
                 mProgressData = ProgressData.getLevel2();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
-            if(!currentUser.getHeartTrophy().equals("n")) {
+            if(!currentUser.getLungsTrophy().equals("n")) {
                 mProgressData = ProgressData.getLevel3();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
-            if(!currentUser.getLiverTrophy().equals("n")) {
+            if(!currentUser.getHeartTrophy().equals("n")) {
                 mProgressData = ProgressData.getLevel4();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
-            if(!currentUser.getSpleenTrophy().equals("n")) {
+            if(!currentUser.getLiverTrophy().equals("n")) {
                 mProgressData = ProgressData.getLevel5();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
-            if(!currentUser.getKidneyTrophy().equals("n")) {
+            if(!currentUser.getSpleenTrophy().equals("n")) {
                 mProgressData = ProgressData.getLevel6();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
-            if(!currentUser.getStomachTrophy().equals("n")) {
+            if(!currentUser.getKidneyTrophy().equals("n")) {
                 mProgressData = ProgressData.getLevel7();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
-            if(!currentUser.getIntestineTrophy().equals("n")) {
+            if(!currentUser.getStomachTrophy().equals("n")) {
                 mProgressData = ProgressData.getLevel8();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
-            if (!currentUser.getPancreasTrophy().equals("n")) {
+            if (!currentUser.getIntestineTrophy().equals("n")) {
                 mProgressData = ProgressData.getLevel9();
                 RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
                 mRecyclerView.setAdapter(mAdapter);
