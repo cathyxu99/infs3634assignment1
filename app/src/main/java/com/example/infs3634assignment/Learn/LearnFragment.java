@@ -95,7 +95,6 @@ public class LearnFragment extends Fragment {
        progressBar = view.findViewById(R.id.progressBar);
        progressBar.setVisibility(View.VISIBLE);
 
-      ((BlankHomeActivity) getActivity()).bottomNavBar.setEnabled(false);
         //this api call  returns the first text section (overview/introduction) of the target wikipedia page
        final RequestQueue requestQueueLearn = Volley.newRequestQueue(getContext());
        final String wikiUrl = "https://wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" +organ + "&format=json";
@@ -116,11 +115,17 @@ public class LearnFragment extends Fragment {
        Response.ErrorListener errorListenerLearn = new Response.ErrorListener() {
            @Override
            public void onErrorResponse (VolleyError error) {
-               System.out.println(error.toString());
-               progressBar.setVisibility(View.GONE);
-               extras.setVisibility(View.VISIBLE);
-               Toast.makeText(getActivity(), "Request failed, try to load organ again.", Toast.LENGTH_SHORT).show();
-
+               if (getContext() instanceof BlankHomeActivity) {
+                   BlankHomeActivity activity = (BlankHomeActivity) getContext();
+                   if (activity.isFinishing()) {
+                       return;
+                   } else {
+                       System.out.println(error.toString());
+                       progressBar.setVisibility(View.GONE);
+                       extras.setVisibility(View.VISIBLE);
+                       Toast.makeText(getActivity(), "Request failed, try to load organ again.", Toast.LENGTH_SHORT).show();
+                   }
+               }
            }
        };
        StringRequest stringRequestLearn = new StringRequest(Request.Method.GET, wikiUrl, responseListenerLearn, errorListenerLearn);
@@ -170,7 +175,6 @@ public class LearnFragment extends Fragment {
                 if (activity.isFinishing()) {
                     return;
                 } else{
-
                     final RequestQueue requestQueueImagesURL = Volley.newRequestQueue(getContext());
 
                     final String wikiImagesURL = "https://en.wikipedia.org/w/api.php?action=query&titles=" + organImage.getTitle()+"&prop=imageinfo&iiprop=url&format=json";
