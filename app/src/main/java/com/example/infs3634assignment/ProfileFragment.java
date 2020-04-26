@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.example.infs3634assignment.UserEntity.User;
 import com.example.infs3634assignment.UserEntity.UserDb;
 
+import static com.example.infs3634assignment.ProgressPage.ProgressFragment.EXTRA_MESSAGE;
+
 public class ProfileFragment extends Fragment {
     public Button changePassword, updatePassword, updateDp;
     public TextView username, currentPassword, resetPassword, resetPasswordConfirmed;
@@ -221,8 +223,21 @@ public class ProfileFragment extends Fragment {
             }
 
         });
+
+        //sign out
+        TextView signOutTxt = (TextView)view.findViewById(R.id.signOutBtn);
+        signOutTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, "sign out");
+                startActivity(intent);
+            }
+        });
        return view;
     }
+
 
     public class LoggedInUserDetails extends AsyncTask<Void, Void, User> {
 
@@ -314,6 +329,9 @@ public class ProfileFragment extends Fragment {
             Intent intent = new Intent(getActivity(), BlankHomeActivity.class);
             intent.putExtra("Username",usernameString);
             startActivity(intent);
+
         }
     }
+
+
 }
