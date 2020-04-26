@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Space;
 import android.widget.TextView;
@@ -33,7 +35,7 @@ public class ProfileFragment extends Fragment {
     public boolean editDp,editPass = true;
     public DpAdapter dpAdapter;
     public Space space1, space2, space3, space4, space5;
-
+    public EditText currentPw, resetPw, resetPwConf;
 
     public ProfileFragment(String username) {
         this.usernameString = username;
@@ -154,6 +156,70 @@ public class ProfileFragment extends Fragment {
                     changePass.execute();
                 }
             }
+        });
+
+//password, resetpw, conf pw box clearing on click
+        resetPw = view.findViewById(R.id.resetPassword);
+        resetPw.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    resetPw.setHint("Create a new password:");
+                }
+            }
+        });
+
+        resetPw.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                resetPw.setHint("");
+                return false;
+            }
+
+        });
+
+        resetPwConf = view.findViewById(R.id.resetPasswordConfirmed);
+        resetPwConf.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    resetPwConf.setHint("Confirm your new password:");
+                }
+            }
+        });
+
+        resetPwConf.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                resetPwConf.setHint("");
+                return false;
+            }
+
+        });
+
+        currentPw = view.findViewById(R.id.currentPassword);
+        currentPw.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    currentPw.setHint("Enter your current password:");
+                }
+            }
+        });
+
+        currentPw.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                currentPw.setHint("");
+                return false;
+            }
+
         });
        return view;
     }

@@ -10,8 +10,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     public UserDb userDb;
     public int newDpId;
     public Button register;
-
+    public EditText newUsernameBox, newPasswordBox, newConfPwBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,70 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
             }
+        });
+
+        //makes username, pw and confirm pw hint text disappear on click
+        newUsernameBox = findViewById(R.id.newUsername);
+        newUsernameBox.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    newUsernameBox.setHint("Create a Username:");
+                }
+            }
+        });
+
+        newUsernameBox.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                newUsernameBox.setHint("");
+                return false;
+            }
+
+        });
+
+        newPassword = findViewById(R.id.newPassword);
+        newPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    newPassword.setHint("Create a Password:");
+                }
+            }
+        });
+
+        newPassword.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                newPassword.setHint("");
+                return false;
+            }
+
+        });
+
+        newConfPwBox = findViewById(R.id.newPasswordConfirmed);
+        newConfPwBox.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    newConfPwBox.setHint("Confirm Password:");
+                }
+            }
+        });
+
+        newConfPwBox.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                newConfPwBox.setHint("");
+                return false;
+            }
+
         });
 
     }

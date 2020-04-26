@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:fontFamily="@font/roboto"
         android:gravity="center"
-        android:text="Register an Account"
+        android:text="Account Creation"
         android:textSize="20dp" />
 
     <Space
@@ -31,13 +31,14 @@
         android:id="@+id/newUsername"
         android:layout_width="268dp"
         android:layout_height="34dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:background="#1A90D8E8"
         android:ems="10"
         android:fontFamily="@font/roboto"
-        android:gravity="center_horizontal"
-        android:hint="Create a username:"
-        android:inputType="textPersonName" />
+        android:gravity="center|left"
+        android:hint="Create a Username:"
+        android:inputType="textPersonName"
+        android:textSize="14sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -47,13 +48,14 @@
         android:id="@+id/newPassword"
         android:layout_width="266dp"
         android:layout_height="34dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:background="#1A90D8E8"
         android:ems="10"
         android:fontFamily="@font/roboto"
-        android:gravity="center_horizontal"
-        android:hint="Create a password:"
-        android:inputType="textPassword" />
+        android:gravity="center|left"
+        android:hint="Create a Password:"
+        android:inputType="textPassword"
+        android:textSize="14sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -67,9 +69,10 @@
         android:background="#1A90D8E8"
         android:ems="10"
         android:fontFamily="@font/roboto"
-        android:gravity="center_horizontal"
-        android:hint="Confirm password:"
-        android:inputType="textPassword" />
+        android:gravity="center|left"
+        android:hint="Confirm Password:"
+        android:inputType="textPassword"
+        android:textSize="14sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -135,7 +138,8 @@
             android:layout_weight="1"
             android:background="@drawable/normal_button"
             android:enabled="false"
-            android:text="Register" />
+            android:text="Register"
+            android:textColor="#FFFFFF" />
 
         <Space
             android:layout_width="0dp"

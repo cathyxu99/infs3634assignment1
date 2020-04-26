@@ -29,7 +29,8 @@
                 android:fontFamily="@font/courgette"
                 android:gravity="right"
                 android:text="ANATO"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                />
 
             <TextView
                 android:id="@+id/textView8"
@@ -59,8 +60,10 @@
         android:layout_gravity="center_horizontal"
         android:background="#1A90D8E8"
         android:ems="10"
-        android:hint="username"
-        android:inputType="textPersonName" />
+        android:fontFamily="@font/roboto"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textSize="14sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -73,8 +76,10 @@
         android:layout_gravity="center_horizontal"
         android:background="#1A90D8E8"
         android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword" />
+        android:fontFamily="@font/roboto"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="14sp" />
 
     <Space
         android:layout_width="match_parent"

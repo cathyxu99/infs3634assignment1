@@ -5,8 +5,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,13 +28,14 @@ public class MainActivity extends AppCompatActivity {
     public String usernameInput,passwordInput;
     public Button  quizButton, bodyButton, tempLoginBtn,testLogin;;
     public UserDb userDb;
+    public EditText usernameBox, passwordBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userDb = Room.databaseBuilder(getApplicationContext(), UserDb.class,"UserDB")
+        userDb = Room.databaseBuilder(getApplicationContext(), UserDb.class, "UserDB")
                 .build();
 
         InsertSampleData insertSampleData = new InsertSampleData(userDb);
@@ -72,9 +75,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Makes username and password field clear on click
+        usernameBox = findViewById(R.id.profileUsername);
+        usernameBox.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                usernameBox.setHint("");
+                return false;
+            }
+
+        });
+
+        usernameBox.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    usernameBox.setHint("Username");
+                }
+            }
+        });
+
+        passwordBox = findViewById(R.id.password);
+        passwordBox.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    passwordBox.setHint("Password");
+                }
+            }
+        });
+
+        passwordBox.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                passwordBox.setHint("");
+                return false;
+            }
+
+        });
 
 
     }
+
+
 
     private TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
