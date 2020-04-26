@@ -48,6 +48,9 @@ public class MultipleChoiceFragment extends Fragment {
         MultipleChoiceQuestion question = (MultipleChoiceQuestion) bundle.getSerializable("question");
         final View view = getView();
 
+        TextView questionNumber = view.findViewById(R.id.mcqNumber);
+        questionNumber.setText("Q"+(quizActivity.questionToAnswer));
+
         TextView questionText = view.findViewById(R.id.mcqQuestion);
         final Button option1 = view.findViewById(R.id.mcqOption1);
         final Button option2 = view.findViewById(R.id.mcqOption2);

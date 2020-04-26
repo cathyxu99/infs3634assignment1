@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.infs3634assignment.R;
@@ -60,6 +61,9 @@ public class QuizActivity extends AppCompatActivity {
         final Button submitButton = findViewById(R.id.submitButton);
         final Button beginButton = findViewById(R.id.beginButton);
         final ScrollView scrollView = findViewById(R.id.questionView);
+        final TextView organMessage = findViewById(R.id.testingOrgan);
+
+        organMessage.setText("Testing: " + organToTest);
 
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +129,38 @@ public class QuizActivity extends AppCompatActivity {
             case "brain":
                 list.addAll(MultipleChoiceQuestion.getBrainQuestions());
                 list.addAll(TrueFalseQuestion.getBrainQuestions());
+                break;
+            case "lungs":
+                list.addAll(MultipleChoiceQuestion.getLungsQuestions());
+                list.addAll(TrueFalseQuestion.getLungsQuestions());
+                break;
+            case "heart":
+                list.addAll(MultipleChoiceQuestion.getHeartQuestions());
+                list.addAll(TrueFalseQuestion.getHeartQuestions());
+                break;
+            case "liver":
+                list.addAll(MultipleChoiceQuestion.getLiverQuestions());
+                list.addAll(TrueFalseQuestion.getLiverQuestions());
+                break;
+            case "spleen":
+                list.addAll(MultipleChoiceQuestion.getSpleenQuestions());
+                list.addAll(TrueFalseQuestion.getSpleenQuestions());
+                break;
+            case "kidney":
+                list.addAll(MultipleChoiceQuestion.getKidneyQuestions());
+                list.addAll(TrueFalseQuestion.getKidneyQuestions());
+                break;
+            case "stomach":
+                list.addAll(MultipleChoiceQuestion.getStomachQuestions());
+                list.addAll(TrueFalseQuestion.getStomachQuestions());
+                break;
+            case "intestine":
+                list.addAll(MultipleChoiceQuestion.getIntestineQuestions());
+                list.addAll(TrueFalseQuestion.getIntestineQuestions());
+                break;
+            case "pancreas":
+                list.addAll(MultipleChoiceQuestion.getPancreasQuestions());
+                list.addAll(TrueFalseQuestion.getPancreasQuestions());
                 break;
         }
 

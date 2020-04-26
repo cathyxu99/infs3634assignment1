@@ -55,8 +55,8 @@
 
     <TextView
         android:id="@+id/mcqQuestion"
-        android:layout_width="338dp"
-        android:layout_height="wrap_content"
+        android:layout_width="337dp"
+        android:layout_height="88dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/roboto"
         android:text="Question should be displayed."
@@ -79,5 +79,15 @@
         app:layout_constraintEnd_toEndOf="@+id/mcqQuestion"
         app:layout_constraintStart_toStartOf="@+id/mcqQuestion"
         app:layout_constraintTop_toBottomOf="@+id/mcqQuestion" />
+
+    <TextView
+        android:id="@+id/mcqNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Q0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
