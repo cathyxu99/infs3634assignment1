@@ -42,26 +42,29 @@
 
     <TextView
         android:id="@+id/message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="32dp"
+        android:background="#CCFFFFFF"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="Learn about new organs by completing the brain quiz!"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/message2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="4dp"
+        android:background="#CCFFFFFF"
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="Complete Quizes to unlock new avatars."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"

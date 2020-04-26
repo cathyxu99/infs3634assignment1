@@ -136,4 +136,31 @@ public interface UserDao {
     @Query("SELECT pancreasFastestTime FROM user WHERE username = :username")
     Long getPancreasFastestTime(String username);
 
+    @Query("SELECT brainTrophy FROM user WHERE username = :username")
+    String getBrainTrophy(String username);
+
+    @Query("SELECT lungsTrophy FROM user WHERE username = :username")
+    String getLungsTrophy(String username);
+
+    @Query("SELECT heartTrophy FROM user WHERE username = :username")
+    String getHeartTrophy(String username);
+
+    @Query("SELECT liverTrophy FROM user WHERE username = :username")
+    String getLiverTrophy(String username);
+
+    @Query("SELECT spleenTrophy FROM user WHERE username = :username")
+    String getSpleenTrophy(String username);
+
+    @Query("SELECT kidneyTrophy FROM user WHERE username = :username")
+    String getKidneyTrophy(String username);
+
+    @Query("SELECT stomachTrophy FROM user WHERE username = :username")
+    String getStomachTrophy(String username);
+
+    @Query("SELECT intestineTrophy FROM user WHERE username = :username")
+    String getIntestineTrophy(String username);
+
+    @Query("SELECT pancreasTrophy FROM user WHERE username = :username")
+    String getPancreasTrophy(String username);
+
 }
