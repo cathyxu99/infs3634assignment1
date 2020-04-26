@@ -183,7 +183,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/normal_button"
                     android:text="Change Password"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    />
 
                 <Space
                     android:id="@+id/buttonSpace"

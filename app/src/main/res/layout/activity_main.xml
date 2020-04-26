@@ -10,21 +10,45 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/beginQuizButton"
-        android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/normal_button_corners"
-        android:fontFamily="@font/roboto"
-        android:stateListAnimator="@null"
-        android:text="Begin Quiz"
-        android:textColor="#FFFFFF" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="22dp" />
+
+    <FrameLayout
+        android:layout_width="422dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="227dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/courgette"
+                android:gravity="right"
+                android:text="ANATO"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/courgette"
+                android:text="ME"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="match_parent"
-        android:layout_height="319dp"
+        android:layout_height="312dp"
         android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/bodyloginpg" />
 
@@ -78,6 +102,16 @@
         android:gravity="center"
         android:text="New Here? Sign Up!"
         android:textColor="#54BFD7" />
+
+    <Button
+        android:id="@+id/beginQuizButton"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:background="@drawable/normal_button_corners"
+        android:fontFamily="@font/roboto"
+        android:stateListAnimator="@null"
+        android:text="Begin Quiz"
+        android:textColor="#FFFFFF" />
 
     <Space
         android:layout_width="match_parent"
