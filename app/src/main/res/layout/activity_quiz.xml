@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#458ED3"
+    android:backgroundTint="#E6FFFFFF"
+    android:backgroundTintMode="src_over">
 
     <ScrollView
         android:id="@+id/questionView"

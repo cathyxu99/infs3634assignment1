@@ -49,6 +49,7 @@
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="Learn about new organs by completing the brain quiz!"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -62,6 +63,7 @@
         android:fontFamily="@font/roboto"
         android:gravity="center"
         android:text="Complete Quizes to unlock new avatars."
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message" />

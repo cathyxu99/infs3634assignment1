@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/quizbg"
+    android:backgroundTint="#E6FFFFFF"
+    android:backgroundTintMode="src_over"
+
     >
 
 
@@ -18,10 +21,12 @@
         android:text="Option4 should be displayed here"
         android:textColor="#76b4bd"
         android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/mcqOption1"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/mcqOption1"
-        app:layout_constraintTop_toBottomOf="@+id/mcqOption3" />
+        app:layout_constraintTop_toBottomOf="@+id/mcqOption3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/mcqOption3"
@@ -59,8 +64,10 @@
         android:layout_height="88dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/roboto"
+        android:gravity="center"
         android:text="Question should be displayed."
-        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,13 +77,14 @@
         android:id="@+id/mcqOption1"
         android:layout_width="332dp"
         android:layout_height="61dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/solid_line_button"
         android:fontFamily="@font/roboto_medium"
         android:text="Option1 should be displayed here"
         android:textColor="#76b4bd"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/mcqQuestion"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@+id/mcqQuestion"
         app:layout_constraintTop_toBottomOf="@+id/mcqQuestion" />
 
@@ -86,7 +94,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
         android:text="Q0"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
