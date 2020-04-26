@@ -129,50 +129,72 @@ public class SaveResults extends AsyncTask<Void, Integer, Integer>{
             return null;
         }
 
+
+
         //set required medal
         if(correctAnswers==8){
             switch(organ){
                 case "brain":
-                    userDatabase.userDao().changeBrainTrophy("b", userName);
-                    Log.d(TAG, "doInBackground: Earned a bronze medal");
+                    if(!(userDatabase.userDao().getBrainTrophy(userName).matches("s") || userDatabase.userDao().getBrainTrophy(userName).matches("g"))) {
+                        userDatabase.userDao().changeBrainTrophy("b", userName);
+                        Log.d(TAG, "doInBackground: Earned a bronze medal");
+                    }
                 case "lungs":
+                    if(!(userDatabase.userDao().getLungsTrophy(userName).matches("s") || userDatabase.userDao().getLungsTrophy(userName).matches("g")))
                     userDatabase.userDao().changeLungsTrophy("b", userName);
                 case "heart":
+                    if(!(userDatabase.userDao().getHeartTrophy(userName).matches("s") || userDatabase.userDao().getHeartTrophy(userName).matches("g")))
                     userDatabase.userDao().changeHeartTrophy("b", userName);
                 case "liver":
+                    if(!(userDatabase.userDao().getLiverTrophy(userName).matches("s") || userDatabase.userDao().getLiverTrophy(userName).matches("g")))
                     userDatabase.userDao().changeLiverTrophy("b", userName);
                 case "spleen":
+                    if(!(userDatabase.userDao().getSpleenTrophy(userName).matches("s") || userDatabase.userDao().getSpleenTrophy(userName).matches("g")))
                     userDatabase.userDao().changeSpleenTrophy("b", userName);
                 case "kidney":
+                    if(!(userDatabase.userDao().getKidneyTrophy(userName).matches("s") || userDatabase.userDao().getKidneyTrophy(userName).matches("g")))
                     userDatabase.userDao().changeKidneyTrophy("b", userName);
                 case "stomach":
+                    if(!(userDatabase.userDao().getStomachTrophy(userName).matches("s") || userDatabase.userDao().getStomachTrophy(userName).matches("g")))
                     userDatabase.userDao().changeStomachTrophy("b", userName);
                 case "intestine":
+                    if(!(userDatabase.userDao().getIntestineTrophy(userName).matches("s") || userDatabase.userDao().getIntestineTrophy(userName).matches("g")))
                     userDatabase.userDao().changeIntestineTrophy("b", userName);
                 case "pancreas":
+                    if(!(userDatabase.userDao().getPancreasTrophy(userName).matches("s") || userDatabase.userDao().getPancreasTrophy(userName).matches("g")))
                     userDatabase.userDao().changePancreasTrophy("b", userName);
 
             }
         }else if(correctAnswers==9) {
             switch (organ) {
                 case "brain":
-                    userDatabase.userDao().changeBrainTrophy("s", userName);
-                    Log.d(TAG, "doInBackground: Earned a silver medal");
+                    if(!(userDatabase.userDao().getBrainTrophy(userName).matches("g"))) {
+                        userDatabase.userDao().changeBrainTrophy("s", userName);
+                        Log.d(TAG, "doInBackground: Earned a silver medal");
+                    }
                 case "lungs":
+                    if(!(userDatabase.userDao().getLungsTrophy(userName).matches("g")))
                     userDatabase.userDao().changeLungsTrophy("s", userName);
                 case "heart":
+                    if(!(userDatabase.userDao().getHeartTrophy(userName).matches("g")))
                     userDatabase.userDao().changeHeartTrophy("s", userName);
                 case "liver":
+                    if(!(userDatabase.userDao().getLiverTrophy(userName).matches("g")))
                     userDatabase.userDao().changeLiverTrophy("s", userName);
                 case "spleen":
+                    if(!(userDatabase.userDao().getSpleenTrophy(userName).matches("g")))
                     userDatabase.userDao().changeSpleenTrophy("s", userName);
                 case "kidney":
+                    if(!(userDatabase.userDao().getKidneyTrophy(userName).matches("g")))
                     userDatabase.userDao().changeKidneyTrophy("s", userName);
                 case "stomach":
+                    if(!(userDatabase.userDao().getStomachTrophy(userName).matches("g")))
                     userDatabase.userDao().changeStomachTrophy("s", userName);
                 case "intestine":
+                    if(!(userDatabase.userDao().getIntestineTrophy(userName).matches("g")))
                     userDatabase.userDao().changeIntestineTrophy("s", userName);
                 case "pancreas":
+                    if(!(userDatabase.userDao().getPancreasTrophy(userName).matches("g")))
                     userDatabase.userDao().changePancreasTrophy(organ, userName);
             }
         }else if(correctAnswers==10) {
