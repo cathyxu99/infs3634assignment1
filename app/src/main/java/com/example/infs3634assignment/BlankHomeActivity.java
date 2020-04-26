@@ -108,16 +108,22 @@ public class BlankHomeActivity extends AppCompatActivity {
                 case R.id.nav_progress:
                 fragment = new ProgressFragment();
                 setTitleText("Progress");
+                achievements.setImageResource(R.drawable.trophy);
+                achievementClick = false;
                 break;
 
                 case R.id.nav_notes:
                  fragment = new NotesFragment();
                  setTitleText("Notes");
+                 achievements.setImageResource(R.drawable.trophy);
+                 achievementClick = false;
                  break;
 
                 case R.id.nav_body:
                 fragment = new TheBodyFragment();
                 setTitleText("The Body");
+                achievements.setImageResource(R.drawable.trophy);
+                achievementClick = false;
                 break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer,

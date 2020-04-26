@@ -37,7 +37,7 @@
         android:layout_weight=".25"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:text="Completed On"
+        android:text="Last Completed On"
         android:textSize="24sp" />
 
     <TextView
