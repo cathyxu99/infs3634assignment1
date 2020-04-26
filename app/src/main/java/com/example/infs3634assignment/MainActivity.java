@@ -190,13 +190,11 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 try {
                     Date date = format.parse("2020-05-25");
-                    /*User sampleUser = new User("s","s", R.drawable.avatarbloodcellsmall
-                    ,"g","g","g","g","g","g","g","g","g"
-                    , date, date, date, date, date, date, date, date, date
-                    ,330000,330000,330000,330000,330000,330000,330000,330000,330000);
-                    */
+                    User sampleUser = new User("s","s", R.drawable.avatarbloodcellsmall
+                    ,"g","s","b","g","s","g","g","g","g"
+                    , date, format.parse("2020-04-23"), format.parse("2020-03-13"), date, date, date, date, date, date
+                    ,110000,220000,330000,330000,330000,330000,330000,330000,330000);
 
-                     User sampleUser = new User("s","s",R.drawable.avatarbloodcellsmall,"g","g","g");
                     userDb.userDao().insertNewUser(sampleUser);
                 } catch (ParseException e) {
                     e.printStackTrace();
