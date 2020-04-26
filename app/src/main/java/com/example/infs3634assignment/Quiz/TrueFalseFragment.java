@@ -34,7 +34,9 @@ public class TrueFalseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_true_false, container, false);
+        View rootview = inflater.inflate(R.layout.fragment_true_false, container, false);
+
+        return rootview;
     }
 
     @Override
@@ -43,9 +45,14 @@ public class TrueFalseFragment extends Fragment {
 
         final QuizActivity quizActivity = (QuizActivity) getActivity();
 
+
+
         Bundle bundle = getArguments();
         TrueFalseQuestion question = (TrueFalseQuestion) bundle.getSerializable("question");
         final View view = getView();
+
+        TextView questionNumber = view.findViewById(R.id.tfNumber);
+        questionNumber.setText("Q"+(quizActivity.questionToAnswer));
 
         TextView questionText = view.findViewById(R.id.mcqQuestion);
         final Button trueButton = view.findViewById(R.id.trueButton);
