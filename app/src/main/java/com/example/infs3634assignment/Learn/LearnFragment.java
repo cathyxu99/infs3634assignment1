@@ -94,6 +94,8 @@ public class LearnFragment extends Fragment {
 
        progressBar = view.findViewById(R.id.progressBar);
        progressBar.setVisibility(View.VISIBLE);
+
+      ((BlankHomeActivity) getActivity()).bottomNavBar.setEnabled(false);
         //this api call  returns the first text section (overview/introduction) of the target wikipedia page
        final RequestQueue requestQueueLearn = Volley.newRequestQueue(getContext());
        final String wikiUrl = "https://wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" +organ + "&format=json";
@@ -163,37 +165,45 @@ public class LearnFragment extends Fragment {
     //this method grabs the url of the target image that was found in RequestQueueImages request.
     public void getImageURLS(final View view){
         for(final OrganImage organImage:organImageResponse.getOrganImages()) {
-            final RequestQueue requestQueueImagesURL = Volley.newRequestQueue(getContext());
+            if ( getContext() instanceof BlankHomeActivity ) {
+                BlankHomeActivity activity = (BlankHomeActivity) getContext();
+                if (activity.isFinishing()) {
+                    return;
+                } else{
 
-            final String wikiImagesURL = "https://en.wikipedia.org/w/api.php?action=query&titles=" + organImage.getTitle()+"&prop=imageinfo&iiprop=url&format=json";
-            final Response.Listener<String> responseListenerURL = new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    if(response.contains("Unrecognized parameter:")){
-                       //nothing ie dont add the the image
-                    } else {
-                        String str = (response.substring(response.indexOf("\"url\"") + 7, response.indexOf("\"descriptionurl\"") - 2));
-                        mImageURLs.add(str);
-                        String title = organImage.getTitle();
-                        organImage.setTitle(title.substring(title.indexOf("File:") + 5, title.length() - 4));
-                        mImageNames.add(organImage.getTitle());
-                        requestQueueImagesURL.stop();
-                        createImages(view);
-                    }
+                    final RequestQueue requestQueueImagesURL = Volley.newRequestQueue(getContext());
+
+                    final String wikiImagesURL = "https://en.wikipedia.org/w/api.php?action=query&titles=" + organImage.getTitle()+"&prop=imageinfo&iiprop=url&format=json";
+                    final Response.Listener<String> responseListenerURL = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if(response.contains("Unrecognized parameter:")){
+                                //nothing ie dont add the the image
+                            } else {
+                                String str = (response.substring(response.indexOf("\"url\"") + 7, response.indexOf("\"descriptionurl\"") - 2));
+                                mImageURLs.add(str);
+                                String title = organImage.getTitle();
+                                organImage.setTitle(title.substring(title.indexOf("File:") + 5, title.length() - 4));
+                                mImageNames.add(organImage.getTitle());
+                                requestQueueImagesURL.stop();
+                                createImages(view);
+                            }
+                        }
+                    };
+                    Response.ErrorListener errorListenerURL = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            System.out.println(error.toString());
+                            Toast.makeText(getActivity(), "Request failed, try to load organ again.", Toast.LENGTH_SHORT).show();
+                        }
+                    };
+
+
+                    StringRequest stringRequestImagesURL = new StringRequest(Request.Method.GET, wikiImagesURL, responseListenerURL, errorListenerURL);
+                    requestQueueImagesURL.add(stringRequestImagesURL);
                 }
-            };
-            Response.ErrorListener errorListenerURL = new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    System.out.println(error.toString());
-                    Toast.makeText(getActivity(), "Request failed, try to load organ again.", Toast.LENGTH_SHORT).show();
                 }
-            };
-
-
-            StringRequest stringRequestImagesURL = new StringRequest(Request.Method.GET, wikiImagesURL, responseListenerURL, errorListenerURL);
-            requestQueueImagesURL.add(stringRequestImagesURL);
-        }
+            }
     }
 
     public void createImages(View view){

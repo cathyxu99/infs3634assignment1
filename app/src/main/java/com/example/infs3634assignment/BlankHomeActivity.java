@@ -32,6 +32,7 @@ public class BlankHomeActivity extends AppCompatActivity {
     public User currentUser;
     public UserDb userDb;
     public boolean achievementClick,profileClick;
+    public BottomNavigationView bottomNavBar;
     @Override
     //This activity is the main screen for the application. All functionalities excluding the quiz,
     // utilize this activity and the main fragment container is swapped depending on what functionality is being used.
@@ -50,7 +51,7 @@ public class BlankHomeActivity extends AppCompatActivity {
 
         title = findViewById(R.id.title);
 
-        BottomNavigationView bottomNavBar = findViewById(R.id.bottom_nav_bar);
+        bottomNavBar = findViewById(R.id.bottom_nav_bar);
         bottomNavBar.setOnNavigationItemSelectedListener(navigationListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, new TheBodyFragment()).commit();
         setTitleText("The Body");
