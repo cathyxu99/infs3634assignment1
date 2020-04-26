@@ -1,8 +1,5 @@
 package com.example.infs3634assignment.ProgressPage;
 
-import android.content.Intent;
-import android.content.pm.PackageInstaller;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -11,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,116 +26,37 @@ public class ProgressFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item 1";
     public static final String EXTRA_MESSAGE = "test";
     public ArrayList<ProgressData> mProgressData;
-    private String mParam1;
-    private String mParam2;
     private ProgressAdapter.RecyclerViewClickListener mListener;
+    public UserDb  userDb;
+    public User currentUser;
+    public String loggedInUser;
+    public RecyclerView mRecyclerView;
 
     public ProgressFragment() {
         // Required empty public constructor
     }
 
-    public static ProgressFragment newInstance(String param1, String param2) {
-        ProgressFragment fragment = new ProgressFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_ITEM_ID, param1);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_ITEM_ID);
-            // mParam2 = getArguments().getString(ARG_PARAM2);
-
-        }
-
     }
-    //TEMPORARILY manually putting in points
-    public int point = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        userDb = Room.databaseBuilder(getContext(), UserDb.class,"UserDB")
+                .build();
+
+
+        loggedInUser =  ((BlankHomeActivity) getActivity()).getLoggedInUser();
+        GetProgress getProgress = new GetProgress();
+        getProgress.execute();
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_progress, container, false);
-        RecyclerView mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvList);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rvList);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ProgressAdapter.RecyclerViewClickListener mListener = new ProgressAdapter.RecyclerViewClickListener() {
-            //when the item in the list is clicked, detail activity opens
-            @Override
-            public void onClick(View view, int position) {
-                launchDetailActivity(position);
-            }
-        };
-//unlocking levels according as they finish quizzes
-        if(point ==0){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel1());
-         mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel1();
-            return rootView;
-        }
-        else if (point ==1){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel2());
-            mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel2();
-            return rootView;
-        }
-        else if (point ==2){
-        RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel3());
-        mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel3();
-        return rootView; }
-
-        else if (point ==3){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel4());
-            mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel4();
-            return rootView; }
-
-        else if (point ==4){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel5());
-            mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel5();
-            return rootView; }
-
-        else if (point ==5){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel6());
-            mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel6();
-            return rootView; }
-
-        else if (point ==6){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel7());
-            mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel7();
-            return rootView; }
-
-        else if (point ==7){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel8());
-            mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel8();
-            return rootView; }
-
-        else if (point ==8){
-            RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel9());
-            mRecyclerView.setAdapter(mAdapter);
-            mProgressData = ProgressData.getLevel9();
-            return rootView; }
-
-
-        RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel9());
-        mRecyclerView.setAdapter(mAdapter);
         return rootView;
-    }
-
-
-
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 
     private void launchDetailActivity(int position){
@@ -150,56 +69,72 @@ public class ProgressFragment extends Fragment {
         fragmentTransaction.replace(R.id.mainFragContainer, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
-         /*
-        Intent intent = new Intent(getActivity(), ProgressDetail2.class);
-        intent.putExtra(EXTRA_MESSAGE, position);
-        startActivity(intent);
-
-          */
     }
 
-    public class GetOrgans extends AsyncTask<Void,Void, UserDb> {
-        public User currentUser;
-        public UserDb userDb;
-        GetOrgans(UserDb userDb, User currentUser){
-            this.userDb = userDb;
-            this.currentUser = currentUser;
-        }
+    public class GetProgress extends AsyncTask<Void,Void, UserDb> {
         @Override
         protected UserDb doInBackground(Void... voids) {
-            currentUser = userDb.userDao().searchUser("s");
+            currentUser = userDb.userDao().searchUser(loggedInUser);
             return userDb;
         }
 
         @Override
         protected void onPostExecute(UserDb userDb) {
             super.onPostExecute(userDb);
-            if(currentUser.getBrainTrophy()!=null) {
+
+//unlocking levels according as they finish quizzes
+            if(currentUser.getBrainTrophy()==null) {
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, ProgressData.getLevel1());
+                mRecyclerView.setAdapter(mAdapter);
+                mProgressData = ProgressData.getLevel1();
             }
 
             if(currentUser.getLungsTrophy()!=null){
+                mProgressData = ProgressData.getLevel2();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             if(currentUser.getHeartTrophy()!=null) {
+                mProgressData = ProgressData.getLevel3();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             if(currentUser.getLiverTrophy()!=null) {
+                mProgressData = ProgressData.getLevel4();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             if(currentUser.getSpleenTrophy()!=null) {
+                mProgressData = ProgressData.getLevel5();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             if(currentUser.getKidneyTrophy()!=null) {
+                mProgressData = ProgressData.getLevel6();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             if(currentUser.getStomachTrophy()!=null) {
+                mProgressData = ProgressData.getLevel7();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             if(currentUser.getIntestineTrophy()!=null) {
+                mProgressData = ProgressData.getLevel8();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             if ((currentUser.getPancreasTrophy()!=null)) {
+                mProgressData = ProgressData.getLevel9();
+                RecyclerView.Adapter mAdapter = new ProgressAdapter(mListener, mProgressData);
+                mRecyclerView.setAdapter(mAdapter);
             }
         }
     }

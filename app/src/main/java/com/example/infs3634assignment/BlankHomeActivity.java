@@ -10,6 +10,7 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +24,8 @@ import com.example.infs3634assignment.UserEntity.UserDb;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
+
+import static com.example.infs3634assignment.ProgressPage.ProgressFragment.EXTRA_MESSAGE;
 
 public class BlankHomeActivity extends AppCompatActivity {
     public ImageView userDp,achievements;
@@ -121,5 +124,31 @@ public class BlankHomeActivity extends AppCompatActivity {
         protected void onPostExecute(UserDb userDb) {
             userDp.setImageResource(currentUser.getDisplayPictureId());
         }
+    }
+
+
+    //pressing back to log out
+    // reference: https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            ;Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(EXTRA_MESSAGE, "sign out");
+            startActivity(intent);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

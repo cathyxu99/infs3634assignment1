@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -42,25 +43,15 @@ public class ProgressAdapter extends RecyclerView.Adapter<ProgressAdapter.Progre
         void onClick(View view, int Position);
     }
 
-    public static class ProgressViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ProgressViewHolder extends RecyclerView.ViewHolder {
         public TextView level;
-        public RecyclerViewClickListener mListener;
 
         public ProgressViewHolder(View v, RecyclerViewClickListener listener) {
             super(v);
-            mListener = listener;
-            v.setOnClickListener(this);
             level = v.findViewById(R.id.level);
             Log.d(TAG, "progress View Holder: success");
 
 
-        }
-
-        @Override
-        public void onClick(View view) {
-            mListener.onClick(view, getAdapterPosition());
-            Log.d(TAG, "progress View Holder: inOnClick");
-            System.out.println(getAdapterPosition());
         }
     }
 
@@ -72,11 +63,17 @@ public class ProgressAdapter extends RecyclerView.Adapter<ProgressAdapter.Progre
     }
 
     @Override
-    public void onBindViewHolder (ProgressViewHolder holder, int position){
+    public void onBindViewHolder (ProgressViewHolder holder, final int position){
         ProgressData progress = mProgress.get(position);
         holder.level.setText(progress.getLevel());
-
-
+        holder.level.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment myFragment = new DetailFragmentProgress(position,mProgress);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.mainFragContainer, myFragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
