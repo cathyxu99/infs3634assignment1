@@ -22,6 +22,7 @@
         android:layout_weight=".3"
         android:fontFamily="@font/roboto_medium"
         android:text="TextView"
+        android:textColor="#000000"
         android:textSize="30sp" />
 
     <Space
@@ -38,6 +39,7 @@
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
         android:text="Last Completed On"
+        android:textColor="#000000"
         android:textSize="24sp" />
 
     <TextView
@@ -62,7 +64,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight=".25"
         android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
         android:text="Fastest Time"
+        android:textColor="#000000"
         android:textSize="24sp" />
 
     <TextView
@@ -88,7 +92,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight=".2"
         android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
         android:text="Badge Status"
+        android:textColor="#000000"
         android:textSize="24sp" />
 
     <TextView
@@ -109,24 +115,9 @@
         android:orientation="horizontal">
 
         <Space
-            android:layout_width="0dp"
+            android:layout_width="103dp"
             android:layout_height="match_parent"
             android:layout_weight=".25" />
-
-        <Button
-            android:id="@+id/backProgress"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
-            android:layout_weight=".625"
-            android:background="@drawable/normal_button"
-            android:text="Progress"
-            android:textColor="#FFFFFFFF" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".125" />
 
         <ImageView
             android:id="@+id/trophyImage"
@@ -145,7 +136,25 @@
 
     <Space
         android:layout_width="match_parent"
+        android:layout_height="33dp" />
+
+    <Button
+        android:id="@+id/backProgress"
+        android:layout_width="228dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/normal_button"
+        android:fontFamily="@font/roboto"
+        android:text="Back to Progress List"
+        android:textColor="#FFFFFFFF" />
+
+    <Space
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".1" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

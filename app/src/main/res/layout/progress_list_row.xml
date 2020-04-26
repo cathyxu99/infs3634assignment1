@@ -11,7 +11,7 @@
     android:layout_marginBottom="10sp"
     android:orientation="vertical"
     android:outlineAmbientShadowColor="#FFFFFF"
-    app:cardBackgroundColor="#CCFFFFFF">
+    app:cardBackgroundColor="#1A5BCFE9">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="154dp"
-            android:layout_marginLeft="154dp"
             android:layout_marginTop="29dp"
             android:layout_marginEnd="154dp"
-            android:layout_marginRight="154dp"
             android:layout_marginBottom="28dp"
+            android:fontFamily="@font/roboto"
             android:text="Level"
+            android:textColor="#000000"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
