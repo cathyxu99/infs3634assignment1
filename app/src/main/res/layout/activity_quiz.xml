@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="31dp">
+        tools:layout_editor_absoluteX="31dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -117,12 +118,14 @@
     </ScrollView>
 
     <Button
-        android:visibility="invisible"
         android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="32dp"
         android:layout_marginBottom="32dp"
+        android:background="#5BCFE9"
         android:text="Submit"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
