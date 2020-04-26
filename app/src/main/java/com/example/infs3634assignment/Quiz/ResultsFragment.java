@@ -72,12 +72,12 @@ public class ResultsFragment extends Fragment {
         TextView msg = rootview.findViewById(R.id.resultMessage);
 //TODO
         amountCorrect.setText(Integer.toString(correctAnswers));
-        amountIncorrect.setText(Integer.toString(4-correctAnswers));
+        amountIncorrect.setText(Integer.toString(10-correctAnswers));
 
         time.setText("Time: " + getTime(duration));
 //TODO
         //Set result message
-        if(correctAnswers>=2){
+        if(correctAnswers>=8){
             msg.setText("Congratulations, you have completed this level!");
         }else{
             msg.setText("Better luck next time...");
@@ -125,12 +125,12 @@ public class SaveResults extends AsyncTask<Void, Integer, Integer>{
     protected Integer doInBackground(Void... voids) {
 
         //don't save any data if failed
-        if(correctAnswers<2){
+        if(correctAnswers<8){
             return null;
         }
-//TODO:
+
         //set required medal
-        if(correctAnswers==2){
+        if(correctAnswers==8){
             switch(organ){
                 case "brain":
                     userDatabase.userDao().changeBrainTrophy("b", userName);
@@ -153,7 +153,7 @@ public class SaveResults extends AsyncTask<Void, Integer, Integer>{
                     userDatabase.userDao().changePancreasTrophy("b", userName);
 
             }
-        }else if(correctAnswers==3) {
+        }else if(correctAnswers==9) {
             switch (organ) {
                 case "brain":
                     userDatabase.userDao().changeBrainTrophy("s", userName);
@@ -175,7 +175,7 @@ public class SaveResults extends AsyncTask<Void, Integer, Integer>{
                 case "pancreas":
                     userDatabase.userDao().changePancreasTrophy(organ, userName);
             }
-        }else if(correctAnswers==4) {
+        }else if(correctAnswers==10) {
             switch (organ) {
                 case "brain":
                     userDatabase.userDao().changeBrainTrophy("g", userName);
@@ -226,40 +226,40 @@ public class SaveResults extends AsyncTask<Void, Integer, Integer>{
         long currentFastestTime = 99999999;
         switch(organ){
             case "brain":
-                if( userDatabase.userDao().getBrainFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getBrainFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getBrainFastestTime(userName);
-                    Log.d(TAG, "doInBackground: Updating currentFastestTime for Brain");
+                    Log.d(TAG, "doInBackground: Getting currentFastestTime for Brain");
                 }
             case "lungs":
-                if( userDatabase.userDao().getLungsFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getLungsFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getLungsFastestTime(userName);
                 }
             case "heart":
-                if( userDatabase.userDao().getHeartFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getHeartFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getHeartFastestTime(userName);
                 }
             case "liver":
-                if( userDatabase.userDao().getLiverFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getLiverFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getLiverFastestTime(userName);
                 }
             case "spleen":
-                if( userDatabase.userDao().getSpleenFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getSpleenFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getSpleenFastestTime(userName);
                 }
             case "kidney":
-                if( userDatabase.userDao().getKidneyFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getKidneyFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getKidneyFastestTime(userName);
                 }
             case "stomach":
-                if( userDatabase.userDao().getStomachFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getStomachFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getStomachFastestTime(userName);
                 }
             case "intestine":
-                if( userDatabase.userDao().getIntestineFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getIntestineFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getIntestineFastestTime(userName);
                 }
             case "pancreas":
-                if( userDatabase.userDao().getPancreasFastestTime(userName)!=null) {
+                if( userDatabase.userDao().getPancreasFastestTime(userName)!=0) {
                     currentFastestTime = userDatabase.userDao().getPancreasFastestTime(userName);
                 }
         }
@@ -271,24 +271,24 @@ public class SaveResults extends AsyncTask<Void, Integer, Integer>{
 
             switch (organ) {
                 case "brain":
-                    userDatabase.userDao().changeBrainTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeBrainTime(duration, userName);
                     Log.d(TAG, "doInBackground: New fastest time" + duration);
                 case "lungs":
-                    userDatabase.userDao().changeLungsTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeLungsTime(duration, userName);
                 case "heart":
-                    userDatabase.userDao().changeHeartTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeHeartTime(duration, userName);
                 case "liver":
-                    userDatabase.userDao().changeLiverTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeLiverTime(duration, userName);
                 case "spleen":
-                    userDatabase.userDao().changeSpleenTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeSpleenTime(duration, userName);
                 case "kidney":
-                    userDatabase.userDao().changeKidneyTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeKidneyTime(duration, userName);
                 case "stomach":
-                    userDatabase.userDao().changeStomachTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeStomachTime(duration, userName);
                 case "intestine":
-                    userDatabase.userDao().changeIntestineTime(currentFastestTime, userName);
+                    userDatabase.userDao().changeIntestineTime(duration, userName);
                 case "pancreas":
-                    userDatabase.userDao().changePancreasTime(currentFastestTime, userName);
+                    userDatabase.userDao().changePancreasTime(duration, userName);
             }
         }
 
